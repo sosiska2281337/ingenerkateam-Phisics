@@ -3,6 +3,7 @@
 #include <clocale>
 #include <windows.h>
 #include <locale>
+
 using namespace std;
 
 int CM, M, DM, MM, KM;
@@ -10,13 +11,13 @@ int GRAM, KG, TONN, CENTN;
 
 double num;
 
-const double CMinMM = 0.1;
-const double CMinDM = 10;
-const double CMinKM = 1000;
+const double CMinMM = 10;
+const double CMinM = 0.01;
+const double CMinKM = 0.001;
 
-const double KGinGRAMM = 0.001;
-const double KGinCENTN = 100;
-const double KGinTONN = 1000;
+const double KGinGRAMM = 1000;
+const double KGinCENTN = 0.01;
+const double KGinTONN = 0.001;
 
 
 bool DistanceCM(double CMinMM ,double CMinDM, double CMinKM)
@@ -30,15 +31,15 @@ bool DistanceCM(double CMinMM ,double CMinDM, double CMinKM)
 
 
     double distCMinMM=CM*CMinMM;
-    double distCMinDM=CMinDM*CM;
+    double distCMinM=CMinM*CM;
     double distCMinKM=CMinKM*CM;
 
 
 
     cout << "Сантиметры:"<<endl;
-    cout << "В милимметрах:"<<distCMinMM<<endl;
-    cout << "В дациметрах:"<<distCMinDM<<endl;
-    cout << "В километрах:"<<distCMinKM<<endl;
+    cout << "В Милимметрах:"<<distCMinMM<<endl;
+    cout << "В Метрах:"<<distCMinM<<endl;
+    cout << "В Километрах:"<<distCMinKM<<endl;
 
 }
 bool MassKG(double KGinGRAMM,double KGinCENTN, double KGinTONN)
@@ -57,13 +58,13 @@ bool MassKG(double KGinGRAMM,double KGinCENTN, double KGinTONN)
 
 
     cout << "Килограммы:"<<endl;
-    cout << "В граммах:"<<distKGinGRAMM<<endl;
-    cout << "В сантиметрах:"<<KGinCENTN<<endl;
-    cout << "В тоннах:"<<distKGinTONN<<endl;
+    cout << "В Граммах:"<<distKGinGRAMM<<endl;
+    cout << "В Центнерах::"<<distKGinCENTN<<endl;
+    cout << "В Тоннах:"<<distKGinTONN<<endl;
 
 
 }
-void choosen(double MMinCM,double DMinCM, double KMinCM,double KGinGRAMM,double KGinCENTN, double KGinTONN)
+void choosen(double CMinMM,double CMinM, double CMinKM,double KGinGRAMM,double KGinCENTN, double KGinTONN)
 {
    cout << "Для того, чтобы перевести сантиметры: нажмите 1"<<endl;
    cout << "Для того, чтобы перевести Килограммы: нажмите 2"<<endl;
@@ -75,7 +76,7 @@ void choosen(double MMinCM,double DMinCM, double KMinCM,double KGinGRAMM,double 
 
    if(num == 1)
    {
-     DistanceCM( MMinCM, DMinCM,  KMinCM);
+     DistanceCM( CMinMM, CMinM,  CMinKM);
    cout << "Для того, чтобы перевести сантиметры: нажмите 1"<<endl;
    cout << "Для того, чтобы перевести Килограммы: нажмите 2"<<endl;
    cout << "Для того, выйти нажмите 3"<<endl;
@@ -115,9 +116,7 @@ int main()
     SetConsoleOutputCP(1251); // установка кодовой страницы win-cp 1251 в поток вывода
 
     system("chcp 1251>nul");
-    choosen(  CMinMM,  CMinDM,   CMinKM,  KGinGRAMM,  KGinCENTN,   KGinTONN);
-
-
+    choosen(CMinMM,  CMinM,   CMinKM,  KGinGRAMM,  KGinCENTN,   KGinTONN);
 
 
 

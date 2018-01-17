@@ -7,182 +7,127 @@
 
 using namespace std;
 
+enum unitypes {MASS, PRESSURE, WEIGHT};
+enum pristavka {NANO, MICRO, MILLI, SANTI, DECI, NONE, KILO, MEGA, GIGA};
 
-bool PressureMMrtS(double MMrtSinkPA,double MMrtSnMPA, double MMrtSinPA)
+struct phisUnit
 {
+    const char* name;
+    unitypes type;
+    pristavka prist;
+};
+
+phisUnit millimeter = {"millimeter", MASS, MILLI};
 
 
+bool showPressure(const char* unit)
+{
+    double pressureVvod;
 
-    cout << "Укажите расстояния в миллиПаскалях:"<<endl;
-    cout<<"миллиПаскаль:";
-    cin>>MMrtS;
+    double pa;
+    double kpa;
+    double mpa;
+    double mmrtst;
+
+    char message[200];
 
 
-    double distMMrtSinkPA=MMrtS*MMrtSinkPA;
-    double distMMrtSnMPA=MMrtSnMPA*MMrtS;
-    double distMMrtSinPA=MMrtSinPA*MMrtS;
+    if (strcmp(unit, "миллиПаскаль") == 0)
+    {
+        strcpy(message, "Укажите расстояния в миллиПаскалях:");
+        mpa = 1;
+        pa = 1000000;
+        kpa = 1000;
+        mmrtst = 0.000133322;
+    }
+    else if (strcmp(unit, "Паскаль") == 0)
+    {
+        strcpy(message, "Укажите расстояния в Паскалях:");
+        mpa = 1000;
+        pa = 1;
+        kpa = 0.001;
+        mmrtst = 0.00750062;
+    }
+    else if (strcmp(unit, "килоПаскаль") == 0)
+    {
+        strcpy(message, "Укажите расстояния в килоПаскалях:");
+        mpa = 1000000;
+        pa = 1000;
+        kpa = 1;
+        mmrtst = 0.133322;
+    }
+    else if (strcmp(unit, "мм ртутного столба") == 0)
+    {
+        strcpy(message, "Укажите расстояния в мм ртутного столба:");
+        mpa = 133322;
+        pa = 133.322;
+        kpa = 0.133322;
+        mmrtst = 1;
+    }
 
+    cout << message << endl;
+    cin >> pressureVvod;
 
-
-    cout << "милиПаскаль:"<<endl;
-    cout << "В Паскалях:"<<distMMrtSinkPA<<endl;
-    cout << "В КилоПаскалях:"<<distMMrtSinkPA<<endl;
-    cout << "В Паскалях:"<<distMMrtSinPA<<endl;
-
+    cout << "В МиллиПаскалях:"          << mpa * pressureVvod << endl;
+    cout << "В Паскалях:"               << pa * pressureVvod << endl;
+    cout << "В килоПаскалях:"           << kpa * pressureVvod << endl;
+    cout << "В мм. Ртутного столба:"    << mmrtst * pressureVvod << endl;
 }
-bool PressureMPA(double MPAinkPA,double MPAinPA, double MPAinMMrtS)
+
+
+
+bool showdistance(const char* unit)
 {
+double distanceVvod;
+
+    double mm;
+    double cm;
+    double m;
+    double km;
+
+    char message[200];
 
 
+    if (strcmp(unit, "Милиметры") == 0)
+    {
+        strcpy(message, "Укажите расстояния в милиметрах:");
+        mm = 1;
+        cm = 1/10;
+        m = 1;
+        km = 1/1000000;
+    }
+    else if (strcmp(unit, "Сантиметры:") == 0)
+    {
+        strcpy(message, "Укажите расстояния в сантиметрах:");
+        mm = 10;
+        cm = 1;
+        m = 1/100;
+        km = 1/100000;
+    }
+    else if (strcmp(unit, "Метры:") == 0)
+    {
+        strcpy(message, "Укажите расстояния в метрах:");
+        mm = 1000;
+        cm = 100;
+        m =  1;
+        km = 1/1000;
+    }
+    else if (strcmp(unit, "Километры") == 0)
+    {
+        strcpy(message, "Укажите расстояния в километрах:");
+        mm = 1000000;
+        cm = 100000;
+        m  =  1000;
+        km = 1;
+    }
 
-    cout << "Укажите расстояния в миллиПаскалях:"<<endl;
-    cout<<"миллиПаскаль:";
-    cin>>MPA;
+    cout << message << endl;
+    cin >> distanceVvod;
 
-
-    double distMPAinkPA=MPA*MPAinkPA;
-    double distMPAinPA=MPAinPA*MPA;
-    double distMPAinMMrtS=MPAinMMrtS*MPA;
-
-
-
-    cout << "милиПаскаль:"<<endl;
-    cout << "В Паскалях:"<<distMPAinPA<<endl;
-    cout << "В КилоПаскалях:"<<distMPAinkPA<<endl;
-    cout << "В мм. Ртутного столба:"<<distMPAinMMrtS<<endl;
-
-}
-bool PressurekPA(double kPAinPA,double kPAinMPA, double kPAinMMrtS)
-{
-
-
-
-    cout << "Укажите расстояния в килоПаскалях:"<<endl;
-    cout<<"килоПаскаль:";
-    cin>>kPA;
-
-
-    double distkPAinPAM=kPA*kPAinPA;
-    double distkPAinMPA=PAinMPA*kPA;
-    double distkPAinMMrtS=kPAinMMrtS*kPA;
-
-
-
-    cout << "килоПаскаль:"<<endl;
-    cout << "В Паскалях:"<<distkPAinPAM<<endl;
-    cout << "В МиллиПаскалях:"<<distkPAinMPA<<endl;
-    cout << "В мм. Ртутного столба:"<<distkPAinMMrtS<<endl;
-
-}
-bool PressurePA(double PAinkPA,double PAinMPA, double PAinMMrtS)
-{
-
-
-
-    cout << "Укажите расстояния в Паскалях:"<<endl;
-    cout<<"Паскаль:";
-    cin>>PA;
-
-
-    double distPAinkPA=PA*PAinkPA;
-    double distPAinMPA=PAinMPA*PA;
-    double distkPAinMMrtS=PAinMMrtS*PA;
-
-
-
-    cout << "Паскаль:"<<endl;
-    cout << "В килоПаскалях:"<<distPAinkPA<<endl;
-    cout << "В МиллиПаскалях:"<<distPAinMPA<<endl;
-    cout << "В мм. Ртутного столба:"<<distkPAinMMrtS<<endl;
-
-}
-bool DistanceCM(double CMinMM,double CMinM, double CMinKM)
-{
-
-
-
-    cout << "Укажите расстояния в сантиметрах:"<<endl;
-    cout<<"Сантиметры:";
-    cin>>CM;
-
-
-    double distCMinMM=CM*CMinMM;
-    double distCMinM=CMinM*CM;
-    double distCMinKM=CMinKM*CM;
-
-
-
-    cout << "Сантиметры:"<<endl;
-    cout << "В Милимметрах:"<<distCMinMM<<endl;
-    cout << "В Метрах:"<<distCMinM<<endl;
-    cout << "В Километрах:"<<distCMinKM<<endl;
-
-}
-bool DistanceMM(double MMinCM,double MMinM, double MMinKM)
-{
-
-
-
-    cout << "Укажите расстояния в милиметрах:"<<endl;
-    cout<<"Милиметры:";
-    cin>>MM;
-
-
-    double distMMinCM=MM*MMinCM;
-    double distMMinM=MMinM*MM;
-    double distMMinKM=MMinKM*MM;
-
-
-
-    cout << "Милиметры:"<<endl;
-    cout << "В Сантиметрах:"<<distMMinCM<<endl;
-    cout << "В Метрах:"<<distMMinM<<endl;
-    cout << "В Километрах:"<<distMMinKM<<endl;
-
-}
-bool DistanceM(double MinMM,double MinCM, double MinKM)
-{
-
-
-
-    cout << "Укажите расстояния в метрах:"<<endl;
-    cout<<"Метры:";
-    cin>>M;
-
-
-    double distMinMM=M*MinMM;
-    double distMinCM=CMinM*M;
-    double distMinKM=CMinKM*M;
-
-
-
-    cout << "Метры:"<<endl;
-    cout << "В Милимметрах:"<<distMinMM<<endl;
-    cout << "В Сантиметрах:"<<distMinCM<<endl;
-    cout << "В Километрах:"<<distMinKM<<endl;
-
-}
-bool DistanceKM(double KMinMM,double KMinCM, double KMinM)
-{
-
-
-
-    cout << "Укажите расстояния в километрах:"<<endl;
-    cout<<"Километры:";
-    cin>>KM;
-
-
-    double distKMinMM=KM*KMinMM;
-    double distKMinM=KMinCM*KM;
-    double distKMinCM=KMinM*KM;
-
-
-
-    cout << "Километры:"<<endl;
-    cout << "В Милимметрах:"<<distKMinMM<<endl;
-    cout << "В Сантиметрах:"<<distKMinCM<<endl;
-    cout << "В Метрах:"<<distKMinM<<endl;
-
+    cout << "В Милиметрах:"<< mm * distanceVvod << endl;
+    cout << "В Сантиметрах:"<< cm * distanceVvod << endl;
+    cout << "В Метрах:"<< m * distanceVvod << endl;
+    cout << "В Километрах:"<< km * distanceVvod << endl;;
 
 }
 bool MassGRAMM(double GRAMMinKG,double GRAMMinCENTN, double GRAMMinTONN)
@@ -333,23 +278,23 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
 
             if(num == 1)
             {
-                DistanceMM( MMinCM, MMinM,  MMinKM);
+                showdistance("Милиметры");
                 messege_distance();
             }
 
             if(num == 2)
             {
-                DistanceCM( CMinMM, CMinM,  CMinKM);
+                showdistance("Сантиметры");
                 messege_distance();
             }
             if(num == 3)
             {
-                DistanceM( MinMM, MinCM,  MinKM);
+                showdistance("Метры");
                 messege_distance();
             }
             if(num == 4)
             {
-                DistanceKM( KMinMM, KMinCM,  KMinM);
+                showdistance("Километры");
                 messege_distance();
             }
             if(num == 5)
@@ -439,23 +384,23 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
                 cin >> num;
                 if(num == 1)
                 {
-                    PressureMPA( MPAinkPA, MPAinPA,  MPAinMMrtS);
+                    showPressure("миллиПаскаль");
                     messege_pressure();
                 }
 
                 if(num == 2)
                 {
-                    PressurekPA( kPAinPA, kPAinMPA,  kPAinMMrtS);
+                    showPressure("Паскаль");
                     messege_pressure();
                 }
                 if(num == 3)
                 {
-                    PressurePA( PAinkPA, PAinMPA,  PAinMMrtS);
+                    showPressure("килоПаскаль");
                     messege_pressure();
                 }
                 if(num == 4)
                 {
-                    PressureMMrtS( MMrtSinkPA, MMrtSnMPA,  MMrtSinPA);
+                    showPressure("мм Ртутного столба");
                     messege_pressure();
                 }
                 if(num == 5)

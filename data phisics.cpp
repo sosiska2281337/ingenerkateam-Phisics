@@ -13,6 +13,7 @@ int PA, kPA, MPA, MMrtS;
 int YER, HOUR, MIN, SEC;
 
 double num;
+double num1;
 
 
 const double SECinMIN = 1/60;

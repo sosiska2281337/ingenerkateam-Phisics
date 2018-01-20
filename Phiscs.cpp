@@ -75,7 +75,6 @@ bool showPressure(const char* unit)
 }
 
 
-
 bool showdistance(const char* unit)
 {
 double distanceVvod;
@@ -130,92 +129,112 @@ double distanceVvod;
     cout << "В Километрах:"<< km * distanceVvod << endl;;
 
 }
-bool MassGRAMM(double GRAMMinKG,double GRAMMinCENTN, double GRAMMinTONN)
+bool showmass(const char* unit)
 {
+double massVvod;
+
+    double gm;
+    double kg;
+    double cent;
+    double ton;
+
+    char message[200];
 
 
+    if (strcmp(unit, "Граммы") == 0)
+    {
+        strcpy(message, "Укажите расстояния в граммах:");
+        gm = 1;
+        kg = 1/1000;
+        cent = 1/100000;
+        ton = 1/100000000;
+    }
+    else if (strcmp(unit, "Граммы:") == 0)
+    {
+        strcpy(message, "Укажите расстояния в килограммах:");
+        gm = 1000;
+        kg = 1;
+        cent = 1/100;
+        ton = 1/1000;
+    }
+    else if (strcmp(unit, "Центнеры:") == 0)
+    {
+        strcpy(message, "Укажите расстояния в центнерах:");
+        gm = 100000;
+        kg = 100;
+        cent =  1;
+        ton = 1/100000;
+    }
+    else if (strcmp(unit, "Тонны") == 0)
+    {
+        strcpy(message, "Укажите расстояния в тоннах:");
+        gm = 100000000;
+        kg = 1000;
+        cent  =  100000;
+        ton = 1;
+    }
 
-    cout << "Укажите массу в граммах:"<<endl;
-    cout<<"Граммы:";
-    cin>>GRAMM;
+    cout << message << endl;
+    cin >> massVvod;
 
-
-    double distGRAMMinKG=GRAMM*GRAMMinKG;
-    double distGRAMMinCENTN=GRAMMinCENTN*GRAMM;
-    double distGRAMMinTONN=GRAMMinTONN*GRAMM;
-
-
-    cout << "Граммы:"<<endl;
-    cout << "В Килограммах:"<<distGRAMMinKG<<endl;
-    cout << "В Центнерах:"<<distGRAMMinCENTN<<endl;
-    cout << "В Тоннах:"<<distGRAMMinTONN<<endl;
-
+    cout << "В Милиметрах:"<< gm * massVvod << endl;
+    cout << "В Сантиметрах:"<< kg * massVvod << endl;
+    cout << "В Метрах:"<< cent * massVvod << endl;
+    cout << "В Километрах:"<< ton * massVvod << endl;;
 
 }
-bool MassKG(double KGinGRAMM,double KGinCENTN, double KGinTONN)
+bool showtime(const char* unit)
 {
+double timeVvod;
+
+    double sec;
+    double mIn;
+    double hour;
+    double day;
+
+    char message[200];
 
 
+    if (strcmp(unit, "Секунды") == 0)
+    {
+        strcpy(message, "Укажите время в секундах:");
+        sec = 1;
+        mIn = 1/60;
+        hour = 1/3600;
+        day = 1/86400;
+    }
+    else if (strcmp(unit, "Минуты:") == 0)
+    {
+        strcpy(message, "Укажите время в минутах:");
+        sec = 60;
+        mIn = 1;
+        hour = 1/60;
+        day = 1/24;
+    }
+    else if (strcmp(unit, "Часы:") == 0)
+    {
+        strcpy(message, "Укажите время в часах:");
+        sec = 3600;
+        mIn = 60;
+        hour =  1;
+        day = 1/100000;
+    }
+    else if (strcmp(unit, "Сутки") == 0)
+    {
+        strcpy(message, "Укажите время в сутках:");
+        sec = 3600;
+        mIn = 86400;
+        hour  =  24;
+        day = 1;
+    }
 
-    cout << "Укажите массу в килограммах:"<<endl;
-    cout<<"Килограммы:";
-    cin>>KG;
+    cout << message << endl;
+    cin >> timeVvod;
 
-
-    double distKGinGRAMM=KG*KGinGRAMM;
-    double distKGinCENTN=KGinCENTN*KG;
-    double distKGinTONN=KGinTONN*KG;
-
-
-    cout << "Килограммы:"<<endl;
-    cout << "В Граммах:"<<distKGinGRAMM<<endl;
-    cout << "В Центнерах::"<<distKGinCENTN<<endl;
-    cout << "В Тоннах:"<<distKGinTONN<<endl;
-
-
-}
-bool MassCENTN(double CENTNinGRAMM,double CENTNinKG, double CENTNinTONN)
-{
-
-
-
-    cout << "Укажите массу в центнерах:"<<endl;
-    cout<<"Центнеры:";
-    cin>>CENTN;
-
-
-    double distCENTNinGRAMM=CENTN*CENTNinGRAMM;
-    double distCENTNinKG=CENTNinKG*CENTN;
-    double distCENTNinTONN=CENTNinTONN*CENTN;
-
-
-    cout << "Центнеры:"<<endl;
-    cout << "В Граммах:"<<distCENTNinGRAMM<<endl;
-    cout << "В Килограммах:"<<distCENTNinKG<<endl;
-    cout << "В Тоннах:"<<distCENTNinTONN<<endl;
-
-
-}
-bool MassTONN(double TONNinGRAMM,double TONNinCENTN, double TONNinKG)
-{
-
-
-
-    cout << "Укажите массу в тоннах:"<<endl;
-    cout<<"Тонны:";
-    cin>>TONN;
-
-
-    double distTONNinGRAMM=TONN*TONNinGRAMM;
-    double distTONNinCENTN=TONNinCENTN*TONN;
-    double distTONNinKG=TONNinKG*TONN;
-
-
-    cout << "Тонны:"<<endl;
-    cout << "В Граммах:"<<distTONNinGRAMM<<endl;
-    cout << "В Центнерах:"<<distTONNinCENTN<<endl;
-    cout << "В Килограммах:"<<distTONNinKG<<endl;
-
+    cout << "В секундах:"<< sec * timeVvod << endl;
+    cout << "В минутах:"<< mIn * timeVvod << endl;
+    cout << "В часах:"<< hour * timeVvod << endl;
+    cout << "В сутках:"<< day * timeVvod << endl;;
 
 }
 void message_menu()
@@ -247,9 +266,18 @@ void messege_pressure()
     cout << "Для того, чтобы перевести милиПаскали в : нажмите 1"<<endl;
     cout << "Для того, чтобы перевести Паскали: нажмите 2"<<endl;
     cout << "Для того, чтобы перевести килоПаскали: нажмите 3"<<endl;
-    cout << "Для того, чтобы перевести Атмосферное давление: нажмите 4"<<endl;
+    cout << "Для того, чтобы перевести атмосферное давление: нажмите 4"<<endl;
     cout << "Для того, выйти в главное меню: нажмите 5"<<endl;
 }
+void messege_time()
+{
+    cout << "Для того, чтобы перевести секунды в : нажмите 1"<<endl;
+    cout << "Для того, чтобы перевести минуты: нажмите 2"<<endl;
+    cout << "Для того, чтобы перевести часы: нажмите 3"<<endl;
+    cout << "Для того, чтобы перевести сутки: нажмите 4"<<endl;
+    cout << "Для того, выйти в главное меню: нажмите 5"<<endl;
+}
+
 void choosen(double CMinMM,double CMinM, double CMinKM,double
              MinMM,double MinCM, double MinKM,double
              MMinCM,double MMinM, double MiMnKM,double
@@ -266,15 +294,20 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
 {
 
  message_menu();
+
     while(1)
 
     {
         cin >> num;
 
-
+//--------------------------------------------
         if(num == 1)
         {
+            while(1)
             messege_distance();
+            {
+
+
 
             if(num == 1)
             {
@@ -322,34 +355,34 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
             }
 
         }
-
-
-
+  }
+//--------------------------------------------
         if(num == 2)
         {
             messege_mass();
+
             while(1)
             {
                 cin >> num;
                 if(num == 1)
                 {
-                    MassGRAMM( GRAMMinKG, GRAMMinCENTN,  GRAMMinTONN);
+                    showmass("Граммы");
                     messege_mass();
                 }
 
                 if(num == 2)
                 {
-                    MassKG( KGinGRAMM, KGinCENTN,  KGinTONN);
+                    showmass("Килограммы");
                     messege_mass();
                 }
                 if(num == 3)
                 {
-                    MassCENTN( CENTNinGRAMM, CENTNinKG,  CENTNinTONN);
+                    showmass("Центнеры");
                     messege_mass();
                 }
                 if(num == 4)
                 {
-                    MassTONN( TONNinGRAMM, TONNinCENTN,  TONNinKG);
+                    showmass("Тонны");
                     messege_mass();
                 }
                 if(num == 5)
@@ -376,9 +409,11 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
             }
 
         }
+ //--------------------------------------------
         if(num == 3)
         {
             messege_pressure();
+
             while(1)
             {
                 cin >> num;
@@ -427,10 +462,60 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
             }
 
         }
+//--------------------------------------------
+        if(num == 4)
+        {
+
+            messege_time();
+            while(1)
+            {
 
 
 
+            if(num == 1)
+            {
+                showtime("Секунды");
+                messege_time();
+            }
 
+            if(num == 2)
+            {
+                showtime("Минуты");
+                messege_time();
+            }
+            if(num == 3)
+            {
+                showtime("Часы");
+                messege_time();
+            }
+            if(num == 4)
+            {
+                showtime("Сутки");
+                messege_time();
+            }
+            if(num == 5)
+            {
+
+                choosen(CMinMM,  CMinM,   CMinKM,
+                        MinMM, MinCM,  MinKM,
+                        MMinCM, MMinM,  MinKM,
+                        KMinCM, KMinM,  KMinMM,
+                        KGinGRAMM,  KGinCENTN,   KGinTONN,
+                        TONNinGRAMM, TONNinCENTN,  TONNinKG,
+                        CENTNinGRAMM, CENTNinKG,  CENTNinTONN,
+                        GRAMMinKG, GRAMMinCENTN,  GRAMMinKG,
+                        MMrtSinkPA, MMrtSnMPA,  MMrtSinPA,
+                        MPAinkPA, MPAinPA,  MPAinMMrtS,
+                        kPAinPA, kPAinMPA,  kPAinMMrtS,
+                        PAinkPA, PAinMPA,  PAinMMrtS
+
+
+                       );
+
+            }
+         }
+    }
+//--------------------------------------------
         if(num == 5)
         {
             GenerateConsoleCtrlEvent(CTRL_BREAK_EVENT,0);

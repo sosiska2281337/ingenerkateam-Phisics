@@ -114,7 +114,7 @@ bool showdistance(const char* unit)
 bool showmass(const char* unit)
 {
     double massVvod;
-    double coef = 4;
+    double coef;
 
     const double CEF_GM = 1000;
     const double CEF_KG = 1;
@@ -157,54 +157,46 @@ bool showtime(const char* unit)
     double timeVvod;
     double coef;
 
-    double sec;
-    double mIn;
-    double hour;
-    double day;
-
+    const double CEF_SEC = 216000;
+    const double CEF_MIN = 3600;
+    const double CEF_HOUR = 24;
+    const double CEF_DAY = 1;
     char message[200];
 
 
     if (strcmp(unit, "Секунды") == 0)
     {
+
+        coef = 1/CEF_SEC;
         strcpy(message, "Укажите время в секундах:");
-        sec = 1;
-        mIn = 1/60;
-        hour = 1/3600;
-        day = 1/86400;
+
     }
     else if (strcmp(unit, "Минуты:") == 0)
     {
+        coef = 1/CEF_MIN;
         strcpy(message, "Укажите время в минутах:");
-        sec = 60;
-        mIn = 1;
-        hour = 1/60;
-        day = 1/24;
+
     }
     else if (strcmp(unit, "Часы:") == 0)
     {
+        coef = 1/CEF_HOUR;
         strcpy(message, "Укажите время в часах:");
-        sec = 3600;
-        mIn = 60;
-        hour =  1;
-        day = 1/100000;
+
     }
     else if (strcmp(unit, "Сутки") == 0)
     {
+        coef = 1/CEF_DAY;
         strcpy(message, "Укажите время в сутках:");
-        sec = 3600;
-        mIn = 86400;
-        hour  =  24;
-        day = 1;
+
     }
 
     cout << message << endl;
     cin >> timeVvod;
 
-    cout << "В секундах:"<< sec * timeVvod << endl;
-    cout << "В минутах:"<< mIn * timeVvod << endl;
-    cout << "В часах:"<< hour * timeVvod << endl;
-    cout << "В сутках:"<< day * timeVvod << endl;;
+    cout << "В секундах:"<< coef * CEF_SEC * timeVvod << endl;
+    cout << "В минутах:"<< coef * CEF_MIN * timeVvod << endl;
+    cout << "В часах:"<< coef *CEF_HOUR * timeVvod << endl;
+    cout << "В сутках:"<< coef *CEF_DAY * timeVvod << endl;;
 
 }
 void message_menu()
@@ -241,7 +233,7 @@ void messege_pressure()
 }
 void messege_time()
 {
-    cout << "Для того, чтобы перевести секунды в : нажмите 1"<<endl;
+    cout << "Для того, чтобы перевести секунды: нажмите 1"<<endl;
     cout << "Для того, чтобы перевести минуты: нажмите 2"<<endl;
     cout << "Для того, чтобы перевести часы: нажмите 3"<<endl;
     cout << "Для того, чтобы перевести сутки: нажмите 4"<<endl;
@@ -262,10 +254,37 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
              double PAinkPA,double PAinMPA, double PAinMMrtS
             )
 {
+    const int SELECTED_INDEX_BACK = 5;
+//-------------------------------------
     const int SELECTED_INDEX_DISTANCE = 1;
-    const int SELECTED_INDEX_MILLIMETERS = 1;
+
+    const int SELECTED_INDEX_MM = 1;
+    const int SELECTED_INDEX_CM = 2;
+    const int SELECTED_INDEX_M = 3;
+    const int SELECTED_INDEX_KM = 4;
+//-------------------------------------
     const int SELECTED_INDEX_MASS = 2;
+
+    const int SELECTED_INDEX_GM = 1;
+    const int SELECTED_INDEX_KG = 2;
+    const int SELECTED_INDEX_CENT = 3;
+    const int SELECTED_INDEX_TONN = 4;
+//-------------------------------------
     const int SELECTED_INDEX_PRESSURE = 3;
+
+    const int SELECTED_INDEX_MPA = 1;
+    const int SELECTED_INDEX_PA = 2;
+    const int SELECTED_INDEX_KPA = 3;
+    const int SELECTED_INDEX_MMRTST = 4;
+//--------------------------------------
+    const int SELECTED_INDEX_TIME = 4;
+
+    const int SELECTED_INDEX_SEC = 1;
+    const int SELECTED_INDEX_MIN = 2;
+    const int SELECTED_INDEX_HOUR = 3;
+    const int SELECTED_INDEX_DAY = 4;
+
+
 
     message_menu();
 
@@ -281,24 +300,24 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
                 messege_distance();
                 cin >> num;
 
-                if(num == SELECTED_INDEX_MILLIMETERS)
+                if(num == SELECTED_INDEX_MM)
                 {
                     showdistance("Милиметры");
                 }
 
-                if(num == 2)
+                if(num == SELECTED_INDEX_CM)
                 {
                     showdistance("Сантиметры");
                 }
-                if(num == 3)
+                if(num == SELECTED_INDEX_M)
                 {
                     showdistance("Метры");
                 }
-                if(num == 4)
+                if(num == SELECTED_INDEX_KM)
                 {
                     showdistance("Километры");
                 }
-                if(num == 5)
+                if(num == SELECTED_INDEX_BACK)
                 {
                     choosen(CMinMM,  CMinM,   CMinKM,
                             MinMM, MinCM,  MinKM,
@@ -325,24 +344,24 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
                 messege_mass();
                 cin >> num;
 
-                if (num == 1)
+                if (num == SELECTED_INDEX_GM)
                 {
                     showmass("Граммы");
                 }
 
-                if(num == 2)
+                if(num == SELECTED_INDEX_KG )
                 {
                     showmass("Килограммы");
                 }
-                if(num == 3)
+                if(num == SELECTED_INDEX_CENT)
                 {
                     showmass("Центнеры");
                 }
-                if(num == 4)
+                if(num == SELECTED_INDEX_TONN)
                 {
                     showmass("Тонны");
                 }
-                if(num == 5)
+                if(num == SELECTED_INDEX_BACK)
                 {
                     choosen(CMinMM,  CMinM,   CMinKM,
                             MinMM, MinCM,  MinKM,
@@ -370,23 +389,23 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
                 messege_pressure();
                 cin >> num;
 
-                if (num == 1)
+                if (num == SELECTED_INDEX_MPA)
                 {
                     showPressure("миллиПаскаль");
                 }
-                if (num == 2)
+                if (num == SELECTED_INDEX_PA)
                 {
                     showPressure("Паскаль");
                 }
-                if(num == 3)
+                if(num == SELECTED_INDEX_KPA)
                 {
                     showPressure("килоПаскаль");
                 }
-                if(num == 4)
+                if(num == SELECTED_INDEX_MMRTST)
                 {
                     showPressure("мм ртутного столба");
                 }
-                if(num == 5)
+                if(num == SELECTED_INDEX_BACK)
                 {
                     choosen(CMinMM,  CMinM,   CMinKM,
                             MinMM, MinCM,  MinKM,
@@ -407,30 +426,30 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
 
         }
 //--------------------------------------------
-        if(num1 == 4)
+        if(num1 == SELECTED_INDEX_TIME)
         {
             while(1)
             {
                 messege_time();
                 cin >> num;
 
-                if(num == 1)
+                if(num ==SELECTED_INDEX_SEC)
                 {
                     showtime("Секунды");
                 }
-                if(num == 2)
+                if(num == SELECTED_INDEX_MIN)
                 {
                     showtime("Минуты");
                 }
-                if(num == 3)
+                if(num == SELECTED_INDEX_HOUR)
                 {
                     showtime("Часы");
                 }
-                if(num == 4)
+                if(num == SELECTED_INDEX_DAY)
                 {
                     showtime("Сутки");
                 }
-                if(num == 5)
+                if(num == SELECTED_INDEX_BACK)
                 {
                     choosen(CMinMM,  CMinM,   CMinKM,
                             MinMM, MinCM,  MinKM,
@@ -449,7 +468,7 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
             }
         }
 //--------------------------------------------
-        if(num1 == 5)
+        if(num1 == SELECTED_INDEX_BACK)
         {
             GenerateConsoleCtrlEvent(CTRL_BREAK_EVENT,0);
         }

@@ -27,13 +27,9 @@ phisUnit millimeter = {"millimeter", MASS, MILLI};
 
 bool showPressure(const char* unit)
 {
-    double pressureVvod;
     double coef;
 
-    const double CEF_MPA = 1000;
-    const double CEF_PA = 1;
-    const double CEF_KPA = 0.001;
-    const double CEF_MM_RT_ST = 0.00750062;
+
 
     char message[200];
 
@@ -70,13 +66,10 @@ bool showPressure(const char* unit)
 
 bool showdistance(const char* unit)
 {
-    double distanceVvod;
+
     double coef;
 
-    const double CEF_MM = 10;
-    const double CEF_CM = 1;
-    const double CEF_M = 1/100;
-    const double CEF_KM = 1/100000;
+
 
     char message[200];
 
@@ -113,13 +106,10 @@ bool showdistance(const char* unit)
 }
 bool showmass(const char* unit)
 {
-    double massVvod;
+
     double coef;
 
-    const double CEF_GM = 1000;
-    const double CEF_KG = 1;
-    const double CEF_CENT = 0.01;
-    const double CEF_TON = 0.001;
+
     char message[200];
 
     if (strcmp(unit, "ֳנאללû") == 0)
@@ -154,13 +144,10 @@ bool showmass(const char* unit)
 }
 bool showtime(const char* unit)
 {
-    double timeVvod;
+
     double coef;
 
-    const double CEF_SEC = 216000;
-    const double CEF_MIN = 3600;
-    const double CEF_HOUR = 24;
-    const double CEF_DAY = 1;
+
     char message[200];
 
 
@@ -254,35 +241,7 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
              double PAinkPA,double PAinMPA, double PAinMMrtS
             )
 {
-    const int SELECTED_INDEX_BACK = 5;
-//-------------------------------------
-    const int SELECTED_INDEX_DISTANCE = 1;
 
-    const int SELECTED_INDEX_MM = 1;
-    const int SELECTED_INDEX_CM = 2;
-    const int SELECTED_INDEX_M = 3;
-    const int SELECTED_INDEX_KM = 4;
-//-------------------------------------
-    const int SELECTED_INDEX_MASS = 2;
-
-    const int SELECTED_INDEX_GM = 1;
-    const int SELECTED_INDEX_KG = 2;
-    const int SELECTED_INDEX_CENT = 3;
-    const int SELECTED_INDEX_TONN = 4;
-//-------------------------------------
-    const int SELECTED_INDEX_PRESSURE = 3;
-
-    const int SELECTED_INDEX_MPA = 1;
-    const int SELECTED_INDEX_PA = 2;
-    const int SELECTED_INDEX_KPA = 3;
-    const int SELECTED_INDEX_MMRTST = 4;
-//--------------------------------------
-    const int SELECTED_INDEX_TIME = 4;
-
-    const int SELECTED_INDEX_SEC = 1;
-    const int SELECTED_INDEX_MIN = 2;
-    const int SELECTED_INDEX_HOUR = 3;
-    const int SELECTED_INDEX_DAY = 4;
 
 
 

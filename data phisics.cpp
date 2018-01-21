@@ -27,8 +27,8 @@ double distanceVvod;
 //---------------------------
     const double CEF_MM = 10;
     const double CEF_CM = 1;
-    const double CEF_M = 1/100;
-    const double CEF_KM = 1/10000
+    const double CEF_M = 0.01;
+    const double CEF_KM = 0.0001;
 //--------------------------------
     const double CEF_SEC = 216000;
     const double CEF_MIN = 3600;
@@ -37,8 +37,8 @@ double distanceVvod;
 //--------------------------------
     const double CEF_GM = 1000;
     const double CEF_KG = 1;
-    const double CEF_CENT = 1/100;
-    const double CEF_TON = 1/1000;
+    const double CEF_CENT = 0.01;
+    const double CEF_TON = 0.001;
 //--------------------------------
 
 

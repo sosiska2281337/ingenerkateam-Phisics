@@ -62,8 +62,6 @@ bool showPressure(const char* unit)
     cout << "В килоПаскалях:"           << coef * CEF_KPA * pressureVvod << endl;
     cout << "В мм. Ртутного столба:"    << coef * CEF_MM_RT_ST * pressureVvod << endl;
 }
-
-
 bool showdistance(const char* unit)
 {
 
@@ -79,12 +77,12 @@ bool showdistance(const char* unit)
         coef = 1/CEF_MM;
         strcpy(message, "Укажите расстояния в милиметрах:");
     }
-    else if (strcmp(unit, "Сантиметры:") == 0)
+    else if (strcmp(unit, "Сантиметры") == 0)
     {
         coef = 1/CEF_CM;
         strcpy(message, "Укажите расстояния в сантиметрах:");
     }
-    else if (strcmp(unit, "Метры:") == 0)
+    else if (strcmp(unit, "Метры") == 0)
     {
         coef = 1/CEF_M;
         strcpy(message, "Укажите расстояния в метрах:");

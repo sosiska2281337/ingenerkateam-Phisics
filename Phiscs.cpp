@@ -24,7 +24,73 @@ struct phisUnit
 
 phisUnit millimeter = {"millimeter", MASS, MILLI};
 
+bool showenergy(const char* unit)
+{
+    double coef;
 
+
+
+    char message[200];
+
+    if (strcmp(unit, "килоДжоули") == 0)
+    {
+        coef = 1/CEF_KDZH;
+        strcpy(message, "Укажите давление в клоДжоулях:");
+    }
+    else if (strcmp(unit, "Джоули") == 0)
+    {
+        coef = 1/CEF_DZH ;
+        strcpy(message, "Укажите давление в Джоулях:");
+    }
+    else if (strcmp(unit, "Килокалории") == 0)
+    {
+        coef = 1/CEF_KK;
+        strcpy(message, "Укажите давление в Килокалориях:");
+    }
+    else if (strcmp(unit, "Фут-фунт") == 0)
+    {
+        coef = 1/CEF_FF;
+        strcpy(message, "Укажите давление в фут-фунтах:");
+    }
+
+    cout << message << endl;
+    cin >> energyVvod;
+
+    cout << "В клоДжоулях:"          << coef * CEF_KDZH * energyVvod << endl;
+    cout << "В Джоулях:"               << coef * CEF_DZH * energyVvod << endl;
+    cout << "В Килокалориях:"           << coef * CEF_KK * energyVvod << endl;
+    cout << "В фут-фунтах:"    << coef * CEF_FF * energyVvod << endl;
+}
+bool showStrench(const char* unit)
+{
+    double coef;
+
+    const double CEF_MN =0.001;
+    const double CEF_N =1;
+
+
+
+    char message[200];
+
+    if (strcmp(unit, "килоНьютон") == 0)
+    {
+        coef = 1/CEF_MN;
+        strcpy(message, "Укажите силу в килньютонах:");
+    }
+    else if (strcmp(unit, "Ньютон") == 0)
+    {
+        coef = 1/CEF_N;
+        strcpy(message, "Укажите силу ньютоны:");
+    }
+
+
+    cout << message << endl;
+    cin >> strenchVvod;
+
+    cout << "В килньютонах:"          << coef * CEF_MN * strenchVvod << endl;
+    cout << "В ньютоны:"               << coef * CEF_N * strenchVvod << endl;
+;
+}
 bool showPressure(const char* unit)
 {
     double coef;
@@ -190,7 +256,9 @@ void message_menu()
     cout << "Для того, чтобы перевести единицы веса: нажмите 2"<<endl;
     cout << "Для того, чтобы перевести единицы давления: нажмите 3"<<endl;
     cout << "Для того, чтобы перевести единицы времени: нажмите 4"<<endl;
-    cout << "Для того, чтобы выйти нажмите 5"<<endl;
+    cout << "Для того, чтобы перевести единицы силы: нажмите 5"<<endl;
+    cout << "Для того, чтобы перевести единицы энергии: нажмите 6"<<endl;
+    cout << "Для того, чтобы выйти нажмите 7"<<endl;
 }
 void messege_mass()
 {
@@ -224,6 +292,20 @@ void messege_time()
     cout << "Для того, чтобы перевести сутки: нажмите 4"<<endl;
     cout << "Для того, чтобы выйти в главное меню: нажмите 5"<<endl;
 }
+void messege_strench()
+{
+    cout << "Для того, чтобы перевести килоНьютон: нажмите 1"<<endl;
+    cout << "Для того, чтобы перевести ньютон: нажмите 2"<<endl;
+}
+void messege_energy()
+{
+    cout << "Для того, чтобы перевести килоДжоули: нажмите 1"<<endl;
+    cout << "Для того, чтобы перевести Джоули: нажмите 2"<<endl;
+    cout << "Для того, чтобы перевести Килокалории: нажмите 3"<<endl;
+    cout << "Для того, чтобы перевести Фут-фунт: нажмите 4"<<endl;
+    cout << "Для того, чтобы выйти в главное меню: нажмите 5"<<endl;
+}
+
 
 void choosen(double CMinMM,double CMinM, double CMinKM,double
              MinMM,double MinCM, double MinKM,double
@@ -240,8 +322,11 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
             )
 {
 
+const int SELECTED_INDEX_STRENCH = 5;
+const int SELECTED_INDEX_ENERGY = 6;
 
-
+const int SELECTED_INDEX_KN = 1;
+const int SELECTED_INDEX_N = 2;
 
     message_menu();
 
@@ -292,7 +377,6 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
                 }
             }
         }
-
 //--------------------------------------------
         if (num1 == SELECTED_INDEX_MASS)
         {
@@ -424,8 +508,86 @@ void choosen(double CMinMM,double CMinM, double CMinKM,double
                 }
             }
         }
+        //--------------------------------------------
+        if(num1 == SELECTED_INDEX_STRENCH)
+        {
+            while(1)
+            {
+                messege_strench();
+                cin >> num;
+
+                if(num == SELECTED_INDEX_KN)
+                {
+                    showStrench("килоНьютон");
+                }
+                if(num == SELECTED_INDEX_N)
+                {
+                    showStrench("Ньютон");
+                }
+
+                if(num == SELECTED_INDEX_BACK)
+                {
+                    choosen(CMinMM,  CMinM,   CMinKM,
+                            MinMM, MinCM,  MinKM,
+                            MMinCM, MMinM,  MinKM,
+                            KMinCM, KMinM,  KMinMM,
+                            KGinGRAMM,  KGinCENTN,   KGinTONN,
+                            TONNinGRAMM, TONNinCENTN,  TONNinKG,
+                            CENTNinGRAMM, CENTNinKG,  CENTNinTONN,
+                            GRAMMinKG, GRAMMinCENTN,  GRAMMinKG,
+                            MMrtSinkPA, MMrtSnMPA,  MMrtSinPA,
+                            MPAinkPA, MPAinPA,  MPAinMMrtS,
+                            kPAinPA, kPAinMPA,  kPAinMMrtS,
+                            PAinkPA, PAinMPA,  PAinMMrtS
+                    );
+                }
+            }
+        }
+        //--------------------------------------------
+        if(num1 == SELECTED_INDEX_ENERGY)
+        {
+            while(1)
+            {
+                messege_energy();
+                cin >> num;
+
+                if(num ==SELECTED_INDEX_KDZH)
+                {
+                    showenergy("килоДжоули");
+                }
+                if(num == SELECTED_INDEX_DZH)
+                {
+                    showenergy("Джоули");
+                }
+                if(num == SELECTED_INDEX_KK)
+                {
+                    showenergy("Килокалории");
+                }
+                if(num == SELECTED_INDEX_FF)
+                {
+                    showenergy("Фут-фунт");
+                }
+                if(num == SELECTED_INDEX_BACK)
+                {
+                    choosen(CMinMM,  CMinM,   CMinKM,
+                            MinMM, MinCM,  MinKM,
+                            MMinCM, MMinM,  MinKM,
+                            KMinCM, KMinM,  KMinMM,
+                            KGinGRAMM,  KGinCENTN,   KGinTONN,
+                            TONNinGRAMM, TONNinCENTN,  TONNinKG,
+                            CENTNinGRAMM, CENTNinKG,  CENTNinTONN,
+                            GRAMMinKG, GRAMMinCENTN,  GRAMMinKG,
+                            MMrtSinkPA, MMrtSnMPA,  MMrtSinPA,
+                            MPAinkPA, MPAinPA,  MPAinMMrtS,
+                            kPAinPA, kPAinMPA,  kPAinMMrtS,
+                            PAinkPA, PAinMPA,  PAinMMrtS
+                    );
+                }
+            }
+        }
 //--------------------------------------------
-        if(num1 == SELECTED_INDEX_BACK)
+
+        if(num1 ==  SELECTED_INDEX_EXIT)
         {
             GenerateConsoleCtrlEvent(CTRL_BREAK_EVENT,0);
         }

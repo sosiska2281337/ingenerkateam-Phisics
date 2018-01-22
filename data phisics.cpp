@@ -14,10 +14,14 @@ int YER, HOUR, MIN, SEC;
 
 double num;
 double num1;
+
+
 double pressureVvod;
 double massVvod;
 double timeVvod;
 double distanceVvod;
+double strenchVvod;
+double energyVvod;
 
 //-------------------------------------
     const double CEF_MPA = 1000;
@@ -41,9 +45,15 @@ double distanceVvod;
     const double CEF_TON = 0.001;
 //--------------------------------
 
+//--------------------------------
+    const double CEF_KDZH = 0.001;
+    const double CEF_DZH = 1;
+    const double CEF_KK = 0.000239006;
+    const double CEF_FF = 0.7375620;
 
 
     const int SELECTED_INDEX_BACK = 5;
+    const int SELECTED_INDEX_EXIT = 7;
 //-------------------------------------
     const int SELECTED_INDEX_DISTANCE = 1;
 
@@ -72,7 +82,19 @@ double distanceVvod;
     const int SELECTED_INDEX_MIN = 2;
     const int SELECTED_INDEX_HOUR = 3;
     const int SELECTED_INDEX_DAY = 4;
-//-----------------------------
+//------------------------------------
+    const int SELECTED_INDEX_STRENCH = 5;
+
+    const int SELECTED_INDEX_KN = 1;
+    const int SELECTED_INDEX_N = 2;
+//-----------------------------------------
+    const int SELECTED_INDEX_ENERGY = 6;
+
+    const int SELECTED_INDEX_KDZH = 1;
+    const int SELECTED_INDEX_DZH = 2;
+    const int SELECTED_INDEX_KK = 3;
+    const int SELECTED_INDEX_FF = 4;
+
 
 const double SECinMIN = 1/60;
 const double SECinHOUR = 1/3600;

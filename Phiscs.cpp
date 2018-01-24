@@ -21,15 +21,64 @@ struct phisUnit
     pristavka prist;
 };
 
-
 phisUnit millimeter = {"millimeter", MASS, MILLI};
+
+
+const int KOL_VO_SOOBSHENII = 100;
+
+
+
+
+struct FunnyMessage
+{
+    unitypes type;  //Что за величина
+    double minValue;    //От куда
+    double maxValue;//до куда
+    const char* text;   //Сообщение
+    const char* textPoslePausy;   //Сообщение с задержкой
+    //char text1[100];
+};
+
+FunnyMessage funny_messages[KOL_VO_SOOBSHENII];
+
+
+bool show_my_mass()
+{
+    int vvod_my_mass;
+
+    cout << "Укажите свой вес в килограммах"  << endl;
+
+   while(1)
+   {
+
+
+            cin >> vvod_my_mass;
+
+
+            for (int message_number = 0; message_number < KOL_VO_SOOBSHENII; message_number++)
+            {
+                if (funny_messages[message_number].type == MASS and
+                    funny_messages[message_number].minValue <= vvod_my_mass and
+                    funny_messages[message_number].maxValue >= vvod_my_mass)
+                {
+                    cout << funny_messages[message_number].text;
+                    for (int symbol = 0; symbol < strlen(funny_messages[message_number].textPoslePausy); symbol++)
+                    {
+                        cout << funny_messages[message_number].textPoslePausy[symbol];
+                        Sleep(50);
+                    }
+                    cout << endl;
+                }
+            }
+   }
+
+    cout << "Для того, чтобы выйти в главное меню: нажмите 5"<<endl;
+}
+
 
 bool showenergy(const char* unit)
 {
     double coef;
-
-
-
     char message[200];
 
     if (strcmp(unit, "килоДжоули") == 0)
@@ -56,20 +105,15 @@ bool showenergy(const char* unit)
     cout << message << endl;
     cin >> energyVvod;
 
-    cout << "В клоДжоулях:"          << coef * CEF_KDZH * energyVvod << endl;
-    cout << "В Джоулях:"               << coef * CEF_DZH * energyVvod << endl;
-    cout << "В Килокалориях:"           << coef * CEF_KK * energyVvod << endl;
-    cout << "В фут-фунтах:"    << coef * CEF_FF * energyVvod << endl;
+    cout << "В килоДжоулях:"        << coef * CEF_KDZH * energyVvod << endl;
+    cout << "В Джоулях:"            << coef * CEF_DZH * energyVvod << endl;
+    cout << "В Килокалориях:"       << coef * CEF_KK * energyVvod << endl;
+    cout << "В фут-фунтах:"         << coef * CEF_FF * energyVvod << endl;
 }
+
 bool showStrench(const char* unit)
 {
     double coef;
-
-    const double CEF_MN =0.001;
-    const double CEF_N =1;
-
-
-
     char message[200];
 
     if (strcmp(unit, "килоНьютон") == 0)
@@ -83,20 +127,16 @@ bool showStrench(const char* unit)
         strcpy(message, "Укажите силу ньютоны:");
     }
 
-
     cout << message << endl;
     cin >> strenchVvod;
 
     cout << "В килньютонах:"          << coef * CEF_MN * strenchVvod << endl;
-    cout << "В ньютоны:"               << coef * CEF_N * strenchVvod << endl;
-;
+    cout << "В ньютоны:"              << coef * CEF_N * strenchVvod << endl;
 }
+
 bool showPressure(const char* unit)
 {
     double coef;
-
-
-
     char message[200];
 
     if (strcmp(unit, "миллиПаскаль") == 0)
@@ -128,15 +168,11 @@ bool showPressure(const char* unit)
     cout << "В килоПаскалях:"           << coef * CEF_KPA * pressureVvod << endl;
     cout << "В мм. Ртутного столба:"    << coef * CEF_MM_RT_ST * pressureVvod << endl;
 }
+
 bool showdistance(const char* unit)
 {
-
     double coef;
-
-
-
     char message[200];
-
 
     if (strcmp(unit, "Милиметры") == 0)
     {
@@ -162,18 +198,15 @@ bool showdistance(const char* unit)
     cout << message << endl;
     cin >> distanceVvod;
 
-    cout << "В Милиметрах:"<< coef * CEF_MM  * distanceVvod << endl;
+    cout << "В Милиметрах:"<<  coef * CEF_MM  * distanceVvod << endl;
     cout << "В Сантиметрах:"<< coef * CEF_CM  * distanceVvod << endl;
-    cout << "В Метрах:"<< coef * CEF_M  * distanceVvod << endl;
-    cout << "В Километрах:"<< coef * CEF_KM  * distanceVvod << endl;;
-
+    cout << "В Метрах:"<<      coef * CEF_M  * distanceVvod << endl;
+    cout << "В Километрах:"<<  coef * CEF_KM  * distanceVvod << endl;
 }
+
 bool showmass(const char* unit)
 {
-
     double coef;
-
-
     char message[200];
 
     if (strcmp(unit, "Граммы") == 0)
@@ -200,45 +233,39 @@ bool showmass(const char* unit)
     cout << message << endl;
     cin >> massVvod;
 
-    cout << "В Милиметрах:"<< coef * CEF_GM * massVvod << endl;
-    cout << "В Сантиметрах:"<< coef * CEF_KG * massVvod << endl;
-    cout << "В Метрах:"<< coef * CEF_CENT * massVvod << endl;
-    cout << "В Километрах:"<< coef * CEF_TON * massVvod << endl;;
+    cout << "В граммах:"<<     coef * CEF_GM * massVvod << endl;
+    cout << "В килограммах:"<< coef * CEF_KG * massVvod << endl;
+    cout << "В центнерах:"<<   coef * CEF_CENT * massVvod << endl;
+    cout << "В тоннах:"<<      coef * CEF_TON * massVvod << endl;
+
+
 
 }
+
 bool showtime(const char* unit)
 {
-
     double coef;
-
-
     char message[200];
-
 
     if (strcmp(unit, "Секунды") == 0)
     {
-
         coef = 1/CEF_SEC;
         strcpy(message, "Укажите время в секундах:");
-
     }
     else if (strcmp(unit, "Минуты:") == 0)
     {
         coef = 1/CEF_MIN;
         strcpy(message, "Укажите время в минутах:");
-
     }
     else if (strcmp(unit, "Часы:") == 0)
     {
         coef = 1/CEF_HOUR;
         strcpy(message, "Укажите время в часах:");
-
     }
     else if (strcmp(unit, "Сутки") == 0)
     {
         coef = 1/CEF_DAY;
         strcpy(message, "Укажите время в сутках:");
-
     }
 
     cout << message << endl;
@@ -247,9 +274,9 @@ bool showtime(const char* unit)
     cout << "В секундах:"<< coef * CEF_SEC * timeVvod << endl;
     cout << "В минутах:"<< coef * CEF_MIN * timeVvod << endl;
     cout << "В часах:"<< coef *CEF_HOUR * timeVvod << endl;
-    cout << "В сутках:"<< coef *CEF_DAY * timeVvod << endl;;
-
+    cout << "В сутках:"<< coef *CEF_DAY * timeVvod << endl;
 }
+
 void message_menu()
 {
     cout << "Для того, чтобы перевести единицы длины: нажмите 1"<<endl;
@@ -259,7 +286,9 @@ void message_menu()
     cout << "Для того, чтобы перевести единицы силы: нажмите 5"<<endl;
     cout << "Для того, чтобы перевести единицы энергии: нажмите 6"<<endl;
     cout << "Для того, чтобы выйти нажмите 7"<<endl;
+    cout << "Мой вес"<<endl;
 }
+
 void messege_mass()
 {
     cout << "Для того, чтобы перевести граммы: нажмите 1"<<endl;
@@ -268,6 +297,7 @@ void messege_mass()
     cout << "Для того, чтобы перевести тонны: нажмите 4"<<endl;
     cout << "Для того, чтобы выйти в главное меню: нажмите 5"<<endl;
 }
+
 void messege_distance()
 {
     cout << "Для того, чтобы перевести милиметры в : нажмите 1"<<endl;
@@ -276,6 +306,7 @@ void messege_distance()
     cout << "Для того, чтобы перевести километры: нажмите 4"<<endl;
     cout << "Для того, чтобы выйти в главное меню: нажмите 5"<<endl;
 }
+
 void messege_pressure()
 {
     cout << "Для того, чтобы перевести милиПаскали в : нажмите 1"<<endl;
@@ -284,6 +315,7 @@ void messege_pressure()
     cout << "Для того, чтобы перевести атмосферное давление: нажмите 4"<<endl;
     cout << "Для того, чтобы выйти в главное меню: нажмите 5"<<endl;
 }
+
 void messege_time()
 {
     cout << "Для того, чтобы перевести секунды: нажмите 1"<<endl;
@@ -292,11 +324,13 @@ void messege_time()
     cout << "Для того, чтобы перевести сутки: нажмите 4"<<endl;
     cout << "Для того, чтобы выйти в главное меню: нажмите 5"<<endl;
 }
+
 void messege_strench()
 {
     cout << "Для того, чтобы перевести килоНьютон: нажмите 1"<<endl;
     cout << "Для того, чтобы перевести ньютон: нажмите 2"<<endl;
 }
+
 void messege_energy()
 {
     cout << "Для того, чтобы перевести килоДжоули: нажмите 1"<<endl;
@@ -306,28 +340,8 @@ void messege_energy()
     cout << "Для того, чтобы выйти в главное меню: нажмите 5"<<endl;
 }
 
-
-void choosen(double CMinMM,double CMinM, double CMinKM,double
-             MinMM,double MinCM, double MinKM,double
-             MMinCM,double MMinM, double MiMnKM,double
-             KMinCM,double KMinM, double KMiMnMM,double
-             TONNinGRAMM,double TONNinCENTN, double TONNinKG,
-             double CENTNinGRAMM,double CENTNinKG, double CENTNinTONN,
-             double KGinGRAMM,double KGinCENTN, double KGinTONN, double
-             GRAMMinKG,double GRAMMinCENTN, double GRAMMinTONN,
-             double MMrtSinkPA,double MMrtSnMPA, double MMrtSinPA,
-             double MPAinkPA,double MPAinPA, double MPAinMMrtS,
-             double kPAinPA,double kPAinMPA, double kPAinMMrtS,
-             double PAinkPA,double PAinMPA, double PAinMMrtS
-            )
+void choosen()
 {
-
-const int SELECTED_INDEX_STRENCH = 5;
-const int SELECTED_INDEX_ENERGY = 6;
-
-const int SELECTED_INDEX_KN = 1;
-const int SELECTED_INDEX_N = 2;
-
     message_menu();
 
     while(1)
@@ -342,38 +356,25 @@ const int SELECTED_INDEX_N = 2;
                 messege_distance();
                 cin >> num;
 
-                if(num == SELECTED_INDEX_MM)
+                if (num == SELECTED_INDEX_MM)
                 {
                     showdistance("Милиметры");
                 }
-
-                if(num == SELECTED_INDEX_CM)
+                else if (num == SELECTED_INDEX_CM)
                 {
                     showdistance("Сантиметры");
                 }
-                if(num == SELECTED_INDEX_M)
+                else if (num == SELECTED_INDEX_M)
                 {
                     showdistance("Метры");
                 }
-                if(num == SELECTED_INDEX_KM)
+                else if (num == SELECTED_INDEX_KM)
                 {
                     showdistance("Километры");
                 }
-                if(num == SELECTED_INDEX_BACK)
+                else if(num == SELECTED_INDEX_BACK)
                 {
-                    choosen(CMinMM,  CMinM,   CMinKM,
-                            MinMM, MinCM,  MinKM,
-                            MMinCM, MMinM,  MinKM,
-                            KMinCM, KMinM,  KMinMM,
-                            KGinGRAMM,  KGinCENTN,   KGinTONN,
-                            TONNinGRAMM, TONNinCENTN,  TONNinKG,
-                            CENTNinGRAMM, CENTNinKG,  CENTNinTONN,
-                            GRAMMinKG, GRAMMinCENTN,  GRAMMinKG,
-                            MMrtSinkPA, MMrtSnMPA,  MMrtSinPA,
-                            MPAinkPA, MPAinPA,  MPAinMMrtS,
-                            kPAinPA, kPAinMPA,  kPAinMMrtS,
-                            PAinkPA, PAinMPA,  PAinMMrtS
-                           );
+                    choosen();
                 }
             }
         }
@@ -389,36 +390,22 @@ const int SELECTED_INDEX_N = 2;
                 {
                     showmass("Граммы");
                 }
-
-                if(num == SELECTED_INDEX_KG )
+                else if(num == SELECTED_INDEX_KG)
                 {
                     showmass("Килограммы");
                 }
-                if(num == SELECTED_INDEX_CENT)
+                else if(num == SELECTED_INDEX_CENT)
                 {
                     showmass("Центнеры");
                 }
-                if(num == SELECTED_INDEX_TONN)
+                else if(num == SELECTED_INDEX_TONN)
                 {
                     showmass("Тонны");
                 }
-                if(num == SELECTED_INDEX_BACK)
+                else if(num == SELECTED_INDEX_BACK)
                 {
-                    choosen(CMinMM,  CMinM,   CMinKM,
-                            MinMM, MinCM,  MinKM,
-                            MMinCM, MMinM,  MinKM,
-                            KMinCM, KMinM,  KMinMM,
-                            KGinGRAMM,  KGinCENTN,   KGinTONN,
-                            TONNinGRAMM, TONNinCENTN,  TONNinKG,
-                            CENTNinGRAMM, CENTNinKG,  CENTNinTONN,
-                            GRAMMinKG, GRAMMinCENTN,  GRAMMinKG,
-                            MMrtSinkPA, MMrtSnMPA,  MMrtSinPA,
-                            MPAinkPA, MPAinPA,  MPAinMMrtS,
-                            kPAinPA, kPAinMPA,  kPAinMMrtS,
-                            PAinkPA, PAinMPA,  PAinMMrtS
-                     );
+                    choosen();
                 }
-
             }
 
         }
@@ -448,19 +435,7 @@ const int SELECTED_INDEX_N = 2;
                 }
                 if(num == SELECTED_INDEX_BACK)
                 {
-                    choosen(CMinMM,  CMinM,   CMinKM,
-                            MinMM, MinCM,  MinKM,
-                            MMinCM, MMinM,  MinKM,
-                            KMinCM, KMinM,  KMinMM,
-                            KGinGRAMM,  KGinCENTN,   KGinTONN,
-                            TONNinGRAMM, TONNinCENTN,  TONNinKG,
-                            CENTNinGRAMM, CENTNinKG,  CENTNinTONN,
-                            GRAMMinKG, GRAMMinCENTN,  GRAMMinKG,
-                            MMrtSinkPA, MMrtSnMPA,  MMrtSinPA,
-                            MPAinkPA, MPAinPA,  MPAinMMrtS,
-                            kPAinPA, kPAinMPA,  kPAinMMrtS,
-                            PAinkPA, PAinMPA,  PAinMMrtS
-                           );
+                    choosen();
                 }
 
             }
@@ -492,19 +467,7 @@ const int SELECTED_INDEX_N = 2;
                 }
                 if(num == SELECTED_INDEX_BACK)
                 {
-                    choosen(CMinMM,  CMinM,   CMinKM,
-                            MinMM, MinCM,  MinKM,
-                            MMinCM, MMinM,  MinKM,
-                            KMinCM, KMinM,  KMinMM,
-                            KGinGRAMM,  KGinCENTN,   KGinTONN,
-                            TONNinGRAMM, TONNinCENTN,  TONNinKG,
-                            CENTNinGRAMM, CENTNinKG,  CENTNinTONN,
-                            GRAMMinKG, GRAMMinCENTN,  GRAMMinKG,
-                            MMrtSinkPA, MMrtSnMPA,  MMrtSinPA,
-                            MPAinkPA, MPAinPA,  MPAinMMrtS,
-                            kPAinPA, kPAinMPA,  kPAinMMrtS,
-                            PAinkPA, PAinMPA,  PAinMMrtS
-                    );
+                    choosen();
                 }
             }
         }
@@ -527,19 +490,7 @@ const int SELECTED_INDEX_N = 2;
 
                 if(num == SELECTED_INDEX_BACK)
                 {
-                    choosen(CMinMM,  CMinM,   CMinKM,
-                            MinMM, MinCM,  MinKM,
-                            MMinCM, MMinM,  MinKM,
-                            KMinCM, KMinM,  KMinMM,
-                            KGinGRAMM,  KGinCENTN,   KGinTONN,
-                            TONNinGRAMM, TONNinCENTN,  TONNinKG,
-                            CENTNinGRAMM, CENTNinKG,  CENTNinTONN,
-                            GRAMMinKG, GRAMMinCENTN,  GRAMMinKG,
-                            MMrtSinkPA, MMrtSnMPA,  MMrtSinPA,
-                            MPAinkPA, MPAinPA,  MPAinMMrtS,
-                            kPAinPA, kPAinMPA,  kPAinMMrtS,
-                            PAinkPA, PAinMPA,  PAinMMrtS
-                    );
+                    choosen();
                 }
             }
         }
@@ -569,23 +520,15 @@ const int SELECTED_INDEX_N = 2;
                 }
                 if(num == SELECTED_INDEX_BACK)
                 {
-                    choosen(CMinMM,  CMinM,   CMinKM,
-                            MinMM, MinCM,  MinKM,
-                            MMinCM, MMinM,  MinKM,
-                            KMinCM, KMinM,  KMinMM,
-                            KGinGRAMM,  KGinCENTN,   KGinTONN,
-                            TONNinGRAMM, TONNinCENTN,  TONNinKG,
-                            CENTNinGRAMM, CENTNinKG,  CENTNinTONN,
-                            GRAMMinKG, GRAMMinCENTN,  GRAMMinKG,
-                            MMrtSinkPA, MMrtSnMPA,  MMrtSinPA,
-                            MPAinkPA, MPAinPA,  MPAinMMrtS,
-                            kPAinPA, kPAinMPA,  kPAinMMrtS,
-                            PAinkPA, PAinMPA,  PAinMMrtS
-                    );
+                    choosen();
                 }
             }
         }
 //--------------------------------------------
+        if(num1 ==  8)
+        {
+            show_my_mass();
+        }
 
         if(num1 ==  SELECTED_INDEX_EXIT)
         {
@@ -596,30 +539,19 @@ const int SELECTED_INDEX_N = 2;
 
 int main()
 {
+    funny_messages[0] = {MASS, 100,110, "Вы весите как среднестатистический американец!Хватит ЖРАЦЬ! "};
+    funny_messages[1] = {MASS, 20, 50, "Вы дрищ, американец!"};
+    funny_messages[2] = {MASS, 80, 80, "Вы весите как Геннадий Горин"};
+    funny_messages[4] = {MASS, 150, 190, "Карртаво Вы весите как "," тигррр ррррр!" };
+    funny_messages[5] = {MASS, 4000, 5400, "Вы весите как слон"};
+
     SetConsoleCP(1251);// установка кодовой страницы win-cp 1251 в поток ввода
     SetConsoleOutputCP(1251); // установка кодовой страницы win-cp 1251 в поток вывода
 
     system("chcp 1251>nul");
 
-    choosen(CMinMM,  CMinM,   CMinKM,
-            MinMM, MinCM,  MinKM,
-            MMinCM, MMinM,  MinKM,
-            KMinCM, KMinM,  KMinMM,
-            KGinGRAMM,  KGinCENTN,   KGinTONN,
-            TONNinGRAMM, TONNinCENTN,  TONNinKG,
-            CENTNinGRAMM, CENTNinKG,  CENTNinTONN,
-            GRAMMinKG, GRAMMinCENTN,  GRAMMinKG,
-            MMrtSinkPA, MMrtSnMPA,  MMrtSinPA,
-            MPAinkPA, MPAinPA,  MPAinMMrtS,
-            kPAinPA, kPAinMPA,  kPAinMMrtS,
-            PAinkPA, PAinMPA,  PAinMMrtS
-
-
-           );
-
-
+    choosen();
 
     system("pause>nul");
     return 0;
 }
-

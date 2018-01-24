@@ -51,6 +51,9 @@ double energyVvod;
     const double CEF_KK = 0.000239006;
     const double CEF_FF = 0.7375620;
 
+//-------------------------------------
+    const double CEF_MN =0.001;
+    const double CEF_N =1;
 
     const int SELECTED_INDEX_BACK = 5;
     const int SELECTED_INDEX_EXIT = 7;
@@ -94,8 +97,7 @@ double energyVvod;
     const int SELECTED_INDEX_DZH = 2;
     const int SELECTED_INDEX_KK = 3;
     const int SELECTED_INDEX_FF = 4;
-
-
+/*
 const double SECinMIN = 1/60;
 const double SECinHOUR = 1/3600;
 const double SECinYER = 3.805178478e-7;
@@ -158,5 +160,5 @@ const double MinKM = 1/1000;
 
 const double KMinMM = 1000000;
 const double KMinCM = 100000;
-const double KMinM = 1000;
+const double KMinM = 1000;*/
 //----------------------------------------

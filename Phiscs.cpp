@@ -48,8 +48,8 @@ bool show_my_mass()
 
     cout << "Укажите свой вес в килограммах"  << endl;
 
-   while(1)
-   {
+
+
 
 
             cin >> vvod_my_mass;
@@ -67,10 +67,10 @@ bool show_my_mass()
                         cout << funny_messages[message_number].textPoslePausy[symbol];
                         Sleep(50);
                     }
-                    cout << endl;
+
                 }
             }
-   }
+
 
     cout << "Для того, чтобы выйти в главное меню: нажмите 5"<<endl;
 }
@@ -421,19 +421,19 @@ void choosen()
                 {
                     showPressure("миллиПаскаль");
                 }
-                if (num == SELECTED_INDEX_PA)
+                else if (num == SELECTED_INDEX_PA)
                 {
                     showPressure("Паскаль");
                 }
-                if(num == SELECTED_INDEX_KPA)
+                else if(num == SELECTED_INDEX_KPA)
                 {
                     showPressure("килоПаскаль");
                 }
-                if(num == SELECTED_INDEX_MMRTST)
+                else if(num == SELECTED_INDEX_MMRTST)
                 {
                     showPressure("мм ртутного столба");
                 }
-                if(num == SELECTED_INDEX_BACK)
+                else if(num == SELECTED_INDEX_BACK)
                 {
                     choosen();
                 }
@@ -453,19 +453,19 @@ void choosen()
                 {
                     showtime("Секунды");
                 }
-                if(num == SELECTED_INDEX_MIN)
+                else if(num == SELECTED_INDEX_MIN)
                 {
                     showtime("Минуты");
                 }
-                if(num == SELECTED_INDEX_HOUR)
+                else if(num == SELECTED_INDEX_HOUR)
                 {
                     showtime("Часы");
                 }
-                if(num == SELECTED_INDEX_DAY)
+                else if(num == SELECTED_INDEX_DAY)
                 {
                     showtime("Сутки");
                 }
-                if(num == SELECTED_INDEX_BACK)
+                else if(num == SELECTED_INDEX_BACK)
                 {
                     choosen();
                 }
@@ -483,12 +483,12 @@ void choosen()
                 {
                     showStrench("килоНьютон");
                 }
-                if(num == SELECTED_INDEX_N)
+                else if(num == SELECTED_INDEX_N)
                 {
                     showStrench("Ньютон");
                 }
 
-                if(num == SELECTED_INDEX_BACK)
+                else if(num == SELECTED_INDEX_BACK)
                 {
                     choosen();
                 }
@@ -506,34 +506,43 @@ void choosen()
                 {
                     showenergy("килоДжоули");
                 }
-                if(num == SELECTED_INDEX_DZH)
+                else if(num == SELECTED_INDEX_DZH)
                 {
                     showenergy("Джоули");
                 }
-                if(num == SELECTED_INDEX_KK)
+                else if(num == SELECTED_INDEX_KK)
                 {
                     showenergy("Килокалории");
                 }
-                if(num == SELECTED_INDEX_FF)
+                else if(num == SELECTED_INDEX_FF)
                 {
                     showenergy("Фут-фунт");
                 }
-                if(num == SELECTED_INDEX_BACK)
+                else if(num == SELECTED_INDEX_BACK)
                 {
                     choosen();
                 }
             }
         }
-//--------------------------------------------
-        if(num1 ==  8)
-        {
-            show_my_mass();
-        }
 
-        if(num1 ==  SELECTED_INDEX_EXIT)
-        {
-            GenerateConsoleCtrlEvent(CTRL_BREAK_EVENT,0);
-        }
+
+//--------------------------------------------
+            if(num1 ==  8)
+
+      {
+                {
+                  show_my_mass();
+                }
+                if(num1 ==  SELECTED_INDEX_EXIT)
+                {
+                    choosen();
+                }
+
+       }
+
+
+
+
     }
 }
 

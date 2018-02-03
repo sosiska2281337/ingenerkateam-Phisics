@@ -3,7 +3,7 @@
 #include <clocale>
 #include <windows.h>
 #include <locale>
-#include "data phisics.cpp"
+#include "data phisics.cpp";
 
 using namespace std;
 
@@ -42,38 +42,6 @@ struct FunnyMessage
 FunnyMessage funny_messages[KOL_VO_SOOBSHENII];
 
 
-bool show_my_mass()
-{
-    int vvod_my_mass;
-
-    cout << "Укажите свой вес в килограммах"  << endl;
-
-
-
-
-
-            cin >> vvod_my_mass;
-
-
-            for (int message_number = 0; message_number < KOL_VO_SOOBSHENII; message_number++)
-            {
-                if (funny_messages[message_number].type == MASS and
-                    funny_messages[message_number].minValue <= vvod_my_mass and
-                    funny_messages[message_number].maxValue >= vvod_my_mass)
-                {
-                    cout << funny_messages[message_number].text;
-                    for (int symbol = 0; symbol < strlen(funny_messages[message_number].textPoslePausy); symbol++)
-                    {
-                        cout << funny_messages[message_number].textPoslePausy[symbol];
-                        Sleep(50);
-                    }
-
-                }
-            }
-
-
-    cout << "Для того, чтобы выйти в главное меню: нажмите 5"<<endl;
-}
 
 
 bool showenergy(const char* unit)
@@ -109,6 +77,35 @@ bool showenergy(const char* unit)
     cout << "В Джоулях:"            << coef * CEF_DZH * energyVvod << endl;
     cout << "В Килокалориях:"       << coef * CEF_KK * energyVvod << endl;
     cout << "В фут-фунтах:"         << coef * CEF_FF * energyVvod << endl;
+}
+bool showtempr(const char* unit)
+{
+    double coef;
+    char message[200];
+
+    if (strcmp(unit, "Цельсий") == 0)
+    {
+        coef = 1/CEF_CEL;
+        strcpy(message, "Укажите температуру в градусах Цельсиях:");
+    }
+    else if (strcmp(unit, "Фаренгейт") == 0)
+    {
+        coef = 1/CEF_FAR ;
+        strcpy(message, "Укажите температуру в градусах Фаренгейта:");
+    }
+    else if (strcmp(unit, "Кельвин") == 0)
+    {
+        coef = 1/CEF_KELVN;
+        strcpy(message, "Укажите температуру в Кельвинах:");
+    }
+
+
+    cout << message << endl;
+    cin >> temprVvod;
+
+    cout << "В градусах Цельсия:"    << coef * CEF_CEL * temprVvod << endl;
+    cout << "В градусах Фаренгейта:" << coef * CEF_FAR * temprVvod << endl;
+    cout << "В Кельвинах:"           << coef * CEF_KELVN * temprVvod << endl;
 }
 
 bool showStrench(const char* unit)
@@ -285,12 +282,15 @@ void message_menu()
     cout << "Для того, чтобы перевести единицы времени: нажмите 4"<<endl;
     cout << "Для того, чтобы перевести единицы силы: нажмите 5"<<endl;
     cout << "Для того, чтобы перевести единицы энергии: нажмите 6"<<endl;
-    cout << "Для того, чтобы выйти нажмите 7"<<endl;
-    cout << "Мой вес"<<endl;
+    cout << "Для того, чтобы перевести единицы температуры: нажмите 7"<<endl;
+    cout << "В мире животных....(введите 8)"<<endl;
+    cout << "Для того, чтобы выйти нажмите 9"<<endl;
 }
 
 void messege_mass()
-{
+ {
+
+
     cout << "Для того, чтобы перевести граммы: нажмите 1"<<endl;
     cout << "Для того, чтобы перевести килограммы: нажмите 2"<<endl;
     cout << "Для того, чтобы перевести центнеры: нажмите 3"<<endl;
@@ -305,7 +305,7 @@ void messege_distance()
     cout << "Для того, чтобы перевести метры: нажмите 3"<<endl;
     cout << "Для того, чтобы перевести километры: нажмите 4"<<endl;
     cout << "Для того, чтобы выйти в главное меню: нажмите 5"<<endl;
-}
+ }
 
 void messege_pressure()
 {
@@ -339,7 +339,45 @@ void messege_energy()
     cout << "Для того, чтобы перевести Фут-фунт: нажмите 4"<<endl;
     cout << "Для того, чтобы выйти в главное меню: нажмите 5"<<endl;
 }
+void messege_tempr()
+{
+    cout << "Для того, чтобы перевести градусы Цельсия: нажмите 1"<<endl;
+    cout << "Для того, чтобы перевести градусы Фаренгейта: нажмите 2"<<endl;
+    cout << "Для того, чтобы перевести Кельвина: нажмите 3"<<endl;
+    cout << "Для того, чтобы выйти в главное меню: нажмите 5"<<endl;
+}
+bool show_my_mass()
+{
+    int vvod_my_mass;
 
+    cout << "Укажите свой вес в килограммах (max 20000)"  << endl;
+
+
+
+
+
+            cin >> vvod_my_mass;
+
+
+            for (int message_number = 0; message_number < KOL_VO_SOOBSHENII; message_number++)
+            {
+                if (funny_messages[message_number].type == MASS and
+                    funny_messages[message_number].minValue <= vvod_my_mass and
+                    funny_messages[message_number].maxValue >= vvod_my_mass)
+                {
+                    cout << funny_messages[message_number].text;
+                    for (int symbol = 0; symbol < strlen(funny_messages[message_number].textPoslePausy); symbol++)
+                    {
+                        cout << funny_messages[message_number].textPoslePausy[symbol];
+                        Sleep(25);
+                    }
+
+                }
+            }
+
+    cout <<"" <<endl;
+    message_menu();
+}
 void choosen()
 {
     message_menu();
@@ -524,11 +562,36 @@ void choosen()
                 }
             }
         }
+        //--------------------------------------------
+        if(num1 == SELECTED_INDEX_TEMPR)
+        {
+            while(1)
+            {
+                messege_tempr();
+                cin >> num;
 
+                if(num ==SELECTED_INDEX_CEL)
+                {
+                    showtempr("Цельсий");
+                }
+                else if(num == SELECTED_INDEX_FAR)
+                {
+                    showtempr("Фаренгейт");
+                }
+                else if(num == SELECTED_INDEX_KELVN)
+                {
+                    showtempr("Кельвин");
+                }
+
+                else if(num == SELECTED_INDEX_BACK)
+                {
+                    choosen();
+                }
+            }
+        }
 
 //--------------------------------------------
-            if(num1 ==  8)
-
+            if(num1 ==  SELECTED_INDEX_ANIMALS)
       {
                 {
                   show_my_mass();
@@ -539,6 +602,11 @@ void choosen()
                 }
 
        }
+             if(num1 ==  SELECTED_INDEX_EXIT)
+      {
+
+              break;
+      }
 
 
 
@@ -546,13 +614,23 @@ void choosen()
     }
 }
 
+
+
 int main()
 {
-    funny_messages[0] = {MASS, 100,110, "Вы весите как среднестатистический американец!Хватит ЖРАЦЬ! "};
-    funny_messages[1] = {MASS, 20, 50, "Вы дрищ, американец!"};
-    funny_messages[2] = {MASS, 80, 80, "Вы весите как Геннадий Горин"};
-    funny_messages[4] = {MASS, 150, 190, "Карртаво Вы весите как "," тигррр ррррр!" };
-    funny_messages[5] = {MASS, 4000, 5400, "Вы весите как слон"};
+
+    funny_messages[0] = {MASS, 1,3, "","Вы весите как кирпиц"};
+    funny_messages[1] = {MASS, 4,8, "","Вы весите как котек (покорми меня)" };
+    funny_messages[2] = {MASS, 9,44, "","Средний вес собакена (ну давай, вставай уже, хватит спац!)"};
+    funny_messages[3] = {MASS, 45, 79, "","Вы весите как овца! беее"};
+    funny_messages[4] = {MASS, 80, 80, "","Вы весите как Геннадий Горин (я не хочу умираць)"};
+    funny_messages[5]= {MASS, 81, 90, "","Вы весите как Геннадий Горин (после холодильника) что вы в нем делали?"};
+    funny_messages[6] = {MASS, 91,149, "","Вы весите как среднестатистический американец!Хватит ЖРАЦЬ!(свободная касса!)"};
+    funny_messages[7] = {MASS, 150, 190, "","(Карртаво) Вы весите как  тигррр ррррр!" };
+    funny_messages[8] = {MASS, 191, 800, ""," Средний вес медведя   (не буди во мне зверя!)" };
+    funny_messages[9] = {MASS, 801, 2100, ""," Я Носорог,  насажу тебя на рог)00))))" };
+    funny_messages[10] = {MASS, 2101, 5400, "","Вес слона слон(а я большой!! я толстенький и теплый!)"};
+    funny_messages[11] = {MASS, 5401, 20000, "","Вот такой разброс в весе у акулы (я не умею говориць)0)0))я хочу жраць))00))"};
 
     SetConsoleCP(1251);// установка кодовой страницы win-cp 1251 в поток ввода
     SetConsoleOutputCP(1251); // установка кодовой страницы win-cp 1251 в поток вывода
@@ -560,6 +638,7 @@ int main()
     system("chcp 1251>nul");
 
     choosen();
+
 
     system("pause>nul");
     return 0;

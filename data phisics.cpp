@@ -22,6 +22,7 @@ double timeVvod;
 double distanceVvod;
 double strenchVvod;
 double energyVvod;
+double temprVvod;
 
 //-------------------------------------
     const double CEF_MPA = 1000;
@@ -55,8 +56,13 @@ double energyVvod;
     const double CEF_MN =0.001;
     const double CEF_N =1;
 
+//-------------------------------------
+    const double CEF_CEL = 1;
+    const double CEF_FAR = 33.8;
+    const double CEF_KELVN =274.15;
+
     const int SELECTED_INDEX_BACK = 5;
-    const int SELECTED_INDEX_EXIT = 7;
+    const int SELECTED_INDEX_EXIT = 9;
 //-------------------------------------
     const int SELECTED_INDEX_DISTANCE = 1;
 
@@ -97,6 +103,18 @@ double energyVvod;
     const int SELECTED_INDEX_DZH = 2;
     const int SELECTED_INDEX_KK = 3;
     const int SELECTED_INDEX_FF = 4;
+//---------------------------------------------
+    const int SELECTED_INDEX_TEMPR = 7;
+
+    const int SELECTED_INDEX_CEL = 1;
+    const int SELECTED_INDEX_FAR = 2;
+    const int SELECTED_INDEX_KELVN = 3;
+//----------------------------------------
+    const int SELECTED_INDEX_ANIMALS = 8
+
+
+
+
 /*
 const double SECinMIN = 1/60;
 const double SECinHOUR = 1/3600;

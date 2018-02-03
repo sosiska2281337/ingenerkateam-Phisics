@@ -7,3 +7,12 @@ D:\Converter\Converter\obj\Debug\Converter.Properties.Resources.resources
 D:\Converter\Converter\obj\Debug\Converter.csproj.GenerateResource.Cache
 D:\Converter\Converter\obj\Debug\Converter.exe
 D:\Converter\Converter\obj\Debug\Converter.pdb
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\Converter\Converter\bin\Debug\Converter.exe.config
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.exe
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.pdb
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\Converter\Converter\bin\Debug\Converter.exe
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\Converter\Converter\bin\Debug\Converter.pdb
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.csprojResolveAssemblyReference.cache
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.MainForm.resources
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.Properties.Resources.resources
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.csproj.GenerateResource.Cache

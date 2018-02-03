@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//#include "data phisics.cpp";
+
 namespace Converter
 {
     public partial class MainForm : Form
@@ -18,19 +20,20 @@ namespace Converter
         }
               private void PhisParameterComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-messege_distance();
-/*messege_strench(object sender, EventArgs e);
-messege_mass(object sender, EventArgs e);
-messege_pressure(object sender, EventArgs e);
-messege_time(object sender, EventArgs e);
-messege_energy(object sender, EventArgs e);*/
+        messege_distance();
+        messege_strench();
+        messege_mass();
+        messege_pressure();
+        messege_time();
+        messege_energy();
+
 
             //openFileDialog1.ShowDialog();
 
         }
 
 
-         void messege_distance()
+        void messege_distance()
         {
          if (PhisParameterComboBox.Text == "Длина")
             {
@@ -46,7 +49,7 @@ messege_energy(object sender, EventArgs e);*/
                 PhisUnitComboBox.Text = "Милиметр";
             }
         }
-        void messege_strench(object sender, EventArgs e)
+        void messege_strench()
         {
             if (PhisParameterComboBox.Text == "Сила")
             {
@@ -58,9 +61,8 @@ messege_energy(object sender, EventArgs e);*/
 
                 PhisUnitComboBox.Text = "КилоНьютон";
             }
-        }
-        
-       void  messege_mass(object sender, EventArgs e)
+        }  
+        void messege_mass()
         {
             if (PhisParameterComboBox.Text == "Масса")
             {
@@ -75,23 +77,23 @@ messege_energy(object sender, EventArgs e);*/
                 PhisUnitComboBox.Text = "Грамм";
             }
         }
-        void messege_pressure(object sender, EventArgs e)
+        void messege_pressure()
         {
             if (PhisParameterComboBox.Text == "Давление")
             {
                 PhisUnitComboBox.Items.Clear();
 
-                PhisUnitComboBox.Items.Add("милиПаскаль");
+                PhisUnitComboBox.Items.Add("миллиПаскаль");
                 PhisUnitComboBox.Items.Add("Паскаль");
                 PhisUnitComboBox.Items.Add("килоПаскаль");
-                PhisUnitComboBox.Items.Add("Милиметр ртутного столба");
+                PhisUnitComboBox.Items.Add("мм ртутного столба");
                 PhisParameterComboBox.ForeColor = Color.Magenta;
                 PhisUnitComboBox.ForeColor = Color.Magenta;
 
-                PhisUnitComboBox.Text = "милиПаскаль";
+                PhisUnitComboBox.Text = "миллиПаскаль";
             }
         }
-        void messege_time(object sender, EventArgs e)
+        void messege_time()
         {
             if (PhisParameterComboBox.Text == "Время")
             {
@@ -106,7 +108,7 @@ messege_energy(object sender, EventArgs e);*/
                 PhisUnitComboBox.Text = "Секунда";
             }
         }
-        void messege_energy(object sender, EventArgs e)
+        void messege_energy ()
         {
             if (PhisParameterComboBox.Text == "Енергия")
             {
@@ -123,9 +125,52 @@ messege_energy(object sender, EventArgs e);*/
         }
 
 
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            if (PhisParameterComboBox.Text == "Давление")
+            {                
+                double coef = 1;
+                double pressureVvod = 12;
 
+                if (PhisUnitComboBox.Text == "миллиПаскаль")
+                {
+                  coef = 1 / data_phisics.CEF_MPA;
+                  textBox2.Text = "В МиллиПаскалях:" + coef * data_phisics.CEF_MPA * pressureVvod +
+                 Environment.NewLine + "В Паскалях:" + coef * data_phisics.CEF_PA * pressureVvod +
+                 Environment.NewLine + "В килоПаскалях:" + coef * data_phisics.CEF_KPA * pressureVvod +
+                 Environment.NewLine + "В миллиметрах ртутного столба:" + coef * data_phisics.CEF_MM_RT_ST * pressureVvod;
+                }
+                else if (PhisUnitComboBox.Text == "Паскаль")
+                 {
+                     coef = 1 / data_phisics.CEF_PA;
+                    textBox2.Text = "В МиллиПаскалях:" + coef * data_phisics.CEF_MPA * pressureVvod +
+                    Environment.NewLine + "В Паскалях:" + coef * data_phisics.CEF_PA * pressureVvod +
+                    Environment.NewLine + "В килоПаскалях:" + coef * data_phisics.CEF_KPA * pressureVvod +
+                    Environment.NewLine + "В миллиметрах ртутного столба:" + coef * data_phisics.CEF_MM_RT_ST * pressureVvod;
+                   
+                }
+                else if (PhisUnitComboBox.Text == "килоПаскаль")
+                 {
+                     coef = 1 / data_phisics.CEF_KPA;
+                 textBox2.Text = "В МиллиПаскалях:" + coef * data_phisics.CEF_MPA * pressureVvod +
+                 Environment.NewLine + "В Паскалях:" + coef * data_phisics.CEF_PA * pressureVvod +
+                 Environment.NewLine + "В килоПаскалях:" + coef * data_phisics.CEF_KPA * pressureVvod +
+                 Environment.NewLine + "В миллиметрах ртутного столба:" + coef * data_phisics.CEF_MM_RT_ST * pressureVvod;         
+                }
+                else if (PhisUnitComboBox.Text == "мм ртутного столба")
+                 {
+                     coef = 1 / data_phisics.CEF_MM_RT_ST;
+                 textBox2.Text = "В МиллиПаскалях:" + coef * data_phisics.CEF_MPA * pressureVvod +
+                 Environment.NewLine + "В Паскалях:" + coef * data_phisics.CEF_PA * pressureVvod +
+                 Environment.NewLine + "В килоПаскалях:" + coef * data_phisics.CEF_KPA * pressureVvod +
+                 Environment.NewLine + "В миллиметрах ртутного столба:" + coef * data_phisics.CEF_MM_RT_ST * pressureVvod;         
+                }
+
+
+
+            }
+            
         }
 
         private void PhisUnitComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -137,5 +182,12 @@ messege_energy(object sender, EventArgs e);*/
         {
             PhisParameterComboBox.SelectedIndex = 0;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+        }
     }
+
+
+
 }

@@ -38,10 +38,10 @@ public double temprVvod;
     public const double CEF_M = 0.01;
     public const double CEF_KM = 0.0001;
 //--------------------------------
-    const double CEF_SEC = 216000;
-    const double CEF_MIN = 3600;
-    const double CEF_HOUR = 24;
-    const double CEF_DAY = 1;
+    public const double CEF_SEC = 216000;
+    public const double CEF_MIN = 3600;
+    public const double CEF_HOUR = 24;
+    public const double CEF_DAY = 1;
 //--------------------------------
     public const double CEF_GM = 1000;
     public const double CEF_KG = 1;

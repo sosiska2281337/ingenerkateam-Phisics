@@ -110,7 +110,7 @@ double temprVvod;
     const int SELECTED_INDEX_FAR = 2;
     const int SELECTED_INDEX_KELVN = 3;
 //----------------------------------------
-    const int SELECTED_INDEX_ANIMALS = 8
+    const int SELECTED_INDEX_ANIMALS = 8;
 
 
 

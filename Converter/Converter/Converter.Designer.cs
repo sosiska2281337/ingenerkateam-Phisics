@@ -43,6 +43,13 @@
             // PhisParameterComboBox
             // 
             this.PhisParameterComboBox.AccessibleName = "";
+            this.PhisParameterComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "Длина",
+            "Давление",
+            "Энергия",
+            "Время",
+            "Масса",
+            "Сила"});
             this.PhisParameterComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.PhisParameterComboBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.PhisParameterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -54,7 +61,7 @@
             "Масса",
             "Давление",
             "Время",
-            "Енергия"});
+            "Энергия"});
             this.PhisParameterComboBox.Location = new System.Drawing.Point(196, 3);
             this.PhisParameterComboBox.Name = "PhisParameterComboBox";
             this.PhisParameterComboBox.Size = new System.Drawing.Size(146, 21);
@@ -82,6 +89,7 @@
             // PhisUnitComboBox
             // 
             this.PhisUnitComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PhisUnitComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PhisUnitComboBox.FormattingEnabled = true;
             this.PhisUnitComboBox.Items.AddRange(new object[] {
             "километр",
@@ -92,7 +100,6 @@
             this.PhisUnitComboBox.Size = new System.Drawing.Size(188, 21);
             this.PhisUnitComboBox.Sorted = true;
             this.PhisUnitComboBox.TabIndex = 3;
-            this.PhisUnitComboBox.Text = "миллиметр";
             this.PhisUnitComboBox.SelectedIndexChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // openFileDialog1
@@ -101,6 +108,7 @@
             // 
             // valueTextBox
             // 
+            this.valueTextBox.ImeMode = System.Windows.Forms.ImeMode.Katakana;
             this.valueTextBox.Location = new System.Drawing.Point(196, 30);
             this.valueTextBox.Name = "valueTextBox";
             this.valueTextBox.Size = new System.Drawing.Size(100, 20);

@@ -16,3 +16,12 @@ C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\Converter\Co
 C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.MainForm.resources
 C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.Properties.Resources.resources
 C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.csproj.GenerateResource.Cache
+D:\Физика\ingenerkateam-Phisics-master\Converter\Converter\bin\Debug\Converter.exe.config
+D:\Физика\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.exe
+D:\Физика\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.pdb
+D:\Физика\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.csprojResolveAssemblyReference.cache
+D:\Физика\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.MainForm.resources
+D:\Физика\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.Properties.Resources.resources
+D:\Физика\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.csproj.GenerateResource.Cache
+D:\Физика\ingenerkateam-Phisics-master\Converter\Converter\bin\Debug\Converter.exe
+D:\Физика\ingenerkateam-Phisics-master\Converter\Converter\bin\Debug\Converter.pdb

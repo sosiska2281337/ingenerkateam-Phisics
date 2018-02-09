@@ -56,7 +56,7 @@ public double temprVvod;
     public const double CEF_FF = 0.7375620;
 
 //-------------------------------------
-    public const double CEF_MN =0.001;
+    public const double CEF_KN =0.001;
     public  const double CEF_N =1;
 
 //-------------------------------------

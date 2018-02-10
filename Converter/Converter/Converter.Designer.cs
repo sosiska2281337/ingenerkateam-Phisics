@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.PhisParameterComboBox = new System.Windows.Forms.ComboBox();
             this.PhisParameterLabel = new System.Windows.Forms.Label();
             this.PhisUnitLabel = new System.Windows.Forms.Label();
@@ -61,8 +62,9 @@
             "Масса",
             "Давление",
             "Время",
-            "Энергия"});
-            this.PhisParameterComboBox.Location = new System.Drawing.Point(196, 3);
+            "Энергия",
+            "Температура"});
+            this.PhisParameterComboBox.Location = new System.Drawing.Point(195, 3);
             this.PhisParameterComboBox.Name = "PhisParameterComboBox";
             this.PhisParameterComboBox.Size = new System.Drawing.Size(146, 21);
             this.PhisParameterComboBox.TabIndex = 0;
@@ -80,7 +82,7 @@
             // PhisUnitLabel
             // 
             this.PhisUnitLabel.AutoSize = true;
-            this.PhisUnitLabel.Location = new System.Drawing.Point(3, 54);
+            this.PhisUnitLabel.Location = new System.Drawing.Point(3, 72);
             this.PhisUnitLabel.Name = "PhisUnitLabel";
             this.PhisUnitLabel.Size = new System.Drawing.Size(142, 13);
             this.PhisUnitLabel.TabIndex = 2;
@@ -95,9 +97,9 @@
             "километр",
             "миллиметр",
             "сантиметр"});
-            this.PhisUnitComboBox.Location = new System.Drawing.Point(196, 57);
+            this.PhisUnitComboBox.Location = new System.Drawing.Point(195, 75);
             this.PhisUnitComboBox.Name = "PhisUnitComboBox";
-            this.PhisUnitComboBox.Size = new System.Drawing.Size(188, 21);
+            this.PhisUnitComboBox.Size = new System.Drawing.Size(186, 21);
             this.PhisUnitComboBox.Sorted = true;
             this.PhisUnitComboBox.TabIndex = 3;
             this.PhisUnitComboBox.SelectedIndexChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -109,16 +111,19 @@
             // valueTextBox
             // 
             this.valueTextBox.ImeMode = System.Windows.Forms.ImeMode.Katakana;
-            this.valueTextBox.Location = new System.Drawing.Point(196, 30);
+            this.valueTextBox.Location = new System.Drawing.Point(195, 39);
+            this.valueTextBox.MaxLength = 0;
             this.valueTextBox.Name = "valueTextBox";
             this.valueTextBox.Size = new System.Drawing.Size(100, 20);
             this.valueTextBox.TabIndex = 4;
+            this.valueTextBox.WordWrap = false;
             this.valueTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.valueTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.valueTextBox_KeyPress);
             // 
             // howMuchLabel
             // 
             this.howMuchLabel.AutoSize = true;
-            this.howMuchLabel.Location = new System.Drawing.Point(3, 27);
+            this.howMuchLabel.Location = new System.Drawing.Point(3, 36);
             this.howMuchLabel.Name = "howMuchLabel";
             this.howMuchLabel.Size = new System.Drawing.Size(103, 13);
             this.howMuchLabel.TabIndex = 5;
@@ -130,11 +135,12 @@
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBox2.Font = new System.Drawing.Font("TF2", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(0, 82);
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(0, 110);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(387, 101);
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(384, 101);
             this.textBox2.TabIndex = 6;
             // 
             // tableLayoutPanel1
@@ -155,16 +161,20 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(387, 82);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(384, 110);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(387, 183);
+            this.ClientSize = new System.Drawing.Size(384, 211);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.textBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(400, 250);
+            this.MinimumSize = new System.Drawing.Size(400, 250);
             this.Name = "MainForm";
             this.Text = "Конвертер физических величин";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -182,10 +192,10 @@
         private System.Windows.Forms.Label PhisUnitLabel;
         private System.Windows.Forms.ComboBox PhisUnitComboBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.TextBox valueTextBox;
         private System.Windows.Forms.Label howMuchLabel;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox valueTextBox;
     }
 }
 

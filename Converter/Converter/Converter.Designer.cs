@@ -127,7 +127,10 @@
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.textBox2.Font = new System.Drawing.Font("TF2", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(0, 82);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";

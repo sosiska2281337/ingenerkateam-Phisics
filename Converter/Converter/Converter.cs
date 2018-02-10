@@ -8,10 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+const int KOL_VO_SOOBSHENII = 100;
+
+struct FunnyMessage
+{
+    unitypes type;  //Что за величина
+    double minValue;    //От куда
+    double maxValue;//до куда
+    const char* text;   //Сообщение
+    const char* textPoslePausy;   //Сообщение с задержкой
+    //char text1[100];
+};
+FunnyMessage funny_messages[KOL_VO_SOOBSHENII];
+
 //#include "data phisics.cpp";
 
 namespace Converter
 {
+
     public partial class MainForm : Form
     {
         public MainForm()
@@ -26,6 +40,7 @@ namespace Converter
             messege_pressure();
             messege_time();
             messege_energy();
+            messege_temp();
 
 
             //openFileDialog1.ShowDialog();
@@ -41,9 +56,8 @@ namespace Converter
                 PhisUnitComboBox.Items.Clear();
                 PhisUnitComboBox.Items.Add("Милиметры");
                 PhisUnitComboBox.Items.Add("Сантиметры");
-                PhisUnitComboBox.Items.Add("Дециметры");
+                PhisUnitComboBox.Items.Add("Метры");
                 PhisUnitComboBox.Items.Add("Километры");
-                PhisParameterComboBox.ForeColor = Color.Blue;
                 PhisUnitComboBox.ForeColor = Color.Blue;
 
                 PhisUnitComboBox.Text = "Милиметры";
@@ -56,7 +70,6 @@ namespace Converter
                 PhisUnitComboBox.Items.Clear();
                 PhisUnitComboBox.Items.Add("КилоНьютоны");
                 PhisUnitComboBox.Items.Add("Ньютоны");
-                PhisParameterComboBox.ForeColor = Color.Red;
                 PhisUnitComboBox.ForeColor = Color.Red;
 
                 PhisUnitComboBox.Text = "КилоНьютоны";
@@ -71,7 +84,7 @@ namespace Converter
                 PhisUnitComboBox.Items.Add("Килограммы");
                 PhisUnitComboBox.Items.Add("Центнеры");
                 PhisUnitComboBox.Items.Add("Тонны");
-                PhisParameterComboBox.ForeColor = Color.Green;
+
                 PhisUnitComboBox.ForeColor = Color.Green;
 
                 PhisUnitComboBox.Text = "Граммы";
@@ -87,7 +100,6 @@ namespace Converter
                 PhisUnitComboBox.Items.Add("Паскаль");
                 PhisUnitComboBox.Items.Add("килоПаскаль");
                 PhisUnitComboBox.Items.Add("мм ртутного столба");
-                PhisParameterComboBox.ForeColor = Color.Magenta;
                 PhisUnitComboBox.ForeColor = Color.Magenta;
 
                 PhisUnitComboBox.Text = "миллиПаскаль";
@@ -102,13 +114,14 @@ namespace Converter
                 PhisUnitComboBox.Items.Add("Минуты");
                 PhisUnitComboBox.Items.Add("Часы");
                 PhisUnitComboBox.Items.Add("Сутки");
-                PhisParameterComboBox.ForeColor = Color.Aqua;
+
                 PhisUnitComboBox.ForeColor = Color.Aqua;
 
                 PhisUnitComboBox.Text = "Секунды";
             }
         }
         void messege_energy()
+
         {
             if (PhisParameterComboBox.Text == "Энергия")
             {
@@ -117,13 +130,26 @@ namespace Converter
                 PhisUnitComboBox.Items.Add("Джоули");
                 PhisUnitComboBox.Items.Add("Килокалрии");
                 PhisUnitComboBox.Items.Add("Фут-фунт");
-                PhisParameterComboBox.ForeColor = Color.Orange;
                 PhisUnitComboBox.ForeColor = Color.Orange;
 
                 PhisUnitComboBox.Text = "килоДжоули";
             }
         }
+        void messege_temp()
 
+        {
+            if (PhisParameterComboBox.Text == "Температура")
+            {
+                PhisUnitComboBox.Items.Clear();
+                PhisUnitComboBox.Items.Add("Цельсий");
+                PhisUnitComboBox.Items.Add("Фаренгейт");
+                PhisUnitComboBox.Items.Add("Кельвин");
+                PhisUnitComboBox.Items.Add("Фут-фунт");
+                PhisUnitComboBox.ForeColor = Color.Peru;
+
+                PhisUnitComboBox.Text = "Цельсий";
+            }
+        }
         void pressure_main()
         {
             if (PhisParameterComboBox.Text == "Давление")
@@ -283,16 +309,16 @@ namespace Converter
                 {
                     coef_energy = 1 / data_phisics.CEF_KDZH;
                     textBox2.Text = "В килоДжоулях:" + coef_energy * data_phisics.CEF_KDZH * energyVvod +
-                   Environment.NewLine + "В жоулях:" + coef_energy * data_phisics.CEF_DZH * energyVvod +
-                   Environment.NewLine + "В Килокалориях:" + coef_energy * data_phisics.CEF_KK * energyVvod +
+                   Environment.NewLine + "В джоулях:" + coef_energy * data_phisics.CEF_DZH * energyVvod +
+                   Environment.NewLine + "В килокалориях:" + coef_energy * data_phisics.CEF_KK * energyVvod +
                    Environment.NewLine + "В футах-фунтах:" + coef_energy * data_phisics.CEF_FF * energyVvod;
                 }
                 else if (PhisUnitComboBox.Text == "Джоули")
                 {
                     coef_energy = 1 / data_phisics.CEF_DZH;
                     textBox2.Text = "В килоДжоулях:" + coef_energy * data_phisics.CEF_KDZH * energyVvod +
-                   Environment.NewLine + "В жоулях:" + coef_energy * data_phisics.CEF_DZH * energyVvod +
-                   Environment.NewLine + "В Килокалориях:" + coef_energy * data_phisics.CEF_KK * energyVvod +
+                   Environment.NewLine + "В джоулях:" + coef_energy * data_phisics.CEF_DZH * energyVvod +
+                   Environment.NewLine + "В килокалориях:" + coef_energy * data_phisics.CEF_KK * energyVvod +
                    Environment.NewLine + "В футах-фунтах:" + coef_energy * data_phisics.CEF_FF * energyVvod;
 
                 }
@@ -300,8 +326,8 @@ namespace Converter
                 {
                     coef_energy = 1 / data_phisics.CEF_KK;
                     textBox2.Text = "В килоДжоулях:" + coef_energy * data_phisics.CEF_KDZH * energyVvod +
-                   Environment.NewLine + "В жоулях:" + coef_energy * data_phisics.CEF_DZH * energyVvod +
-                   Environment.NewLine + "В Килокалориях:" + coef_energy * data_phisics.CEF_KK * energyVvod +
+                   Environment.NewLine + "В джоулях:" + coef_energy * data_phisics.CEF_DZH * energyVvod +
+                   Environment.NewLine + "В килокалориях:" + coef_energy * data_phisics.CEF_KK * energyVvod +
                    Environment.NewLine + "В футах-фунтах:" + coef_energy * data_phisics.CEF_FF * energyVvod;
 
                 }
@@ -309,8 +335,8 @@ namespace Converter
                 {
                     coef_energy = 1 / data_phisics.CEF_FF;
                     textBox2.Text = "В килоДжоулях:" + coef_energy * data_phisics.CEF_KDZH * energyVvod +
-                   Environment.NewLine + "В жоулях:" + coef_energy * data_phisics.CEF_DZH * energyVvod +
-                   Environment.NewLine + "В Килокалориях:" + coef_energy * data_phisics.CEF_KK * energyVvod +
+                   Environment.NewLine + "В джоулях:" + coef_energy * data_phisics.CEF_DZH * energyVvod +
+                   Environment.NewLine + "В килокалориях:" + coef_energy * data_phisics.CEF_KK * energyVvod +
                    Environment.NewLine + "В футах-фунтах:" + coef_energy * data_phisics.CEF_FF * energyVvod;
                 }
 
@@ -349,52 +375,134 @@ namespace Converter
          }
         void distance_main()
         {
-            if (PhisParameterComboBox.Text == "Масса")
+            if (PhisParameterComboBox.Text == "Длина")
             {
                 double coef_distance = 1;
                 double distanceVvod = 0;
 
                 if (!Double.TryParse(valueTextBox.Text, out distanceVvod))
                 {
-                    distanceVvod = 0;
+                   distanceVvod = 0;
                 }
 
                 if (PhisUnitComboBox.Text == "Милиметры")
                 {
                     coef_distance = 1 / data_phisics.CEF_MM;
-                    textBox2.Text = "В граммах:" + coef_distance * data_phisics.CEF_MM * distanceVvod +
-                   Environment.NewLine + "В сантиметры:" + coef_distance * data_phisics.CEF_CM * distanceVvod +
-                   Environment.NewLine + "В метры:" + coef_distance * data_phisics.CEF_M * distanceVvod +
-                   Environment.NewLine + "В километры:" + coef_distance * data_phisics.CEF_KM * distanceVvod;
+                    textBox2.Text = "В милиметрах:" + coef_distance * data_phisics.CEF_MM * distanceVvod +
+                   Environment.NewLine + "В сантиметрах:" + coef_distance * data_phisics.CEF_CM * distanceVvod +
+                   Environment.NewLine + "В метрах:" + coef_distance * data_phisics.CEF_M * distanceVvod +
+                   Environment.NewLine + "В километрах" + coef_distance * data_phisics.CEF_KM * distanceVvod;
                 }
                 else if (PhisUnitComboBox.Text == "Сантиметры")
                 {
                     coef_distance = 1 / data_phisics.CEF_CM;
-                    textBox2.Text = "В граммах:" + coef_distance * data_phisics.CEF_MM * distanceVvod +
-                   Environment.NewLine + "В сантиметры:" + coef_distance * data_phisics.CEF_CM * distanceVvod +
-                   Environment.NewLine + "В метры:" + coef_distance * data_phisics.CEF_M * distanceVvod +
-                   Environment.NewLine + "В километры:" + coef_distance * data_phisics.CEF_KM * distanceVvod;
+                    textBox2.Text = "В милиметрах:" + coef_distance * data_phisics.CEF_MM * distanceVvod +
+                   Environment.NewLine + "В сантиметрах:" + coef_distance * data_phisics.CEF_CM * distanceVvod +
+                   Environment.NewLine + "В метрах:" + coef_distance * data_phisics.CEF_M * distanceVvod +
+                   Environment.NewLine + "В километрах" + coef_distance * data_phisics.CEF_KM * distanceVvod;
 
                 }
-                else if (PhisUnitComboBox.Text == "Дециметры")
+                else if (PhisUnitComboBox.Text == "Метры")
                 {
                     coef_distance = 1 / data_phisics.CEF_M;
-                    textBox2.Text = "В граммах:" + coef_distance * data_phisics.CEF_MM * distanceVvod +
-                   Environment.NewLine + "В сантиметры:" + coef_distance * data_phisics.CEF_CM * distanceVvod +
-                   Environment.NewLine + "В метры:" + coef_distance * data_phisics.CEF_M * distanceVvod +
-                   Environment.NewLine + "В километры:" + coef_distance * data_phisics.CEF_KM * distanceVvod;
+                    textBox2.Text = "В милиметрах:" + coef_distance * data_phisics.CEF_MM * distanceVvod +
+                   Environment.NewLine + "В сантиметрах:" + coef_distance * data_phisics.CEF_CM * distanceVvod +
+                   Environment.NewLine + "В метрах:" + coef_distance * data_phisics.CEF_M * distanceVvod +
+                   Environment.NewLine + "В километрах" + coef_distance * data_phisics.CEF_KM * distanceVvod;
+
                 }
                 else if (PhisUnitComboBox.Text == "Километры")
                 {
                     coef_distance = 1 / data_phisics.CEF_KM;
-                    textBox2.Text = "В граммах:" + coef_distance * data_phisics.CEF_MM * distanceVvod +
-                   Environment.NewLine + "В сантиметры:" + coef_distance * data_phisics.CEF_CM * distanceVvod +
-                   Environment.NewLine + "В метры:" + coef_distance * data_phisics.CEF_M * distanceVvod +
-                   Environment.NewLine + "В километры:" + coef_distance * data_phisics.CEF_KM * distanceVvod;
+                    textBox2.Text = "В милиметрах:" + coef_distance * data_phisics.CEF_MM * distanceVvod +
+                   Environment.NewLine + "В сантиметрах:" + coef_distance * data_phisics.CEF_CM * distanceVvod +
+                   Environment.NewLine + "В метрах:" + coef_distance * data_phisics.CEF_M * distanceVvod +
+                   Environment.NewLine + "В километрах" + coef_distance * data_phisics.CEF_KM * distanceVvod;
                 }
 
             }
+
         }
+        void temp_main()
+        {
+            if (PhisParameterComboBox.Text == "Температура")
+            {
+                double coef_temp = 1;
+                double tempVvod = 0;
+
+                if (!Double.TryParse(valueTextBox.Text, out tempVvod))
+                {
+                    tempVvod = 0;
+                }
+
+                if (PhisUnitComboBox.Text == "градус Цельсия")
+                {
+                    coef_temp = 1 / data_phisics.CEF_CEL;
+                    textBox2.Text = "В градус Цельсия:" + coef_temp * data_phisics.CEF_CEL * tempVvod +
+                   Environment.NewLine + "В градус Фаренгейта:" + coef_temp * data_phisics.CEF_FAR * tempVvod +
+                   Environment.NewLine + "В Кельвине:" + coef_temp * data_phisics.CEF_KELVN * tempVvod;
+
+                }
+                else if (PhisUnitComboBox.Text == "градус Фаренгейта")
+                {
+                    coef_temp = 1 / data_phisics.CEF_FAR;
+                    textBox2.Text = "В градус Цельсия:" + coef_temp * data_phisics.CEF_CEL * tempVvod +
+                   Environment.NewLine + "В градус Фаренгейта:" + coef_temp * data_phisics.CEF_FAR * tempVvod +
+                   Environment.NewLine + "В Кельвине:" + coef_temp * data_phisics.CEF_KELVN * tempVvod;
+
+                }
+                else if (PhisUnitComboBox.Text == "Кельвин")
+                {
+                    coef_temp = 1 / data_phisics.CEF_KELVN;
+                    textBox2.Text = "В градус Цельсия:" + coef_temp * data_phisics.CEF_CEL * tempVvod +
+                   Environment.NewLine + "В градус Фаренгейта:" + coef_temp * data_phisics.CEF_FAR * tempVvod +
+                   Environment.NewLine + "В Кельвине:" + coef_temp * data_phisics.CEF_KELVN * tempVvod;
+                }
+
+
+            }
+        }
+        void mymass_main()
+        {
+            if (PhisParameterComboBox.Text == "Мой вес как... (кг)(max20000)")
+            {
+                double coef_temp = 1;
+                double vvod_my_mass = 0;
+
+                if (!Double.TryParse(valueTextBox.Text, out vvod_my_mass))
+                {
+                    vvod_my_mass = 0;
+                }
+
+                if (PhisUnitComboBox.Text == "градус Цельсия")
+                {
+                    coef_temp = 1 / data_phisics.CEF_CEL;
+                    textBox2.Text = "В градус Цельсия:" + coef_temp * data_phisics.CEF_CEL * tempVvod +
+                   Environment.NewLine + "В градус Фаренгейта:" + coef_temp * data_phisics.CEF_FAR * tempVvod +
+                   Environment.NewLine + "В Кельвине:" + coef_temp * data_phisics.CEF_KELVN * tempVvod;
+
+                }
+                else if (PhisUnitComboBox.Text == "градус Фаренгейта")
+                {
+                    coef_temp = 1 / data_phisics.CEF_FAR;
+                    textBox2.Text = "В градус Цельсия:" + coef_temp * data_phisics.CEF_CEL * tempVvod +
+                   Environment.NewLine + "В градус Фаренгейта:" + coef_temp * data_phisics.CEF_FAR * tempVvod +
+                   Environment.NewLine + "В Кельвине:" + coef_temp * data_phisics.CEF_KELVN * tempVvod;
+
+                }
+                else if (PhisUnitComboBox.Text == "Кельвин")
+                {
+                    coef_temp = 1 / data_phisics.CEF_KELVN;
+                    textBox2.Text = "В градус Цельсия:" + coef_temp * data_phisics.CEF_CEL * tempVvod +
+                   Environment.NewLine + "В градус Фаренгейта:" + coef_temp * data_phisics.CEF_FAR * tempVvod +
+                   Environment.NewLine + "В Кельвине:" + coef_temp * data_phisics.CEF_KELVN * tempVvod;
+                }
+
+
+            }
+        }
+    }
+
 
 
         private void textBox1_TextChanged(object sender, EventArgs e)

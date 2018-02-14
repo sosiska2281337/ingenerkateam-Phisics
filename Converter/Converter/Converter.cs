@@ -13,6 +13,7 @@ using System.Windows.Forms;
 
 namespace Converter
 {
+ 
     public partial class MainForm : Form
     {
         public MainForm()
@@ -479,7 +480,7 @@ namespace Converter
         {
             char c = e.KeyChar;
 
-            if (!(char.IsDigit(c) || c == '.' || c == '-' || c == '\b'))
+            if (!(char.IsDigit(c) || c == ',' || c == '-' || c == '.' || c == '\b'))
             {
                 e.Handled = true;
             }
@@ -487,7 +488,7 @@ namespace Converter
             {
                 string text = (sender as TextBox).Text ?? "";
 
-                if (c == '.' && text.Contains('.'))
+                if (c == ',' && text.Contains(','))
                 {
                     e.Handled = true;
                 }
@@ -495,6 +496,12 @@ namespace Converter
                 {
                     e.Handled = true;
                 }
+                else if (c == '.' && text.Contains('.'))
+                {
+                    e.Handled = true;
+                }
+
+
             }
 
         }

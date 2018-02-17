@@ -34,3 +34,12 @@ C:\Users\Admin\AppData\Danil Ingenerka\Converter\Converter\obj\Debug\Converter.P
 C:\Users\Admin\AppData\Danil Ingenerka\Converter\Converter\obj\Debug\Converter.csproj.GenerateResource.Cache
 C:\Users\Admin\AppData\Danil Ingenerka\Converter\Converter\bin\Debug\Converter.exe
 C:\Users\Admin\AppData\Danil Ingenerka\Converter\Converter\bin\Debug\Converter.pdb
+E:\Programming 2\ingenerkateam-Phisics-master\Converter\Converter\bin\Debug\Converter.exe.config
+E:\Programming 2\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.exe
+E:\Programming 2\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.pdb
+E:\Programming 2\ingenerkateam-Phisics-master\Converter\Converter\bin\Debug\Converter.exe
+E:\Programming 2\ingenerkateam-Phisics-master\Converter\Converter\bin\Debug\Converter.pdb
+E:\Programming 2\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.csprojResolveAssemblyReference.cache
+E:\Programming 2\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.MainForm.resources
+E:\Programming 2\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.Properties.Resources.resources
+E:\Programming 2\ingenerkateam-Phisics-master\Converter\Converter\obj\Debug\Converter.csproj.GenerateResource.Cache

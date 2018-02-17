@@ -222,38 +222,31 @@ namespace Converter
                 if (PhisUnitComboBox.Text == "миллиПаскаль")
                 {
                     coef_pressure = 1 / data_phisics.CEF_MPA;
-                    textBox2.Text = "В МиллиПаскалях:" + Math.Round((coef_pressure * data_phisics.CEF_MPA * pressureVvod), 5) +
-                    Environment.NewLine + "В Паскалях:" + Math.Round((coef_pressure * data_phisics.CEF_PA * pressureVvod), 5) +
-                    Environment.NewLine + "В килоПаскалях:" + Math.Round((coef_pressure * data_phisics.CEF_PA * pressureVvod), 5) +
-                    Environment.NewLine + "В миллиметрах ртутного столба:" + Math.Round((coef_pressure * data_phisics.CEF_PA * pressureVvod), 5);
+
                 }
                 else if (PhisUnitComboBox.Text == "Паскаль")
                 {
                     coef_pressure = 1 / data_phisics.CEF_PA;
-                    textBox2.Text = "В МиллиПаскалях:" + Math.Round((coef_pressure * data_phisics.CEF_MPA * pressureVvod), 5) +
-                    Environment.NewLine + "В Паскалях:" + Math.Round((coef_pressure * data_phisics.CEF_PA * pressureVvod), 5) +
-                    Environment.NewLine + "В килоПаскалях:" + Math.Round((coef_pressure * data_phisics.CEF_PA * pressureVvod), 5) +
-                    Environment.NewLine + "В миллиметрах ртутного столба:" + Math.Round((coef_pressure * data_phisics.CEF_PA * pressureVvod), 5);
 
                 }
                 else if (PhisUnitComboBox.Text == "килоПаскаль")
                 {
                     coef_pressure = 1 / data_phisics.CEF_KPA;
-                    textBox2.Text = "В МиллиПаскалях:" + Math.Round((coef_pressure * data_phisics.CEF_MPA * pressureVvod), 5) +
-                    Environment.NewLine + "В Паскалях:" + Math.Round((coef_pressure * data_phisics.CEF_PA * pressureVvod), 5) +
-                    Environment.NewLine + "В килоПаскалях:" + Math.Round((coef_pressure * data_phisics.CEF_PA * pressureVvod), 5) +
-                    Environment.NewLine + "В миллиметрах ртутного столба:" + Math.Round((coef_pressure * data_phisics.CEF_PA * pressureVvod), 5);
+
                 }
                 else if (PhisUnitComboBox.Text == "мм ртутного столба")
                 {
                     coef_pressure = 1 / data_phisics.CEF_MM_RT_ST;
-                    textBox2.Text = "В МиллиПаскалях:" + Math.Round((coef_pressure * data_phisics.CEF_MPA * pressureVvod), 5) +
-                    Environment.NewLine + "В Паскалях:" +  Math.Round((coef_pressure * data_phisics.CEF_PA * pressureVvod),5) +
-                    Environment.NewLine + "В килоПаскалях:" + Math.Round((coef_pressure * data_phisics.CEF_PA * pressureVvod), 5) +
-                    Environment.NewLine + "В миллиметрах ртутного столба:" + Math.Round((coef_pressure * data_phisics.CEF_PA * pressureVvod), 5);
-                }
+
+             }
+                textBox2.Text = "В МиллиПаскалях:" + Math.Round((coef_pressure * data_phisics.CEF_MPA * pressureVvod), 5) +
+Environment.NewLine + "В Паскалях:" + Math.Round((coef_pressure * data_phisics.CEF_PA * pressureVvod), 5) +
+Environment.NewLine + "В килоПаскалях:" + Math.Round((coef_pressure * data_phisics.CEF_KPA * pressureVvod), 5) +
+Environment.NewLine + "В миллиметрах ртутного столба:" + Math.Round((coef_pressure * data_phisics.CEF_MM_RT_ST * pressureVvod), 5);
+
             }
         }
+
         void time_main()
         {
             if (PhisParameterComboBox.Text == "Время")
@@ -268,38 +261,30 @@ namespace Converter
                 if (PhisUnitComboBox.Text == "Секунды")
                 {
                     coef_time = 1 / data_phisics.CEF_SEC;
-                    textBox2.Text = "В Секундах:" + Math.Round((coef_time * data_phisics.CEF_SEC * timeVvod),5) +
-                   Environment.NewLine + "В Минутах:" + Math.Round((coef_time * data_phisics.CEF_MIN * timeVvod),5) +
-                   Environment.NewLine + "В Часах:" + Math.Round((coef_time * data_phisics.CEF_HOUR * timeVvod),5) +
-                   Environment.NewLine + "В Сутках:" + Math.Round((coef_time * data_phisics.CEF_DAY * timeVvod), 5);
                 }
+
                 else if (PhisUnitComboBox.Text == "Минуты")
                 {
                     coef_time = 1 / data_phisics.CEF_MIN;
-                    textBox2.Text = "В Секундах:" + Math.Round((coef_time * data_phisics.CEF_SEC * timeVvod), 5) +
-                   Environment.NewLine + "В Минутах:" + Math.Round((coef_time * data_phisics.CEF_MIN * timeVvod), 5) +
-                   Environment.NewLine + "В Часах:" + Math.Round((coef_time * data_phisics.CEF_HOUR * timeVvod), 5) +
-                   Environment.NewLine + "В Сутках:" + Math.Round((coef_time * data_phisics.CEF_DAY * timeVvod), 5);
 
                 }
                 else if (PhisUnitComboBox.Text == "Часы")
                 {
                     coef_time = 1 / data_phisics.CEF_HOUR;
-                    textBox2.Text = "В Секундах:" + Math.Round((coef_time * data_phisics.CEF_SEC * timeVvod), 5) +
-                   Environment.NewLine + "В Минутах:" + Math.Round((coef_time * data_phisics.CEF_MIN * timeVvod), 5) +
-                   Environment.NewLine + "В Часах:" + Math.Round((coef_time * data_phisics.CEF_HOUR * timeVvod), 5) +
-                   Environment.NewLine + "В Сутках:" + Math.Round((coef_time * data_phisics.CEF_DAY * timeVvod), 5);
 
                 }
                 else if (PhisUnitComboBox.Text == "Сутки")
                 {
                     coef_time = 1 / data_phisics.CEF_DAY;
-                    textBox2.Text = "В Секундах:" + Math.Round((coef_time * data_phisics.CEF_SEC * timeVvod), 5) +
-                   Environment.NewLine + "В Минутах:" + Math.Round((coef_time * data_phisics.CEF_MIN * timeVvod), 5) +
-                   Environment.NewLine + "В Часах:" + Math.Round((coef_time * data_phisics.CEF_HOUR * timeVvod), 5) +
-                   Environment.NewLine + "В Сутках:" + Math.Round((coef_time * data_phisics.CEF_DAY * timeVvod), 5);
-                }
 
+                }
+                    textBox2.Text = "В Секундах:" + Math.Round((coef_time * data_phisics.CEF_SEC * timeVvod), 5) +
+   Environment.NewLine + "В Минутах:" + Math.Round((coef_time * data_phisics.CEF_MIN * timeVvod), 5) +
+   Environment.NewLine + "В Часах:" + Math.Round((coef_time * data_phisics.CEF_HOUR * timeVvod), 5) +
+   Environment.NewLine + "В Сутках:" + Math.Round((coef_time * data_phisics.CEF_DAY * timeVvod), 5);
+
+
+                }
             }
         }
         void mass_main()
@@ -371,39 +356,31 @@ namespace Converter
                 if (PhisUnitComboBox.Text == "килоДжоули")
                 {
                     coef_energy = 1 / data_phisics.CEF_KDZH;
-                    textBox2.Text = "В килоДжоулях:" + Math.Round((coef_energy* data_phisics.CEF_KDZH * energyVvod),5) +
-                   Environment.NewLine + "В джоулях:" + Math.Round((coef_energy * data_phisics.CEF_DZH * energyVvod),5) +
-                   Environment.NewLine + "В килокалориях:" + Math.Round((coef_energy * data_phisics.CEF_KK * energyVvod),5) +
-                   Environment.NewLine + "В футах-фунтах:" + Math.Round((coef_energy * data_phisics.CEF_FF * energyVvod),5);
+
                 }
                 else if (PhisUnitComboBox.Text == "Джоули")
                 {
                     coef_energy = 1 / data_phisics.CEF_DZH;
-                    textBox2.Text = "В килоДжоулях:" + Math.Round((coef_energy * data_phisics.CEF_KDZH * energyVvod), 5) +
-                   Environment.NewLine + "В джоулях:" + Math.Round((coef_energy * data_phisics.CEF_DZH * energyVvod), 5) +
-                   Environment.NewLine + "В килокалориях:" + Math.Round((coef_energy * data_phisics.CEF_KK * energyVvod), 5) +
-                   Environment.NewLine + "В футах-фунтах:" + Math.Round((coef_energy * data_phisics.CEF_FF * energyVvod), 5);
+
 
                 }
                 else if (PhisUnitComboBox.Text == "Килокалрии")
                 {
                     coef_energy = 1 / data_phisics.CEF_KK;
-                    textBox2.Text = "В килоДжоулях:" + Math.Round((coef_energy * data_phisics.CEF_KDZH * energyVvod), 5) +
-                   Environment.NewLine + "В джоулях:" + Math.Round((coef_energy * data_phisics.CEF_DZH * energyVvod), 5) +
-                   Environment.NewLine + "В килокалориях:" + Math.Round((coef_energy * data_phisics.CEF_KK * energyVvod), 5) +
-                   Environment.NewLine + "В футах-фунтах:" + Math.Round((coef_energy * data_phisics.CEF_FF * energyVvod), 5);
+
 
                 }
                 else if (PhisUnitComboBox.Text == "Фут-фунт")
                 {
                     coef_energy = 1 / data_phisics.CEF_FF;
-                    textBox2.Text = "В килоДжоулях:" + Math.Round((coef_energy * data_phisics.CEF_KDZH * energyVvod), 5) +
-                   Environment.NewLine + "В джоулях:" + Math.Round((coef_energy * data_phisics.CEF_DZH * energyVvod), 5) +
-                   Environment.NewLine + "В килокалориях:" + Math.Round((coef_energy * data_phisics.CEF_KK * energyVvod), 5) +
-                   Environment.NewLine + "В футах-фунтах:" + Math.Round((coef_energy * data_phisics.CEF_FF * energyVvod), 5);
-                }
 
-            }
+                }
+                    textBox2.Text = "В килоДжоулях:" + Math.Round((coef_energy * data_phisics.CEF_KDZH * energyVvod), 5) +
+   Environment.NewLine + "В джоулях:" + Math.Round((coef_energy * data_phisics.CEF_DZH * energyVvod), 5) +
+   Environment.NewLine + "В килокалориях:" + Math.Round((coef_energy * data_phisics.CEF_KK * energyVvod), 5) +
+   Environment.NewLine + "В футах-фунтах:" + Math.Round((coef_energy * data_phisics.CEF_FF * energyVvod), 5);
+
+                }
         }
         void strench_main()
         {
@@ -421,18 +398,17 @@ namespace Converter
                 if (PhisUnitComboBox.Text == "КилоНьютоны")
                 {
                     coef_strench = 1 / data_phisics.CEF_KN;
-                    textBox2.Text = "В килоньютонах:" + Math.Round((coef_strench * data_phisics.CEF_KN * strenchVVod),5) +
-                   Environment.NewLine + "В Ньютонах:" + Math.Round((coef_strench * data_phisics.CEF_N * strenchVVod), 5);
+
 
                 }
                 else if (PhisUnitComboBox.Text == "Ньютоны")
                 {
                     coef_strench = 1 / data_phisics.CEF_N;
-                    textBox2.Text = "В килоньютонах:" + Math.Round((coef_strench * data_phisics.CEF_KN * strenchVVod), 5) +
-                   Environment.NewLine + "В Ньютонах:" + Math.Round((coef_strench * data_phisics.CEF_N * strenchVVod), 5);
-
 
                 }
+                coef_strench = 1 / data_phisics.CEF_N;
+                textBox2.Text = "В килоньютонах:" + Math.Round((coef_strench * data_phisics.CEF_KN * strenchVVod), 5) +
+               Environment.NewLine + "В Ньютонах:" + Math.Round((coef_strench * data_phisics.CEF_N * strenchVVod), 5);
             }
 
          }
@@ -451,37 +427,29 @@ namespace Converter
                 if (PhisUnitComboBox.Text == "Милиметры")
                 {
                     coef_distance = 1 / data_phisics.CEF_MM;
-                    textBox2.Text = "В милиметрах:" +  Math.Round((coef_distance * data_phisics.CEF_MM * distanceVvod),5) +
-                   Environment.NewLine + "В сантиметрах:" +  Math.Round((coef_distance * data_phisics.CEF_CM * distanceVvod),5) +
-                   Environment.NewLine + "В метрах:" + Math.Round((coef_distance * data_phisics.CEF_M * distanceVvod), 5) +
-                   Environment.NewLine + "В километрах" +  Math.Round((coef_distance * data_phisics.CEF_KM * distanceVvod),5);
+
                 }
                 else if (PhisUnitComboBox.Text == "Сантиметры")
                 {
                     coef_distance = 1 / data_phisics.CEF_CM;
-                    textBox2.Text = "В милиметрах:" + Math.Round((coef_distance * data_phisics.CEF_MM * distanceVvod), 5) +
-                   Environment.NewLine + "В сантиметрах:" + Math.Round((coef_distance * data_phisics.CEF_CM * distanceVvod), 5) +
-                   Environment.NewLine + "В метрах:" + Math.Round((coef_distance * data_phisics.CEF_M * distanceVvod), 5) +
-                   Environment.NewLine + "В километрах" + Math.Round((coef_distance * data_phisics.CEF_KM * distanceVvod), 5);
+
 
                 }
                 else if (PhisUnitComboBox.Text == "Метры")
                 {
                     coef_distance = 1 / data_phisics.CEF_M;
-                    textBox2.Text = "В милиметрах:" + Math.Round((coef_distance * data_phisics.CEF_MM * distanceVvod), 5) +
-                   Environment.NewLine + "В сантиметрах:" + Math.Round((coef_distance * data_phisics.CEF_CM * distanceVvod), 5) +
-                   Environment.NewLine + "В метрах:" + Math.Round((coef_distance * data_phisics.CEF_M * distanceVvod), 5) +
-                   Environment.NewLine + "В километрах" + Math.Round((coef_distance * data_phisics.CEF_KM * distanceVvod), 5);
+
 
                 }
                 else if (PhisUnitComboBox.Text == "Километры")
                 {
                     coef_distance = 1 / data_phisics.CEF_KM;
-                    textBox2.Text = "В милиметрах:" + Math.Round((coef_distance * data_phisics.CEF_MM * distanceVvod), 5) +
-                   Environment.NewLine + "В сантиметрах:" + Math.Round((coef_distance * data_phisics.CEF_CM * distanceVvod), 5) +
-                   Environment.NewLine + "В метрах:" + Math.Round((coef_distance * data_phisics.CEF_M * distanceVvod), 5) +
-                   Environment.NewLine + "В километрах" + Math.Round((coef_distance * data_phisics.CEF_KM * distanceVvod), 5);
+
                 }
+                textBox2.Text = "В милиметрах:" + Math.Round((coef_distance * data_phisics.CEF_MM * distanceVvod), 5) +
+Environment.NewLine + "В сантиметрах:" + Math.Round((coef_distance * data_phisics.CEF_CM * distanceVvod), 5) +
+Environment.NewLine + "В метрах:" + Math.Round((coef_distance * data_phisics.CEF_M * distanceVvod), 5) +
+Environment.NewLine + "В километрах" + Math.Round((coef_distance * data_phisics.CEF_KM * distanceVvod), 5);
 
             }
 
@@ -501,26 +469,23 @@ namespace Converter
                 if (PhisUnitComboBox.Text == "Градус Цельсия")
                 {
                     coef_temp = 1 / data_phisics.CEF_CEL;
-                    textBox2.Text = "В градус Цельсия:" + Math.Round((coef_temp * data_phisics.CEF_CEL * tempVvod),5) +
-                   Environment.NewLine + "В градус Фаренгейта:" + Math.Round((coef_temp * data_phisics.CEF_FAR * tempVvod),5) +
-                   Environment.NewLine + "В Кельвине:" + Math.Round((coef_temp * data_phisics.CEF_KELVN * tempVvod), 5);
+
 
                 }
                 else if (PhisUnitComboBox.Text == "Градус Фаренгейта")
                 {
                     coef_temp = 1 / data_phisics.CEF_FAR;
-                    textBox2.Text = "В градус Цельсия:" + Math.Round((coef_temp * data_phisics.CEF_CEL * tempVvod), 5) +
-                   Environment.NewLine + "В градус Фаренгейта:" + Math.Round((coef_temp * data_phisics.CEF_FAR * tempVvod), 5) +
-                   Environment.NewLine + "В Кельвине:" + Math.Round((coef_temp * data_phisics.CEF_KELVN * tempVvod), 5);
+
 
                 }
                 else if (PhisUnitComboBox.Text == "Кельвин")
                 {
                     coef_temp = 1 / data_phisics.CEF_KELVN;
-                    textBox2.Text = "В градус Цельсия:" + Math.Round((coef_temp * data_phisics.CEF_CEL * tempVvod), 5) +
-                   Environment.NewLine + "В градус Фаренгейта:" + Math.Round((coef_temp * data_phisics.CEF_FAR * tempVvod), 5) +
-                   Environment.NewLine + "В Кельвине:" + Math.Round((coef_temp * data_phisics.CEF_KELVN * tempVvod), 5);
+
                 }
+                textBox2.Text = "В градус Цельсия:" + Math.Round((coef_temp * data_phisics.CEF_CEL * tempVvod), 5) +
+Environment.NewLine + "В градус Фаренгейта:" + Math.Round((coef_temp * data_phisics.CEF_FAR * tempVvod), 5) +
+Environment.NewLine + "В Кельвине:" + Math.Round((coef_temp * data_phisics.CEF_KELVN * tempVvod), 5);
 
 
             }

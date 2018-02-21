@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,12 +14,12 @@ using System.Windows.Forms;
 
 namespace Converter
 {
- 
     public partial class MainForm : Form
     {
         public MainForm()
         {
             InitializeComponent();
+            
         }
 
         
@@ -51,6 +52,8 @@ namespace Converter
           private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+           
+
             pressure_main();
             time_main();
             mass_main();
@@ -61,10 +64,6 @@ namespace Converter
         
          }
 
-        private void PhisUnitComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -83,16 +82,17 @@ namespace Converter
             funny_messages[10] = new FunnyMessage(unitypes.MASS, 2101, 5400, "","Вес слона слон(а я большой!! я толстенький и теплый!)");
             funny_messages[11] = new FunnyMessage(unitypes.MASS, 5401, 20000, "", "Вот такой разброс в весе у акулы (я не умею говориць)0)0))я хочу жраць))00))");
             funny_messages[12] = new FunnyMessage(unitypes.MASS, 20001, 0, "", "МАлЕньк0 пЕрЕбрАл (*отрыжка*), ...оооой");
-          
 
+
+            string text = System.IO.File.ReadAllText(@"C:\Users\Admin\ingenerkateam-Phisics\Converter\Converter\words_page.txt");
+            MessageBox.Show(text);
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-        }
+
         private void PhisParameterComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             messege_distance();
             messege_strench();
             messege_mass();
@@ -284,7 +284,7 @@ Environment.NewLine + "В миллиметрах ртутного столба:"
    Environment.NewLine + "В Сутках:" + Math.Round((coef_time * data_phisics.CEF_DAY * timeVvod), 5);
 
 
-                }
+                
             }
         }
         void mass_main()
@@ -493,9 +493,16 @@ Environment.NewLine + "В Кельвине:" + Math.Round((coef_temp * data_phis
 
         private void valueTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            CultureInfo current = CultureInfo.CurrentCulture;
+            NumberFormatInfo nfi = current.NumberFormat;
+            String sep = nfi.NumberDecimalSeparator;
+            char[] arr = sep.ToCharArray();
+
+            
+
             char c = e.KeyChar;
 
-            if (!(char.IsDigit(c) || c == ',' || c == '-' || c == '.' || c == '\b'))
+            if (!(char.IsDigit(c) || /*c == ',' ||*/ c == '-' || c == arr[0]/*'.'*/ || c == '\b'))
             {
                 e.Handled = true;
             }
@@ -523,12 +530,5 @@ Environment.NewLine + "В Кельвине:" + Math.Round((coef_temp * data_phis
         
 
     }
-
-
-
-
-    }
-
-
-
+}
 

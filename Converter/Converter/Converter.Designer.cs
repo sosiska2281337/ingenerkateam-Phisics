@@ -115,7 +115,7 @@
             this.valueTextBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.valueTextBox.ImeMode = System.Windows.Forms.ImeMode.Katakana;
             this.valueTextBox.Location = new System.Drawing.Point(245, 111);
-            this.valueTextBox.MaxLength = 0;
+            this.valueTextBox.MaxLength = 35;
             this.valueTextBox.Name = "valueTextBox";
             this.valueTextBox.Size = new System.Drawing.Size(236, 20);
             this.valueTextBox.TabIndex = 4;
@@ -155,11 +155,11 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.PhisUnitLabel, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.howMuchLabel, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.PhisUnitComboBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.PhisParameterComboBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.valueTextBox, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.PhisParameterLabel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.howMuchLabel, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";

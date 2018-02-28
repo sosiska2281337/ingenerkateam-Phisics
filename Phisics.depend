@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1513601354 source:d:\Программирование\phisics\main.cpp
-	<iostream>
-	<cstdlib>
-	<clocale>
-	<windows.h>
-	<locale>
-

@@ -39,7 +39,6 @@
             this.text_vvod_other_ED = new System.Windows.Forms.Label();
             this.text_other_cef_ED = new System.Windows.Forms.Label();
             this.button_delete_ED = new System.Windows.Forms.Button();
-            this.button_primer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_add_ED
@@ -71,34 +70,48 @@
             this.button_save.TabIndex = 2;
             this.button_save.Text = "Сохранить";
             this.button_save.UseVisualStyleBackColor = true;
+            this.button_save.Click += new System.EventHandler(this.button_save_Click);
             // 
             // vvod_name_FV
             // 
+            this.vvod_name_FV.ForeColor = System.Drawing.Color.White;
             this.vvod_name_FV.Location = new System.Drawing.Point(132, 43);
+            this.vvod_name_FV.MaxLength = 20;
             this.vvod_name_FV.Name = "vvod_name_FV";
             this.vvod_name_FV.Size = new System.Drawing.Size(254, 20);
             this.vvod_name_FV.TabIndex = 3;
+            this.vvod_name_FV.TextChanged += new System.EventHandler(this.vvod_name_FV_TextChanged);
+            this.vvod_name_FV.Enter += new System.EventHandler(this.vvod_name_FV_Enter);
+            this.vvod_name_FV.Leave += new System.EventHandler(this.vvod_name_FV_Leave);
             // 
             // vvod_main_name_ED
             // 
-            this.vvod_main_name_ED.Location = new System.Drawing.Point(132, 101);
+            this.vvod_main_name_ED.Location = new System.Drawing.Point(132, 98);
+            this.vvod_main_name_ED.MaxLength = 20;
             this.vvod_main_name_ED.Name = "vvod_main_name_ED";
             this.vvod_main_name_ED.Size = new System.Drawing.Size(254, 20);
             this.vvod_main_name_ED.TabIndex = 4;
+            this.vvod_main_name_ED.TextChanged += new System.EventHandler(this.vvod_main_name_ED_TextChanged);
             // 
             // vvod_main_ED_coef_ED
             // 
             this.vvod_main_ED_coef_ED.Location = new System.Drawing.Point(261, 159);
+            this.vvod_main_ED_coef_ED.MaxLength = 20;
             this.vvod_main_ED_coef_ED.Name = "vvod_main_ED_coef_ED";
             this.vvod_main_ED_coef_ED.Size = new System.Drawing.Size(196, 20);
             this.vvod_main_ED_coef_ED.TabIndex = 6;
+            this.vvod_main_ED_coef_ED.TextChanged += new System.EventHandler(this.vvod_main_ED_coef_ED_TextChanged);
             // 
             // vvod_name_ED_
             // 
             this.vvod_name_ED_.Location = new System.Drawing.Point(4, 160);
+            this.vvod_name_ED_.MaxLength = 20;
             this.vvod_name_ED_.Name = "vvod_name_ED_";
             this.vvod_name_ED_.Size = new System.Drawing.Size(234, 20);
             this.vvod_name_ED_.TabIndex = 7;
+            this.vvod_name_ED_.TextChanged += new System.EventHandler(this.vvod_name_ED__TextChanged);
+            this.vvod_name_ED_.Enter += new System.EventHandler(this.vvod_name_ED__TextChanged);
+            this.vvod_name_ED_.Leave += new System.EventHandler(this.vvod_name_ED__TextChanged);
             // 
             // text_vvod_ED
             // 
@@ -138,23 +151,13 @@
             this.button_delete_ED.TabIndex = 11;
             this.button_delete_ED.Text = "-";
             this.button_delete_ED.UseVisualStyleBackColor = true;
-            // 
-            // button_primer
-            // 
-            this.button_primer.Location = new System.Drawing.Point(0, 0);
-            this.button_primer.Name = "button_primer";
-            this.button_primer.Size = new System.Drawing.Size(75, 23);
-            this.button_primer.TabIndex = 13;
-            this.button_primer.Text = "Пример";
-            this.button_primer.UseVisualStyleBackColor = true;
-            this.button_primer.Click += new System.EventHandler(this.button3_Click);
+            this.button_delete_ED.Click += new System.EventHandler(this.button_delete_ED_Click);
             // 
             // add_new_ED
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 386);
-            this.Controls.Add(this.button_primer);
             this.Controls.Add(this.button_delete_ED);
             this.Controls.Add(this.text_other_cef_ED);
             this.Controls.Add(this.text_vvod_other_ED);
@@ -187,7 +190,6 @@
         private System.Windows.Forms.Label text_vvod_other_ED;
         private System.Windows.Forms.Label text_other_cef_ED;
         private System.Windows.Forms.Button button_delete_ED;
-        private System.Windows.Forms.Button button_primer;
 
     }
 }

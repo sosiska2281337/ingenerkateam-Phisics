@@ -92,6 +92,8 @@
             this.vvod_main_name_ED.Size = new System.Drawing.Size(254, 20);
             this.vvod_main_name_ED.TabIndex = 4;
             this.vvod_main_name_ED.TextChanged += new System.EventHandler(this.vvod_main_name_ED_TextChanged);
+            this.vvod_main_name_ED.Enter += new System.EventHandler(this.vvod_main_name_ED_Enter);
+            this.vvod_main_name_ED.Leave += new System.EventHandler(this.vvod_main_name_ED_Leave);
             // 
             // vvod_main_ED_coef_ED
             // 
@@ -101,6 +103,8 @@
             this.vvod_main_ED_coef_ED.Size = new System.Drawing.Size(196, 20);
             this.vvod_main_ED_coef_ED.TabIndex = 6;
             this.vvod_main_ED_coef_ED.TextChanged += new System.EventHandler(this.vvod_main_ED_coef_ED_TextChanged);
+            this.vvod_main_ED_coef_ED.Enter += new System.EventHandler(this.vvod_main_ED_coef_ED_Enter);
+            this.vvod_main_ED_coef_ED.Leave += new System.EventHandler(this.vvod_main_ED_coef_ED_Leave);
             // 
             // vvod_name_ED_
             // 
@@ -109,9 +113,9 @@
             this.vvod_name_ED_.Name = "vvod_name_ED_";
             this.vvod_name_ED_.Size = new System.Drawing.Size(234, 20);
             this.vvod_name_ED_.TabIndex = 7;
-            this.vvod_name_ED_.TextChanged += new System.EventHandler(this.vvod_name_ED__TextChanged);
-            this.vvod_name_ED_.Enter += new System.EventHandler(this.vvod_name_ED__TextChanged);
-            this.vvod_name_ED_.Leave += new System.EventHandler(this.vvod_name_ED__TextChanged);
+            this.vvod_name_ED_.TextChanged += new System.EventHandler(this.vvod_name_ED_TextChanged);
+            this.vvod_name_ED_.Enter += new System.EventHandler(this.vvod_name_ED_Enter);
+            this.vvod_name_ED_.Leave += new System.EventHandler(this.vvod_name_ED_Leave);
             // 
             // text_vvod_ED
             // 
@@ -138,9 +142,9 @@
             this.text_other_cef_ED.AutoSize = true;
             this.text_other_cef_ED.Location = new System.Drawing.Point(258, 135);
             this.text_other_cef_ED.Name = "text_other_cef_ED";
-            this.text_other_cef_ED.Size = new System.Drawing.Size(196, 13);
+            this.text_other_cef_ED.Size = new System.Drawing.Size(197, 13);
             this.text_other_cef_ED.TabIndex = 10;
-            this.text_other_cef_ED.Text = "Сколько основной единицы в чем-то:";
+            this.text_other_cef_ED.Text = "Сколько другой единицы в основной:";
             // 
             // button_delete_ED
             // 

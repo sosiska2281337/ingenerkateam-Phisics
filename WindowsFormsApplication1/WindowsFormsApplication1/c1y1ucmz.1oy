@@ -33,21 +33,25 @@ namespace WindowsFormsApplication1
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            
+
             newPhisVel[nomer_phis_vel].vvod_name_ED = new TextBox();
-            newPhisVel[nomer_phis_vel].vvod_name_ED.Text = "Тонны";
+            newPhisVel[nomer_phis_vel].vvod_name_ED.Text = "";
             newPhisVel[nomer_phis_vel].vvod_name_ED.Top = y;
             newPhisVel[nomer_phis_vel].vvod_name_ED.Left = 4;
             newPhisVel[nomer_phis_vel].vvod_name_ED.Width = 234; 
             this.Controls.Add(newPhisVel[nomer_phis_vel].vvod_name_ED);
 
             newPhisVel[nomer_phis_vel].vvod_value_ED = new TextBox();
-            newPhisVel[nomer_phis_vel].vvod_value_ED.Text = "0.001";
+            newPhisVel[nomer_phis_vel].vvod_value_ED.Text = "";
             newPhisVel[nomer_phis_vel].vvod_value_ED.Top = y;
             newPhisVel[nomer_phis_vel].vvod_value_ED.Left = 261;
             newPhisVel[nomer_phis_vel].vvod_value_ED.Width = 234;
             this.Controls.Add(newPhisVel[nomer_phis_vel].vvod_value_ED);
 
-            nomer_phis_vel++;             
+
+            nomer_phis_vel++; 
+            
             y = y + 25;
         }
         private void button_delete_ED_Click(object sender, EventArgs e)
@@ -204,21 +208,19 @@ namespace WindowsFormsApplication1
             if (vvod_main_ED_coef_ED.Text == "")
             {
                 vvod_main_ED_coef_ED.ForeColor = Color.Gray;
-                vvod_main_ED_coef_ED.Text = "1000";
+                vvod_main_ED_coef_ED.Text = "0.001";
             }
         }
 
         private void vvod_main_ED_coef_ED_Enter(object sender, EventArgs e)
         {
             vvod_main_ED_coef_ED.ForeColor = Color.Black;
-            if (vvod_main_ED_coef_ED.Text == "1000")
+            if (vvod_main_ED_coef_ED.Text == "0.001")
             {
 
                 vvod_main_ED_coef_ED.Text = "";
             }
 
         }
-
-
     }
 }

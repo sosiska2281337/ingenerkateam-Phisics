@@ -1,13 +1,4 @@
-ne rabotaet
-ne rabotaet
-ne rabotaet
-ne rabotaet
-ne rabotaet
-ne rabotaet
-ne rabotaet
-ne rabotaet
-ne rabotaet
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,14 +19,13 @@ namespace Converter
         public MainForm()
         {
             InitializeComponent();
-
+            
         }
 
-
-        public enum unitypes { MASS, PRESSURE, WEIGHT };
+        
+        public enum unitypes {MASS, PRESSURE, WEIGHT};
 
         public const int KOL_VO_SOOBSHENII = 13;
-gsd  dgsg
 
         public struct FunnyMessage
         {
@@ -59,10 +49,10 @@ gsd  dgsg
         public FunnyMessage[] funny_messages = new FunnyMessage[KOL_VO_SOOBSHENII];
 
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+          private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
-
+           
 
             pressure_main();
             time_main();
@@ -71,25 +61,25 @@ gsd  dgsg
             strench_main();
             distance_main();
             temp_main();
-
-        }
+        
+         }
 
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             PhisParameterComboBox.SelectedIndex = 0;
 
-            funny_messages[0] = new FunnyMessage(unitypes.MASS, 1, 3, "", "Вы весите как кирпиц");
-            funny_messages[1] = new FunnyMessage(unitypes.MASS, 4, 8, "", "Вы весите как котек (покорми меня)");
-            funny_messages[2] = new FunnyMessage(unitypes.MASS, 9, 44, "", "Средний вес собакена (ну давай, вставай уже, хватит спац!)");
-            funny_messages[3] = new FunnyMessage(unitypes.MASS, 45, 79, "", "Вы весите как овца! беее");
-            funny_messages[4] = new FunnyMessage(unitypes.MASS, 80, 80, "", "Вы весите как Геннадий Горин (я не хочу умираць)");
-            funny_messages[5] = new FunnyMessage(unitypes.MASS, 81, 90, "", "Вы весите как Геннадий Горин (после холодильника) что вы в нем делали?");
-            funny_messages[6] = new FunnyMessage(unitypes.MASS, 91, 149, "", "Вы весите как среднестатистический американец!Хватит ЖРАЦЬ!(свободная касса!)");
-            funny_messages[7] = new FunnyMessage(unitypes.MASS, 150, 190, "", "(Карртаво) Вы весите как  тигррр ррррр!");
-            funny_messages[8] = new FunnyMessage(unitypes.MASS, 191, 800, "", " Средний вес медведя   (не буди во мне зверя!)");
-            funny_messages[9] = new FunnyMessage(unitypes.MASS, 801, 2100, "", " Я Носорог,  насажу тебя на рог)00))))");
-            funny_messages[10] = new FunnyMessage(unitypes.MASS, 2101, 5400, "", "Вес слона слон(а я большой!! я толстенький и теплый!)");
+            funny_messages[0] = new FunnyMessage(unitypes.MASS, 1, 3, "","Вы весите как кирпиц");
+            funny_messages[1] = new FunnyMessage(unitypes.MASS, 4,8, "","Вы весите как котек (покорми меня)" );
+            funny_messages[2] = new FunnyMessage(unitypes.MASS, 9,44, "","Средний вес собакена (ну давай, вставай уже, хватит спац!)");
+            funny_messages[3] = new FunnyMessage(unitypes.MASS, 45, 79, "","Вы весите как овца! беее");
+            funny_messages[4] = new FunnyMessage(unitypes.MASS, 80, 80, "","Вы весите как Геннадий Горин (я не хочу умираць)");
+            funny_messages[5]= new FunnyMessage(unitypes.MASS, 81, 90, "","Вы весите как Геннадий Горин (после холодильника) что вы в нем делали?");
+            funny_messages[6] = new FunnyMessage(unitypes.MASS, 91,149, "","Вы весите как среднестатистический американец!Хватит ЖРАЦЬ!(свободная касса!)");
+            funny_messages[7] = new FunnyMessage(unitypes.MASS, 150, 190, "","(Карртаво) Вы весите как  тигррр ррррр!" );
+            funny_messages[8] = new FunnyMessage(unitypes.MASS, 191, 800, ""," Средний вес медведя   (не буди во мне зверя!)" );
+            funny_messages[9] = new FunnyMessage(unitypes.MASS, 801, 2100, ""," Я Носорог,  насажу тебя на рог)00))))" );
+            funny_messages[10] = new FunnyMessage(unitypes.MASS, 2101, 5400, "","Вес слона слон(а я большой!! я толстенький и теплый!)");
             funny_messages[11] = new FunnyMessage(unitypes.MASS, 5401, 20000, "", "Вот такой разброс в весе у акулы (я не умею говориць)0)0))я хочу жраць))00))");
             funny_messages[12] = new FunnyMessage(unitypes.MASS, 20001, 0, "", "МАлЕньк0 пЕрЕбрАл ");
 
@@ -149,8 +139,7 @@ gsd  dgsg
             if (PhisParameterComboBox.Text == "Масса")
             {
                 PhisUnitComboBox.Items.Clear();
-                
-                PhisUnitComboBox.Items.Add("Граммы");      
+                PhisUnitComboBox.Items.Add("Граммы");
                 PhisUnitComboBox.Items.Add("Килограммы");
                 PhisUnitComboBox.Items.Add("Центнеры");
                 PhisUnitComboBox.Items.Add("Тонны");
@@ -191,6 +180,7 @@ gsd  dgsg
             }
         }
         void messege_energy()
+
         {
             if (PhisParameterComboBox.Text == "Энергия")
             {
@@ -205,6 +195,7 @@ gsd  dgsg
             }
         }
         void messege_temp()
+
         {
             if (PhisParameterComboBox.Text == "Температура")
             {
@@ -247,7 +238,7 @@ gsd  dgsg
                 {
                     coef_pressure = 1 / data_phisics.CEF_MM_RT_ST;
 
-                }
+             }
                 textBox2.Text = "В МиллиПаскалях:" + Math.Round((coef_pressure * data_phisics.CEF_MPA * pressureVvod), 5) +
 Environment.NewLine + "В Паскалях:" + Math.Round((coef_pressure * data_phisics.CEF_PA * pressureVvod), 5) +
 Environment.NewLine + "В килоПаскалях:" + Math.Round((coef_pressure * data_phisics.CEF_KPA * pressureVvod), 5) +
@@ -287,13 +278,13 @@ Environment.NewLine + "В миллиметрах ртутного столба:"
                     coef_time = 1 / data_phisics.CEF_DAY;
 
                 }
-                textBox2.Text = "В Секундах:" + Math.Round((coef_time * data_phisics.CEF_SEC * timeVvod), 5) +
-Environment.NewLine + "В Минутах:" + Math.Round((coef_time * data_phisics.CEF_MIN * timeVvod), 5) +
-Environment.NewLine + "В Часах:" + Math.Round((coef_time * data_phisics.CEF_HOUR * timeVvod), 5) +
-Environment.NewLine + "В Сутках:" + Math.Round((coef_time * data_phisics.CEF_DAY * timeVvod), 5);
+                    textBox2.Text = "В Секундах:" + Math.Round((coef_time * data_phisics.CEF_SEC * timeVvod), 5) +
+   Environment.NewLine + "В Минутах:" + Math.Round((coef_time * data_phisics.CEF_MIN * timeVvod), 5) +
+   Environment.NewLine + "В Часах:" + Math.Round((coef_time * data_phisics.CEF_HOUR * timeVvod), 5) +
+   Environment.NewLine + "В Сутках:" + Math.Round((coef_time * data_phisics.CEF_DAY * timeVvod), 5);
 
 
-
+                
             }
         }
         void mass_main()
@@ -340,11 +331,11 @@ Environment.NewLine + "В Сутках:" + Math.Round((coef_time * data_phisics.
                     {
                         textBox2.Text = textBox2.Text + Environment.NewLine + funny_messages[message_number].text;
                         textBox2.Text = textBox2.Text + Environment.NewLine + funny_messages[message_number].textPoslePausy;
-                        /* for (int symbol = 0; symbol < funny_messages[message_number].textPoslePausy.Length; symbol++)
-                         {
-                             textBox2.Text = textBox2.Text + Environment.NewLine + funny_messages[message_number].textPoslePausy[symbol];
-                             //System.Threading.Thread.Sleep(25);
-                         }*/
+                       /* for (int symbol = 0; symbol < funny_messages[message_number].textPoslePausy.Length; symbol++)
+                        {
+                            textBox2.Text = textBox2.Text + Environment.NewLine + funny_messages[message_number].textPoslePausy[symbol];
+                            //System.Threading.Thread.Sleep(25);
+                        }*/
 
                     }
                 }
@@ -384,12 +375,12 @@ Environment.NewLine + "В Сутках:" + Math.Round((coef_time * data_phisics.
                     coef_energy = 1 / data_phisics.CEF_FF;
 
                 }
-                textBox2.Text = "В килоДжоулях:" + Math.Round((coef_energy * data_phisics.CEF_KDZH * energyVvod), 5) +
-Environment.NewLine + "В джоулях:" + Math.Round((coef_energy * data_phisics.CEF_DZH * energyVvod), 5) +
-Environment.NewLine + "В килокалориях:" + Math.Round((coef_energy * data_phisics.CEF_KK * energyVvod), 5) +
-Environment.NewLine + "В футах-фунтах:" + Math.Round((coef_energy * data_phisics.CEF_FF * energyVvod), 5);
+                    textBox2.Text = "В килоДжоулях:" + Math.Round((coef_energy * data_phisics.CEF_KDZH * energyVvod), 5) +
+   Environment.NewLine + "В джоулях:" + Math.Round((coef_energy * data_phisics.CEF_DZH * energyVvod), 5) +
+   Environment.NewLine + "В килокалориях:" + Math.Round((coef_energy * data_phisics.CEF_KK * energyVvod), 5) +
+   Environment.NewLine + "В футах-фунтах:" + Math.Round((coef_energy * data_phisics.CEF_FF * energyVvod), 5);
 
-            }
+                }
         }
         void strench_main()
         {
@@ -420,7 +411,7 @@ Environment.NewLine + "В футах-фунтах:" + Math.Round((coef_energy * 
                Environment.NewLine + "В Ньютонах:" + Math.Round((coef_strench * data_phisics.CEF_N * strenchVVod), 5);
             }
 
-        }
+         }
         void distance_main()
         {
             if (PhisParameterComboBox.Text == "Длина")
@@ -430,7 +421,7 @@ Environment.NewLine + "В футах-фунтах:" + Math.Round((coef_energy * 
 
                 if (!Double.TryParse(valueTextBox.Text, out distanceVvod))
                 {
-                    distanceVvod = 0;
+                   distanceVvod = 0;
                 }
 
                 if (PhisUnitComboBox.Text == "Милиметры")
@@ -507,7 +498,7 @@ Environment.NewLine + "В Кельвине:" + Math.Round((coef_temp * data_phis
             String sep = nfi.NumberDecimalSeparator;
             char[] arr = sep.ToCharArray();
 
-
+            
 
             char c = e.KeyChar;
 
@@ -536,7 +527,8 @@ Environment.NewLine + "В Кельвине:" + Math.Round((coef_temp * data_phis
             }
 
         }
-
+        
 
     }
 }
+

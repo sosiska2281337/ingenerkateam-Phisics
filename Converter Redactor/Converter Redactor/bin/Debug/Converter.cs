@@ -1,12 +1,6 @@
-ne rabotaet
-ne rabotaet
-ne rabotaet
-ne rabotaet
-ne rabotaet
-ne rabotaet
-ne rabotaet
-ne rabotaet
-ne rabotaet
+
+
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,7 +29,7 @@ namespace Converter
         public enum unitypes { MASS, PRESSURE, WEIGHT };
 
         public const int KOL_VO_SOOBSHENII = 13;
-gsd  dgsg
+
 
         public struct FunnyMessage
         {
@@ -112,13 +106,24 @@ gsd  dgsg
             messege_temp();
 
 
-            //openFileDialog1.ShowDialog();
 
         }
 
+        //openFileDialog1.ShowDialog();
 
-        void messege_distance()
+
+        void messege_1()
         {
+            if (PhisParameterComboBox.Text == "asd")
+            {
+                PhisUnitComboBox.Items.Clear();
+                PhisUnitComboBox.Items.Add("sadsdasad");
+                PhisUnitComboBox.Items.Add("wqewqeweq");
+                PhisUnitComboBox.Text = ("sadsdasad");
+            }
+        }
+        void messege_distance()
+            {
             if (PhisParameterComboBox.Text == "Длина")
             {
 
@@ -129,7 +134,8 @@ gsd  dgsg
                 PhisUnitComboBox.Items.Add("Километры");
                 PhisUnitComboBox.ForeColor = Color.Blue;
 
-                PhisUnitComboBox.Text = "Милиметры";
+                
+
             }
         }
         void messege_strench()
@@ -149,7 +155,7 @@ gsd  dgsg
             if (PhisParameterComboBox.Text == "Масса")
             {
                 PhisUnitComboBox.Items.Clear();
-                
+           
                 PhisUnitComboBox.Items.Add("Граммы");      
                 PhisUnitComboBox.Items.Add("Килограммы");
                 PhisUnitComboBox.Items.Add("Центнеры");

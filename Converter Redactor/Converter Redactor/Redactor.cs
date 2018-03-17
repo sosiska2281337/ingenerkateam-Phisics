@@ -65,60 +65,7 @@ namespace WindowsFormsApplication1
         }
 
 
-        private void button_save_Click(object sender, EventArgs e)
-        {
-            bool uzhe_dabavil = false;
 
-            //Читаем файл построчно
-            FileStream file2 = new FileStream("Converter.cs", FileMode.Open); //создаем файловый поток
-            StreamReader reader = new StreamReader(file2); // создаем «потоковый читатель» и связываем его с файловым потоком 
-            String[] stroki = new String[10000];
-            int nomer_stroki = 0;
-
-
-
-            while (reader.Peek() >= 0)
-
-            {
-                stroki[nomer_stroki] = reader.ReadLine().Trim();  //Прочитали строку из файла
-
-                //Проверяем, что строка содержит нужные буквы
-                if (stroki[nomer_stroki].Contains("public const int KOL_VO_SOOBSHENII =") && !uzhe_dabavil)
-                {
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "gsddgsg";
-                    uzhe_dabavil = true;
-                    //Разделить строку на слова (разделитель - пробел)
-                    /*string[] podstroki = stroki[nomer_stroki].Split(new String[] { " ", ";" }, StringSplitOptions.None);
-                    //Количество элементов массива строк
-                    //MessageBox.Show(podstroki[podstroki.Length - 2]); //Тут public. Тебе надо другое слово
-
-                    //КОнвертируем строку в число. Только тебе надо не -105 конвертить
-                    int result;
-                    if (Int32.TryParse(podstroki[podstroki.Length - 2], out result) == true)
-                    {
-                        //В переменной result хранится число
-                        result++;
-                        String stroka_s_novym_chislom = result.ToString();//Конвертируем число в строку
-
-                        //Замена строки (у тебя не 0 в подстроках, а другое число)
-                        stroki[nomer_stroki] = stroki[nomer_stroki].Replace(podstroki[podstroki.Length - 2], stroka_s_novym_chislom);
-                    }*/
-                }
-
-
-                nomer_stroki++;
-            }
-
-            reader.Close(); //закрываем поток
-
-            //Запись строки в конец файла
-            File.WriteAllText("Converter.cs", "");
-            for (int nomer = 0; nomer < nomer_stroki; nomer++)
-            {
-                File.AppendAllText("Converter.cs", Environment.NewLine + stroki[nomer]);
-            }
-        }
 
         //------------------------------------------------------------------
         private void vvod_name_FV_TextChanged(object sender, EventArgs e)
@@ -217,6 +164,143 @@ namespace WindowsFormsApplication1
                 vvod_main_ED_coef_ED.Text = "";
             }
 
+        }
+        //------------------------------------------------------------------
+        private void button_save_Click(object sender, EventArgs e)
+        {
+            bool uzhe_dabavil1 = false;
+            bool uzhe_dabavil2 = false;
+            //Читаем файл построчно
+            FileStream file2 = new FileStream("Converter.cs", FileMode.Open); //создаем файловый поток
+            StreamReader reader2 = new StreamReader(file2); // создаем «потоковый читатель» и связываем его с файловым потоком 
+            FileStream file1 = new FileStream("data_phisics.cs", FileMode.Open); //создаем файловый поток
+            StreamReader reader1 = new StreamReader(file1); // создаем «потоковый читатель» и связываем его с файловым потоком 
+            String[] stroki = new String[10000];
+            int nomer_stroki = 0;
+            String[] stroki1 = new String[10000];
+            int nomer_stroki1 = 0;
+
+            String newFV = vvod_name_FV.Text;
+            String newFV_Vvod = vvod_name_FV.Text;
+            String newNameMainED = vvod_main_name_ED.Text;
+            String newNameED = vvod_name_ED_.Text;
+            String newcoefED = vvod_main_ED_coef_ED.Text;
+
+            while (reader1.Peek() >= 0)
+            {
+                stroki1[nomer_stroki1] = reader1.ReadLine();  //Прочитали строку из файла
+
+                if (stroki1[nomer_stroki1].Contains("//2") && !uzhe_dabavil1)
+                {
+                    nomer_stroki1++;
+                    stroki1[nomer_stroki1] = reader1.ReadLine();
+                    nomer_stroki1++;
+                    stroki1[nomer_stroki1] = "public const double CEF_new = \"" + newcoefED + "\";";
+                    nomer_stroki1++;
+                    uzhe_dabavil1 = true;
+                }
+                if (stroki1[nomer_stroki1].Contains("//1") && !uzhe_dabavil1)
+                {
+                    nomer_stroki1++;
+                    stroki1[nomer_stroki1] = reader1.ReadLine();
+                    nomer_stroki1++;
+                    stroki1[nomer_stroki1] = "public double  \"" + newcoefED + "\"Vvod;";
+                    nomer_stroki1++;
+                    uzhe_dabavil1 = true;
+                }
+                
+                nomer_stroki1++;
+            }
+            reader1.Close(); //закрываем поток
+
+            while (reader2.Peek() >= 0)
+            {
+                stroki[nomer_stroki] = reader2.ReadLine();  //Прочитали строку из файла
+
+                if (stroki[nomer_stroki].Contains("//openFileDialog1.ShowDialog();") && !uzhe_dabavil2)
+
+                {
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = reader2.ReadLine();
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = reader2.ReadLine();
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "        void messege_1()";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "        {";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "            if (PhisParameterComboBox.Text == \"" + newFV + "\")";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "            {";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Clear();";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Add(\"" + newNameMainED + "\");";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Add(\"" + newNameED + "\");";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "                PhisUnitComboBox.Text = (\"" + newNameMainED + "\");";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "            }";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "        }";
+                    nomer_stroki++;
+
+                    stroki[nomer_stroki] = reader2.ReadLine();
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = reader2.ReadLine();
+                    uzhe_dabavil2 = true;
+                }
+                
+
+                    //Проверяем, что строка содержит нужные буквы
+                if (stroki[nomer_stroki].Contains("if (PhisParameterComboBox.Text == \"" + newFV + "\"") && !uzhe_dabavil2)
+                    {
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = reader2.ReadLine();
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = reader2.ReadLine();
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Add(\"" + newNameMainED + "\");";
+
+                        uzhe_dabavil2 = true;
+                        //Разделить строку на слова (разделитель - пробел)
+                        /*string[] podstroki = stroki[nomer_stroki].Split(new String[] { " ", ";" }, StringSplitOptions.None);
+                        //Количество элементов массива строк
+                        //MessageBox.Show(podstroki[podstroki.Length - 2]); //Тут public. Тебе надо другое слово
+
+                        //КОнвертируем строку в число. Только тебе надо не -105 конвертить
+                        int result;
+                        if (Int32.TryParse(podstroki[podstroki.Length - 2], out result) == true)
+                        {
+                            //В переменной result хранится число
+                            result++;
+                            String stroka_s_novym_chislom = result.ToString();//Конвертируем число в строку
+
+                            //Замена строки (у тебя не 0 в подстроках, а другое число)
+                            stroki[nomer_stroki] = stroki[nomer_stroki].Replace(podstroki[podstroki.Length - 2], stroka_s_novym_chislom);
+                        }*/
+                  }
+
+
+
+
+
+                nomer_stroki++;
+            }
+
+            reader2.Close(); //закрываем поток
+            File.WriteAllText("data_phisics.cs", "ne rabotaet");
+            for (int nomer1 = 0; nomer1 < nomer_stroki1; nomer1++)
+            {
+                File.AppendAllText("data_phisics.cs", Environment.NewLine + stroki1[nomer1]);
+            }
+            //Запись строки в конец файла
+            File.WriteAllText("Converter.cs", "ne rabotaet");
+            for (int nomer = 0; nomer < nomer_stroki; nomer++)
+            {
+                File.AppendAllText("Converter.cs", Environment.NewLine + stroki[nomer]);
+            }
         }
 
 

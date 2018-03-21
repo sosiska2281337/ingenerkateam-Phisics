@@ -170,42 +170,54 @@ namespace WindowsFormsApplication1
         {
             bool uzhe_dabavil1 = false;
             bool uzhe_dabavil2 = false;
+            bool uzhe_dabavil3 = false;
+            bool uzhe_dabavil4 = false;
+            bool uzhe_dabavil5 = false;
+            bool uzhe_dabavil6 = false;
+            bool uzhe_dabavil7 = false;
+            bool uzhe_dabavil8 = false;
+
+
             //Читаем файл построчно
             FileStream file2 = new FileStream("Converter.cs", FileMode.Open); //создаем файловый поток
             StreamReader reader2 = new StreamReader(file2); // создаем «потоковый читатель» и связываем его с файловым потоком 
             FileStream file1 = new FileStream("data_phisics.cs", FileMode.Open); //создаем файловый поток
             StreamReader reader1 = new StreamReader(file1); // создаем «потоковый читатель» и связываем его с файловым потоком 
+            FileStream file3 = new FileStream("Converter.Designer.cs", FileMode.Open); //создаем файловый поток
+            StreamReader reader3 = new StreamReader(file3); // создаем «потоковый читатель» и связываем его с файловым потоком 
             String[] stroki = new String[10000];
             int nomer_stroki = 0;
             String[] stroki1 = new String[10000];
             int nomer_stroki1 = 0;
+            String[] stroki3 = new String[10000];
+            int nomer_stroki3 = 0;
 
             String newFV = vvod_name_FV.Text;
             String newFV_Vvod = vvod_name_FV.Text;
             String newNameMainED = vvod_main_name_ED.Text;
             String newNameED = vvod_name_ED_.Text;
             String newcoefED = vvod_main_ED_coef_ED.Text;
-
+            
             while (reader1.Peek() >= 0)
             {
                 stroki1[nomer_stroki1] = reader1.ReadLine();  //Прочитали строку из файла
 
-                if (stroki1[nomer_stroki1].Contains("//2") && !uzhe_dabavil1)
+                if (stroki1[nomer_stroki1].Contains("//2") && !uzhe_dabavil5)
                 {
                     nomer_stroki1++;
                     stroki1[nomer_stroki1] = reader1.ReadLine();
                     nomer_stroki1++;
-                    stroki1[nomer_stroki1] = "public const double CEF_new = \"" + newcoefED + "\";";
+                    stroki1[nomer_stroki1] = "public const double CEF_new = " + newcoefED + ";";
                     nomer_stroki1++;
-                    uzhe_dabavil1 = true;
+                    stroki1[nomer_stroki1] = "public const double CEF_newMain = 1;"; 
+                    uzhe_dabavil5 = true;
                 }
-                if (stroki1[nomer_stroki1].Contains("//1") && !uzhe_dabavil1)
+                else if (stroki1[nomer_stroki1].Contains("//1") && !uzhe_dabavil1)
                 {
                     nomer_stroki1++;
                     stroki1[nomer_stroki1] = reader1.ReadLine();
                     nomer_stroki1++;
-                    stroki1[nomer_stroki1] = "public double  \"" + newcoefED + "\"Vvod;";
-                    nomer_stroki1++;
+                    stroki1[nomer_stroki1] = "public double  newVvod;";
                     uzhe_dabavil1 = true;
                 }
                 
@@ -225,7 +237,7 @@ namespace WindowsFormsApplication1
                     nomer_stroki++;
                     stroki[nomer_stroki] = reader2.ReadLine();
                     nomer_stroki++;
-                    stroki[nomer_stroki] = "        void messege_1()";
+                    stroki[nomer_stroki] = "        void messege_new()";
                     nomer_stroki++;
                     stroki[nomer_stroki] = "        {";
                     nomer_stroki++;
@@ -244,26 +256,87 @@ namespace WindowsFormsApplication1
                     stroki[nomer_stroki] = "            }";
                     nomer_stroki++;
                     stroki[nomer_stroki] = "        }";
-                    nomer_stroki++;
-
-                    stroki[nomer_stroki] = reader2.ReadLine();
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = reader2.ReadLine();
                     uzhe_dabavil2 = true;
                 }
-                
+
+                else if (stroki[nomer_stroki].Contains("//7") && !uzhe_dabavil4)
+                {
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = reader2.ReadLine();
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = reader2.ReadLine();
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "            new_main();";
+
+                    uzhe_dabavil4 = true;
+                }
+                else if (stroki[nomer_stroki].Contains("//6") && !uzhe_dabavil6)
+                {
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = reader2.ReadLine();
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = reader2.ReadLine();
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "            messege_new();";
+
+                    uzhe_dabavil6 = true;
+                }
+ 
 
                     //Проверяем, что строка содержит нужные буквы
-                if (stroki[nomer_stroki].Contains("if (PhisParameterComboBox.Text == \"" + newFV + "\"") && !uzhe_dabavil2)
+                else  if (stroki[nomer_stroki].Contains("//3") && !uzhe_dabavil3)
                     {
                         nomer_stroki++;
                         stroki[nomer_stroki] = reader2.ReadLine();
                         nomer_stroki++;
                         stroki[nomer_stroki] = reader2.ReadLine();
                         nomer_stroki++;
-                        stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Add(\"" + newNameMainED + "\");";
+                        stroki[nomer_stroki] = "        void new_main()";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "        {";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "            if (PhisParameterComboBox.Text == \"" + newFV + "\")";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "            {";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                double coef_new = 1;";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                double newVvod = 0;";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                if (!Double.TryParse(valueTextBox.Text, out newVvod))";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                {";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                    newVvod = 0;";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                }";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                if (PhisUnitComboBox.Text == \"" + newNameMainED + "\")";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                {";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                    coef_new = 1 / data_phisics.CEF_newMain;";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                }";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                else if (PhisUnitComboBox.Text == \"" + newNameED + "\")";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                {";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                    coef_new = 1 / data_phisics.CEF_new;";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                }";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                textBox2.Text += Environment.NewLine + \"" + newNameMainED + "\" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                textBox2.Text += Environment.NewLine + \"" + newNameED + "\" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);";
+                         nomer_stroki++;
+                        stroki[nomer_stroki] = "           }";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "      }";
+                        uzhe_dabavil3 = true;
+                }
 
-                        uzhe_dabavil2 = true;
                         //Разделить строку на слова (разделитель - пробел)
                         /*string[] podstroki = stroki[nomer_stroki].Split(new String[] { " ", ";" }, StringSplitOptions.None);
                         //Количество элементов массива строк
@@ -280,28 +353,67 @@ namespace WindowsFormsApplication1
                             //Замена строки (у тебя не 0 в подстроках, а другое число)
                             stroki[nomer_stroki] = stroki[nomer_stroki].Replace(podstroki[podstroki.Length - 2], stroka_s_novym_chislom);
                         }*/
+                        nomer_stroki++;
                   }
 
+                reader2.Close(); //закрываем поток
+
+            while (reader3.Peek() >= 0)
+            {
+                stroki3[nomer_stroki3] = reader3.ReadLine();  //Прочитали строку из файла
 
 
+                if (stroki3[nomer_stroki3].Contains("this.PhisParameterComboBox.AutoCompleteCustomSource.AddRange(new string[] {") && !uzhe_dabavil7)
+                {
+                    nomer_stroki3++;
+                    stroki3[nomer_stroki3] = reader3.ReadLine();
+                    nomer_stroki3++;
+                    stroki3[nomer_stroki3] = "\"" + newFV + "\",";
+                    nomer_stroki3++;
+                    stroki3[nomer_stroki3] = reader3.ReadLine();
 
+                    uzhe_dabavil7 = true;
+                }
+                else if (stroki3[nomer_stroki3].Contains("this.PhisParameterComboBox.Items.AddRange(new object[] {") && !uzhe_dabavil8)
+                {
+                    nomer_stroki3++;
+                    stroki3[nomer_stroki3] = reader3.ReadLine();
+                    nomer_stroki3++;
+                    stroki3[nomer_stroki3] = "\"" + newFV + "\",";
+                    nomer_stroki3++;
+                    stroki3[nomer_stroki3] = reader3.ReadLine();
 
-                nomer_stroki++;
+                    uzhe_dabavil8 = true;
+                }
+
+                nomer_stroki3++;
             }
 
-            reader2.Close(); //закрываем поток
-            File.WriteAllText("data_phisics.cs", "ne rabotaet");
+
+
+
+            reader3.Close(); //закрываем поток
+
+            File.WriteAllText("data_phisics.cs", "//+кеф и ввод");
             for (int nomer1 = 0; nomer1 < nomer_stroki1; nomer1++)
             {
                 File.AppendAllText("data_phisics.cs", Environment.NewLine + stroki1[nomer1]);
             }
             //Запись строки в конец файла
-            File.WriteAllText("Converter.cs", "ne rabotaet");
+            File.WriteAllText("Converter.cs", "//+фв и вычисления и сообщения");
             for (int nomer = 0; nomer < nomer_stroki; nomer++)
             {
                 File.AppendAllText("Converter.cs", Environment.NewLine + stroki[nomer]);
             }
+            File.WriteAllText("Converter.Designer.cs", "");
+            for (int nomer3 = 0; nomer3 < nomer_stroki3; nomer3++)
+            {
+                File.AppendAllText("Converter.Designer.cs", Environment.NewLine + stroki3[nomer3]);
+            }
+
+            Environment.Exit(0);
         }
+        
 
 
     }

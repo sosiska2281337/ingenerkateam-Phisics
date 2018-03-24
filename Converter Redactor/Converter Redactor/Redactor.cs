@@ -166,7 +166,23 @@ namespace WindowsFormsApplication1
 
         }
         //------------------------------------------------------------------
-        private void button_save_Click(object sender, EventArgs e)
+       private string PersonName(int nomer)
+        {
+            return "per" + nomer.ToString();
+        }
+
+       private void newName(string filename, int nomer_izm)
+        {
+            File.AppendAllText(filename, Environment.NewLine);
+            
+            //Стало
+            for (int n1 = 0; n1 <= 5; n1++)
+            {
+                File.AppendAllText(filename, "    txDeleteDC(" + PersonName(n1) + ".texture);" + Environment.NewLine);
+            }
+        }
+
+        private void button_save_Click(object sender, EventArgs e, string filename)
         {
             bool uzhe_dabavil1 = false;
             bool uzhe_dabavil2 = false;
@@ -204,26 +220,37 @@ namespace WindowsFormsApplication1
 
                 if (stroki1[nomer_stroki1].Contains("//2") && !uzhe_dabavil5)
                 {
+                    File.AppendAllText(filename, Environment.NewLine);
+
+                    //Стало
+                    for (int n1 = 0; n1 <= 5; n1++)
+                    {
+                        
                     nomer_stroki1++;
                     stroki1[nomer_stroki1] = reader1.ReadLine();
                     nomer_stroki1++;
-                    stroki1[nomer_stroki1] = "public const double CEF_new = " + newcoefED + ";";
+                    stroki1[nomer_stroki1] = "public const double CEF_new" + PersonName(n1) + " = " + newcoefED + ";";
                     nomer_stroki1++;
-                    stroki1[nomer_stroki1] = "public const double CEF_newMain = 1;"; 
+                    stroki1[nomer_stroki1] = "public const double CEF_newMain" + PersonName(n1) + " = 1;"; 
                     uzhe_dabavil5 = true;
+                   }
+                     
                 }
-                else if (stroki1[nomer_stroki1].Contains("//1") && !uzhe_dabavil1)
-                {
+                    else if (stroki1[nomer_stroki1].Contains("//1") && !uzhe_dabavil1)
+
+                    {
+                        for (int n1 = 0; n1 <= 5; n1++)
+                        {
+                        nomer_stroki1++;
+                        stroki1[nomer_stroki1] = reader1.ReadLine();
+                        nomer_stroki1++;
+                        stroki1[nomer_stroki1] = "public double  newVvod" + PersonName(n1) + ";";
+                        uzhe_dabavil1 = true;
+                        }
+                    }
                     nomer_stroki1++;
-                    stroki1[nomer_stroki1] = reader1.ReadLine();
-                    nomer_stroki1++;
-                    stroki1[nomer_stroki1] = "public double  newVvod;";
-                    uzhe_dabavil1 = true;
                 }
-                
-                nomer_stroki1++;
-            }
-            reader1.Close(); //закрываем поток
+                reader1.Close(); //закрываем поток
 
             while (reader2.Peek() >= 0)
             {

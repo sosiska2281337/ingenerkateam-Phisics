@@ -1,5 +1,6 @@
 //+кеф и ввод
 
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,25 +22,40 @@ namespace Converter
         public double num1;
         //1
 
-public double  newVvod;
+        public double  newVvodВведите название основной единицы измерения:;
 
+        public double  newVvodВведите название основной единицы измерения:;
 
-
+        public double  newVvodВведите название основной единицы измерения:;
         public double pressureVvod;
+        public double  newVvodВведите название основной единицы измерения:;
         public double massVvod;
+        public double  newVvodВведите название основной единицы измерения:;
         public double timeVvod;
+        public double  newVvodВведите название основной единицы измерения:;
         public double distanceVvod;
         public double strenchVvod;
         public double energyVvod;
         public double temprVvod;
         //2
 
-public const double CEF_new = 1000;
-public const double CEF_newMain = 1;
+        public const double per100Введите название основной единицы измерения: = 4;
+        public const double CEF_newMainВведите название основной единицы измерения: = 1;
 
+        public const double per101Введите название основной единицы измерения: = 4;
+        public const double CEF_newMainВведите название основной единицы измерения: = 1;
 
+        public const double per102Введите название основной единицы измерения: = 4;
+        public const double CEF_newMainВведите название основной единицы измерения: = 1;
 
+        public const double per103Введите название основной единицы измерения: = 4;
+        public const double CEF_newMainВведите название основной единицы измерения: = 1;
+
+        public const double per104Введите название основной единицы измерения: = 4;
+        public const double CEF_newMainВведите название основной единицы измерения: = 1;
         //-------------------------------------
+        public const double per105Введите название основной единицы измерения: = 4;
+        public const double CEF_newMainВведите название основной единицы измерения: = 1;
         public const double CEF_MPA = 1000;
         public const double CEF_PA = 1;
         public const double CEF_KPA = 0.001;
@@ -79,8 +95,6 @@ public const double CEF_newMain = 1;
 
     }
 }
-
-
 
 
 

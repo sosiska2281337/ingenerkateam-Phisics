@@ -1,5 +1,4 @@
 //+фв и вычисления и сообщения
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -106,28 +105,22 @@ namespace Converter
             messege_time();
             messege_energy();
             messege_temp();
-
-
             
-
         }
 
         //openFileDialog1.ShowDialog();
 
-        
+         void messege_distance()
         void messege_new()
         {
-            if (PhisParameterComboBox.Text == "Сила тока")
+            if (PhisParameterComboBox.Text == "h")
             {
                 PhisUnitComboBox.Items.Clear();
-                PhisUnitComboBox.Items.Add("Ампер");
-                PhisUnitComboBox.Items.Add("миллиАмпер");
-                PhisUnitComboBox.Text = ("Ампер");
+                PhisUnitComboBox.Items.Add("dfhdfhf");
+                PhisUnitComboBox.Items.Add("dfhdfgh");
+                PhisUnitComboBox.Text = ("dfhdfhf");
             }
         }
-
-
-         void messege_distance()
         {
             if (PhisParameterComboBox.Text == "Длина")
             {
@@ -231,10 +224,10 @@ namespace Converter
 
       //3
 
-        
+       
         void new_main()
         {
-            if (PhisParameterComboBox.Text == "Сила тока")
+            if (PhisParameterComboBox.Text == "h")
             {
                 double coef_new = 1;
                 double newVvod = 0;
@@ -242,20 +235,18 @@ namespace Converter
                 {
                     newVvod = 0;
                 }
-                if (PhisUnitComboBox.Text == "Ампер")
+                if (PhisUnitComboBox.Text == "dfhdfhf")
                 {
                     coef_new = 1 / data_phisics.CEF_newMain;
                 }
-                else if (PhisUnitComboBox.Text == "миллиАмпер")
+                else if (PhisUnitComboBox.Text == "dfhdfgh")
                 {
                     coef_new = 1 / data_phisics.CEF_new;
                 }
-                textBox2.Text += Environment.NewLine + "Ампер" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);
-                textBox2.Text += Environment.NewLine + "миллиАмпер" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);
+                textBox2.Text += Environment.NewLine + "dfhdfhf" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);
+                textBox2.Text += Environment.NewLine + "dfhdfgh" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);
            }
       }
-
-
         void pressure_main()
         {
             if (PhisParameterComboBox.Text == "Давление")
@@ -294,7 +285,6 @@ Environment.NewLine + "В миллиметрах ртутного столба:"
 
             }
         }
-
         void time_main()
         {
             if (PhisParameterComboBox.Text == "Время")

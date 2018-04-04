@@ -25,6 +25,8 @@ namespace WindowsFormsApplication1
         int y = 185;
         private int  vvod_name_ED;
         private int vvod_value_ED;
+
+        public int nomer = 100;
        
 
         public add_new_ED()
@@ -166,24 +168,17 @@ namespace WindowsFormsApplication1
 
         }
         //------------------------------------------------------------------
-       private string PersonName(int nomer)
+       private string phisVelName(int nomer)
         {
             return "per" + nomer.ToString();
         }
 
-       private void newName(string filename, int nomer_izm)
-        {
-            File.AppendAllText(filename, Environment.NewLine);
-            
-            //Стало
-            for (int n1 = 0; n1 <= 5; n1++)
-            {
-                File.AppendAllText(filename, "    txDeleteDC(" + PersonName(n1) + ".texture);" + Environment.NewLine);
-            }
-        }
 
-        private void button_save_Click(object sender, EventArgs e, string filename)
-        {
+        private void button_save_Click(object sender, EventArgs e)
+       {
+            string filename = "Converter.cs";
+
+
             bool uzhe_dabavil1 = false;
             bool uzhe_dabavil2 = false;
             bool uzhe_dabavil3 = false;
@@ -220,7 +215,7 @@ namespace WindowsFormsApplication1
 
                 if (stroki1[nomer_stroki1].Contains("//2") && !uzhe_dabavil5)
                 {
-                    File.AppendAllText(filename, Environment.NewLine);
+                    //File.AppendAllText(filename, Environment.NewLine);
 
                     //Стало
                     for (int n1 = 0; n1 <= 5; n1++)
@@ -229,22 +224,24 @@ namespace WindowsFormsApplication1
                     nomer_stroki1++;
                     stroki1[nomer_stroki1] = reader1.ReadLine();
                     nomer_stroki1++;
-                    stroki1[nomer_stroki1] = "public const double CEF_new" + PersonName(n1) + " = " + newcoefED + ";";
+                    stroki1[nomer_stroki1] = "        public const double " + phisVelName(nomer) + text_vvod_ED.Text + " = " + newcoefED + ";";
                     nomer_stroki1++;
-                    stroki1[nomer_stroki1] = "public const double CEF_newMain" + PersonName(n1) + " = 1;"; 
+                    stroki1[nomer_stroki1] = "        public const double CEF_newMain" + text_vvod_ED.Text + " = 1;"; 
                     uzhe_dabavil5 = true;
+
+                    nomer++;
                    }
                      
                 }
-                    else if (stroki1[nomer_stroki1].Contains("//1") && !uzhe_dabavil1)
+                else if (stroki1[nomer_stroki1].Contains("//1") && !uzhe_dabavil1)
 
-                    {
+                  {
                         for (int n1 = 0; n1 <= 5; n1++)
                         {
                         nomer_stroki1++;
                         stroki1[nomer_stroki1] = reader1.ReadLine();
                         nomer_stroki1++;
-                        stroki1[nomer_stroki1] = "public double  newVvod" + PersonName(n1) + ";";
+                        stroki1[nomer_stroki1] = "        public double  newVvod" + text_vvod_ED.Text + ";";
                         uzhe_dabavil1 = true;
                         }
                     }
@@ -395,7 +392,7 @@ namespace WindowsFormsApplication1
                     nomer_stroki3++;
                     stroki3[nomer_stroki3] = reader3.ReadLine();
                     nomer_stroki3++;
-                    stroki3[nomer_stroki3] = "\"" + newFV + "\",";
+                    stroki3[nomer_stroki3] = "        \"" + newFV + "\",";
                     nomer_stroki3++;
                     stroki3[nomer_stroki3] = reader3.ReadLine();
 
@@ -406,7 +403,7 @@ namespace WindowsFormsApplication1
                     nomer_stroki3++;
                     stroki3[nomer_stroki3] = reader3.ReadLine();
                     nomer_stroki3++;
-                    stroki3[nomer_stroki3] = "\"" + newFV + "\",";
+                    stroki3[nomer_stroki3] = "        \"" + newFV + "\",";
                     nomer_stroki3++;
                     stroki3[nomer_stroki3] = reader3.ReadLine();
 

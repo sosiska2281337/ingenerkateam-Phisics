@@ -7,3 +7,12 @@ C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\ingenerkatea
 C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\ingenerkateam-Phisics\Converter Redactor\Converter Redactor\obj\Debug\WindowsFormsApplication1.add_new_ED.resources
 C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\ingenerkateam-Phisics\Converter Redactor\Converter Redactor\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics-master\ingenerkateam-Phisics\Converter Redactor\Converter Redactor\obj\Debug\Converter redactor.csproj.GenerateResource.Cache
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics\Converter Redactor\Converter Redactor\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics\Converter Redactor\Converter Redactor\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics\Converter Redactor\Converter Redactor\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics\Converter Redactor\Converter Redactor\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics\Converter Redactor\Converter Redactor\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics\Converter Redactor\Converter Redactor\obj\Debug\Converter redactor.csprojResolveAssemblyReference.cache
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics\Converter Redactor\Converter Redactor\obj\Debug\WindowsFormsApplication1.add_new_ED.resources
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics\Converter Redactor\Converter Redactor\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Admin\AppData\Danil Ingenerka\ingenerkateam-Phisics\Converter Redactor\Converter Redactor\obj\Debug\Converter redactor.csproj.GenerateResource.Cache

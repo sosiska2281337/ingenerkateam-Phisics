@@ -1,4 +1,7 @@
 //+фв и вычисления и сообщения
+//+фв и вычисления и сообщения
+//+фв и вычисления и сообщения
+//+фв и вычисления и сообщения
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,11 +59,22 @@ namespace Converter
            //7
 
             pressure_main();
-            new_main();
+            new_mainnewVvod100();
+            new_mainnewVvod100();
+            new_main100();
+            new_mainnewVvod101();
+            new_main100();
+            new_mainnewVvod101();
+            new_mainnewVvod102();
             time_main();
+            new_main101();
+            new_mainnewVvod102();
             mass_main();
+            new_main101();
+            new_main102();
             energy_main();
             strench_main();
+            new_main102();
             distance_main();
             temp_main();
         
@@ -98,11 +112,22 @@ namespace Converter
             //6
 
             messege_distance();
-            messege_new();
+            messege_newnewVvod100();
+            messege_newnewVvod100();
+            messege_new100();
+            messege_newnewVvod101();
+            messege_new100();
+            messege_newnewVvod101();
+            messege_newnewVvod102();
             messege_strench();
+            messege_new101();
+            messege_newnewVvod102();
             messege_mass();
+            messege_new101();
+            messege_new102();
             messege_pressure();
             messege_time();
+            messege_new102();
             messege_energy();
             messege_temp();
             
@@ -110,19 +135,131 @@ namespace Converter
 
         //openFileDialog1.ShowDialog();
 
-         void messege_distance()
-        void messege_new()
+
+        void messege_newnewVvod100()
         {
-            if (PhisParameterComboBox.Text == "h")
+            if (PhisParameterComboBox.Text == "Масса")
             {
                 PhisUnitComboBox.Items.Clear();
-                PhisUnitComboBox.Items.Add("dfhdfhf");
-                PhisUnitComboBox.Items.Add("dfhdfgh");
-                PhisUnitComboBox.Text = ("dfhdfhf");
+                PhisUnitComboBox.Items.Add("Килограммы");
+                PhisUnitComboBox.Items.Add("sdfdf");
+                PhisUnitComboBox.Text = ("Килограммы");
+            }
+        }
+        void messege_newnewVvod100()
+        {
+        void messege_newnewVvod101()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                PhisUnitComboBox.Items.Clear();
+                PhisUnitComboBox.Items.Add("Килограммы");
+                PhisUnitComboBox.Items.Add("sdfdf");
+                PhisUnitComboBox.Text = ("Килограммы");
+            }
+        }
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+        void messege_newnewVvod102()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                PhisUnitComboBox.Items.Clear();
+                PhisUnitComboBox.Items.Add("Килограммы");
+                PhisUnitComboBox.Items.Add("sdfdf");
+                PhisUnitComboBox.Text = ("Килограммы");
+            }
+        }
+                PhisUnitComboBox.Items.Clear();
+                PhisUnitComboBox.Items.Add("Килограммы");
+                PhisUnitComboBox.Items.Add("sdf");
+                PhisUnitComboBox.Text = ("Килограммы");
+            }
+        }
+        void messege_new100()
+        {
+        void messege_newnewVvod101()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                PhisUnitComboBox.Items.Clear();
+                PhisUnitComboBox.Items.Add("Килограммы");
+                PhisUnitComboBox.Items.Add("sdf");
+                PhisUnitComboBox.Text = ("Килограммы");
+            }
+        }
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+        void messege_newnewVvod102()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                PhisUnitComboBox.Items.Clear();
+                PhisUnitComboBox.Items.Add("Килограммы");
+                PhisUnitComboBox.Items.Add("sdf");
+                PhisUnitComboBox.Text = ("Килограммы");
+            }
+        }
+                PhisUnitComboBox.Items.Clear();
+                PhisUnitComboBox.Items.Add("Килограммы");
+                PhisUnitComboBox.Items.Add("dfg");
+                PhisUnitComboBox.Text = ("Килограммы");
+            }
+        }
+        void messege_new100()
+        {
+        void messege_new101()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                PhisUnitComboBox.Items.Clear();
+                PhisUnitComboBox.Items.Add("Килограммы");
+                PhisUnitComboBox.Items.Add("dfg");
+                PhisUnitComboBox.Text = ("Килограммы");
+            }
+        }
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+        void messege_new102()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                PhisUnitComboBox.Items.Clear();
+                PhisUnitComboBox.Items.Add("Килограммы");
+                PhisUnitComboBox.Items.Add("dfg");
+                PhisUnitComboBox.Text = ("Килограммы");
+            }
+        }
+                PhisUnitComboBox.Items.Clear();
+                PhisUnitComboBox.Items.Add("Килограммы");
+                PhisUnitComboBox.Items.Add("вапвап");
+                PhisUnitComboBox.Text = ("Килограммы");
+            }
+        }
+         
+        void messege_distance()  
+        void messege_new101()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                PhisUnitComboBox.Items.Clear();
+                PhisUnitComboBox.Items.Add("Килограммы");
+                PhisUnitComboBox.Items.Add("вапвап");
+                PhisUnitComboBox.Text = ("Килограммы");
             }
         }
         {
             if (PhisParameterComboBox.Text == "Длина")
+        void messege_new102()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                PhisUnitComboBox.Items.Clear();
+                PhisUnitComboBox.Items.Add("Килограммы");
+                PhisUnitComboBox.Items.Add("вапвап");
+                PhisUnitComboBox.Text = ("Килограммы");
+            }
+        }
             {
 
                 PhisUnitComboBox.Items.Clear();
@@ -225,9 +362,9 @@ namespace Converter
       //3
 
        
-        void new_main()
+        void new_mainnewVvod100()
         {
-            if (PhisParameterComboBox.Text == "h")
+            if (PhisParameterComboBox.Text == "Масса")
             {
                 double coef_new = 1;
                 double newVvod = 0;
@@ -235,21 +372,264 @@ namespace Converter
                 {
                     newVvod = 0;
                 }
-                if (PhisUnitComboBox.Text == "dfhdfhf")
+                if (PhisUnitComboBox.Text == "Килограммы")
                 {
                     coef_new = 1 / data_phisics.CEF_newMain;
                 }
-                else if (PhisUnitComboBox.Text == "dfhdfgh")
+                else if (PhisUnitComboBox.Text == "sdfdf")
                 {
                     coef_new = 1 / data_phisics.CEF_new;
                 }
-                textBox2.Text += Environment.NewLine + "dfhdfhf" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);
-                textBox2.Text += Environment.NewLine + "dfhdfgh" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);
+                textBox2.Text += Environment.NewLine + "Килограммы" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);
+                textBox2.Text += Environment.NewLine + "sdfdf" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);
            }
       }
+        void new_mainnewVvod100()
+        {
+        void new_mainnewVvod101()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                double coef_new = 1;
+                double newVvod = 0;
+                if (!Double.TryParse(valueTextBox.Text, out newVvod))
+                {
+                    newVvod = 0;
+                }
+                if (PhisUnitComboBox.Text == "Килограммы")
+                {
+                    coef_new = 1 / data_phisics.CEF_newMain;
+                }
+                else if (PhisUnitComboBox.Text == "sdfdf")
+                {
+                    coef_new = 1 / data_phisics.CEF_new;
+                }
+                textBox2.Text += Environment.NewLine + "Килограммы" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);
+                textBox2.Text += Environment.NewLine + "sdfdf" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);
+           }
+      }
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+        void new_mainnewVvod102()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                double coef_new = 1;
+                double newVvod = 0;
+                if (!Double.TryParse(valueTextBox.Text, out newVvod))
+                {
+                    newVvod = 0;
+                }
+                if (PhisUnitComboBox.Text == "Килограммы")
+                {
+                    coef_new = 1 / data_phisics.CEF_newMain;
+                }
+                else if (PhisUnitComboBox.Text == "sdfdf")
+                {
+                    coef_new = 1 / data_phisics.CEF_new;
+                }
+                textBox2.Text += Environment.NewLine + "Килограммы" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);
+                textBox2.Text += Environment.NewLine + "sdfdf" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);
+           }
+      }
+                double coef_new = 1;
+                double newVvod = 0;
+                if (!Double.TryParse(valueTextBox.Text, out newVvod))
+                {
+                    newVvod = 0;
+                }
+                if (PhisUnitComboBox.Text == "Килограммы")
+                {
+                    coef_new = 1 / data_phisics.CEF_newMain;
+                }
+                else if (PhisUnitComboBox.Text == "sdf")
+                {
+                    coef_new = 1 / data_phisics.CEF_new;
+                }
+                textBox2.Text += Environment.NewLine + "Килограммы" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);
+                textBox2.Text += Environment.NewLine + "sdf" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);
+           }
+      }
+        void new_main100()
+        {
+        void new_mainnewVvod101()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                double coef_new = 1;
+                double newVvod = 0;
+                if (!Double.TryParse(valueTextBox.Text, out newVvod))
+                {
+                    newVvod = 0;
+                }
+                if (PhisUnitComboBox.Text == "Килограммы")
+                {
+                    coef_new = 1 / data_phisics.CEF_newMain;
+                }
+                else if (PhisUnitComboBox.Text == "sdf")
+                {
+                    coef_new = 1 / data_phisics.CEF_new;
+                }
+                textBox2.Text += Environment.NewLine + "Килограммы" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);
+                textBox2.Text += Environment.NewLine + "sdf" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);
+           }
+      }
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+        void new_mainnewVvod102()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                double coef_new = 1;
+                double newVvod = 0;
+                if (!Double.TryParse(valueTextBox.Text, out newVvod))
+                {
+                    newVvod = 0;
+                }
+                if (PhisUnitComboBox.Text == "Килограммы")
+                {
+                    coef_new = 1 / data_phisics.CEF_newMain;
+                }
+                else if (PhisUnitComboBox.Text == "sdf")
+                {
+                    coef_new = 1 / data_phisics.CEF_new;
+                }
+                textBox2.Text += Environment.NewLine + "Килограммы" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);
+                textBox2.Text += Environment.NewLine + "sdf" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);
+           }
+      }
+                double coef_new = 1;
+                double newVvod = 0;
+                if (!Double.TryParse(valueTextBox.Text, out newVvod))
+                {
+                    newVvod = 0;
+                }
+                if (PhisUnitComboBox.Text == "Килограммы")
+                {
+                    coef_new = 1 / data_phisics.CEF_newMain;
+                }
+                else if (PhisUnitComboBox.Text == "dfg")
+                {
+                    coef_new = 1 / data_phisics.CEF_new;
+                }
+                textBox2.Text += Environment.NewLine + "Килограммы" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);
+                textBox2.Text += Environment.NewLine + "dfg" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);
+           }
+      }
+        void new_main100()
+        {
+        void new_main101()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                double coef_new = 1;
+                double newVvod = 0;
+                if (!Double.TryParse(valueTextBox.Text, out newVvod))
+                {
+                    newVvod = 0;
+                }
+                if (PhisUnitComboBox.Text == "Килограммы")
+                {
+                    coef_new = 1 / data_phisics.CEF_newMain;
+                }
+                else if (PhisUnitComboBox.Text == "dfg")
+                {
+                    coef_new = 1 / data_phisics.CEF_new;
+                }
+                textBox2.Text += Environment.NewLine + "Килограммы" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);
+                textBox2.Text += Environment.NewLine + "dfg" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);
+           }
+      }
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+        void new_main102()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                double coef_new = 1;
+                double newVvod = 0;
+                if (!Double.TryParse(valueTextBox.Text, out newVvod))
+                {
+                    newVvod = 0;
+                }
+                if (PhisUnitComboBox.Text == "Килограммы")
+                {
+                    coef_new = 1 / data_phisics.CEF_newMain;
+                }
+                else if (PhisUnitComboBox.Text == "dfg")
+                {
+                    coef_new = 1 / data_phisics.CEF_new;
+                }
+                textBox2.Text += Environment.NewLine + "Килограммы" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);
+                textBox2.Text += Environment.NewLine + "dfg" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);
+           }
+      }
+                double coef_new = 1;
+                double newVvod = 0;
+                if (!Double.TryParse(valueTextBox.Text, out newVvod))
+                {
+                    newVvod = 0;
+                }
+                if (PhisUnitComboBox.Text == "Килограммы")
+                {
+                    coef_new = 1 / data_phisics.CEF_newMain;
+                }
+                else if (PhisUnitComboBox.Text == "вапвап")
+                {
+                    coef_new = 1 / data_phisics.CEF_new;
+                }
+                textBox2.Text += Environment.NewLine + "Килограммы" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);
+                textBox2.Text += Environment.NewLine + "вапвап" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);
+           }
+      }
+       
         void pressure_main()
+        void new_main101()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                double coef_new = 1;
+                double newVvod = 0;
+                if (!Double.TryParse(valueTextBox.Text, out newVvod))
+                {
+                    newVvod = 0;
+                }
+                if (PhisUnitComboBox.Text == "Килограммы")
+                {
+                    coef_new = 1 / data_phisics.CEF_newMain;
+                }
+                else if (PhisUnitComboBox.Text == "вапвап")
+                {
+                    coef_new = 1 / data_phisics.CEF_new;
+                }
+                textBox2.Text += Environment.NewLine + "Килограммы" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);
+                textBox2.Text += Environment.NewLine + "вапвап" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);
+           }
+      }
         {
             if (PhisParameterComboBox.Text == "Давление")
+        void new_main102()
+        {
+            if (PhisParameterComboBox.Text == "Масса")
+            {
+                double coef_new = 1;
+                double newVvod = 0;
+                if (!Double.TryParse(valueTextBox.Text, out newVvod))
+                {
+                    newVvod = 0;
+                }
+                if (PhisUnitComboBox.Text == "Килограммы")
+                {
+                    coef_new = 1 / data_phisics.CEF_newMain;
+                }
+                else if (PhisUnitComboBox.Text == "вапвап")
+                {
+                    coef_new = 1 / data_phisics.CEF_new;
+                }
+                textBox2.Text += Environment.NewLine + "Килограммы" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);
+                textBox2.Text += Environment.NewLine + "вапвап" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);
+           }
+      }
             {
                 double coef_pressure = 1;
                 double pressureVvod = 0;

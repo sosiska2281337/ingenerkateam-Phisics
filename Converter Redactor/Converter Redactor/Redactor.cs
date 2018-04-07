@@ -20,11 +20,12 @@ namespace WindowsFormsApplication1
             //public TextBox plus;            
         };
 
+       
+
         PhisLabel[] newPhisVel = new PhisLabel[200];
-        int nomer_phis_vel = 0;
+        private int nomer_phis_vel = 0;
         int y = 185;
-        private int  vvod_name_ED;
-        private int vvod_value_ED;
+
 
         public int nomer = 100;
        
@@ -35,31 +36,58 @@ namespace WindowsFormsApplication1
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            newPhisVel[nomer_phis_vel].vvod_name_ED = new TextBox();
-            newPhisVel[nomer_phis_vel].vvod_name_ED.Text = "Тонны";
-            newPhisVel[nomer_phis_vel].vvod_name_ED.Top = y;
-            newPhisVel[nomer_phis_vel].vvod_name_ED.Left = 4;
-            newPhisVel[nomer_phis_vel].vvod_name_ED.Width = 234; 
-            this.Controls.Add(newPhisVel[nomer_phis_vel].vvod_name_ED);
-
-            newPhisVel[nomer_phis_vel].vvod_value_ED = new TextBox();
-            newPhisVel[nomer_phis_vel].vvod_value_ED.Text = "0.001";
-            newPhisVel[nomer_phis_vel].vvod_value_ED.Top = y;
-            newPhisVel[nomer_phis_vel].vvod_value_ED.Left = 261;
-            newPhisVel[nomer_phis_vel].vvod_value_ED.Width = 234;
-            this.Controls.Add(newPhisVel[nomer_phis_vel].vvod_value_ED);
-
-            nomer_phis_vel++;             
-            y = y + 25;
+            if (nomer_phis_vel >= 6)
+            {
+                return;
+            }
+             FV_newPhisVel();
         }
         private void button_delete_ED_Click(object sender, EventArgs e)
         {
-            
+            if (nomer_phis_vel == 0)
+            {
+                return;
+            }
+
+            nomer_phis_vel--;
+            y = y - 25;
+            //Из частейц этой формы удали еще и кнопку в скобках
+            this.Controls.Remove(newPhisVel[nomer_phis_vel].vvod_name_ED);
+            this.Controls.Remove(newPhisVel[nomer_phis_vel].vvod_value_ED);
         }
+        private void FV_newPhisVel()
+        {
+            newPhisVel[nomer_phis_vel].vvod_name_ED = new TextBox();
+            newPhisVel[nomer_phis_vel].vvod_name_ED.Text = "Тонны";
+            newPhisVel[nomer_phis_vel].vvod_name_ED.ForeColor = Color.Gray;
+            newPhisVel[nomer_phis_vel].vvod_name_ED.Top = y;
+            newPhisVel[nomer_phis_vel].vvod_name_ED.Left = 4;
+            newPhisVel[nomer_phis_vel].vvod_name_ED.Width = 234;
+            //К частям этой формы добавь еще и кнопку в скобках
+            newPhisVel[nomer_phis_vel].vvod_name_ED.Enter += new System.EventHandler(this.vvod_name_FV_Enter2);
+            newPhisVel[nomer_phis_vel].vvod_name_ED.Leave += new System.EventHandler(this.vvod_name_FV_Leave2);
+            this.Controls.Add(newPhisVel[nomer_phis_vel].vvod_name_ED);
+
+            newPhisVel[nomer_phis_vel].vvod_value_ED = new TextBox();
+            newPhisVel[nomer_phis_vel].vvod_value_ED.Text = "0.000";
+            newPhisVel[nomer_phis_vel].vvod_value_ED.ForeColor = Color.Gray;
+            newPhisVel[nomer_phis_vel].vvod_value_ED.Top = y;
+            newPhisVel[nomer_phis_vel].vvod_value_ED.Left = 261;
+            newPhisVel[nomer_phis_vel].vvod_value_ED.Width = 234;
+            newPhisVel[nomer_phis_vel].vvod_value_ED.Enter += new System.EventHandler(this.vvod_name_FV_Enter3);
+            newPhisVel[nomer_phis_vel].vvod_value_ED.Leave += new System.EventHandler(this.vvod_name_FV_Leave3);
+            this.Controls.Add(newPhisVel[nomer_phis_vel].vvod_value_ED);
+
+            nomer_phis_vel++;
+            y = y + 25;
+
+        }
+
 
 
         private void add_new_ED_Load(object sender, EventArgs e)
         {
+
             vvod_name_FV_Leave(sender, e);//Если тут был пробел, пишем слово "граммы"
             vvod_name_ED_Leave(sender, e);
             vvod_main_name_ED_Leave(sender, e);
@@ -91,6 +119,66 @@ namespace WindowsFormsApplication1
                 vvod_name_FV.Text = "";
             }
 
+        }
+        //------------------------------------------------------------------
+        private void vvod_name_FV_Leave2(object sender, EventArgs e)
+        {
+            for (int nomer = 0; nomer < nomer_phis_vel; nomer++)
+            {
+                if (sender.Equals(newPhisVel[nomer].vvod_name_ED))
+                {
+                    if (newPhisVel[nomer].vvod_name_ED.Text == "")
+                    {
+                        newPhisVel[nomer].vvod_name_ED.ForeColor = Color.Gray;
+                        newPhisVel[nomer].vvod_name_ED.Text = "Тонны";
+                    }
+                }
+            }
+        }
+
+        private void vvod_name_FV_Enter2(object sender, EventArgs e)
+        {
+            for (int nomer = 0; nomer < nomer_phis_vel; nomer++)
+            {
+                if (sender.Equals(newPhisVel[nomer].vvod_name_ED))
+                {
+                    newPhisVel[nomer].vvod_name_ED.ForeColor = Color.Black;
+                    if (newPhisVel[nomer].vvod_name_ED.Text == "Тонны")
+                    {
+                        newPhisVel[nomer].vvod_name_ED.Text = "";
+                    }
+                }
+            }
+        }
+        //------------------------------------------------------------------
+        private void vvod_name_FV_Leave3(object sender, EventArgs e)
+        {
+            for (int nomer = 0; nomer < nomer_phis_vel; nomer++)
+            {
+                if (sender.Equals(newPhisVel[nomer].vvod_value_ED))
+                {
+                    if (newPhisVel[nomer].vvod_value_ED.Text == "")
+                    {
+                        newPhisVel[nomer].vvod_value_ED.ForeColor = Color.Gray;
+                        newPhisVel[nomer].vvod_value_ED.Text = "0.000";
+                    }
+                }
+            }
+        }
+
+        private void vvod_name_FV_Enter3(object sender, EventArgs e)
+        {
+            for (int nomer = 0; nomer < nomer_phis_vel; nomer++)
+            {
+                if (sender.Equals(newPhisVel[nomer].vvod_value_ED))
+                {
+                    newPhisVel[nomer].vvod_value_ED.ForeColor = Color.Black;
+                    if (newPhisVel[nomer].vvod_value_ED.Text == "0.000")
+                    {
+                        newPhisVel[nomer].vvod_value_ED.Text = "";
+                    }
+                }
+            }
         }
         //------------------------------------------------------------------
 
@@ -168,9 +256,11 @@ namespace WindowsFormsApplication1
 
         }
         //------------------------------------------------------------------
-       private string phisVelName(int nomer)
+
+        //Генерим название переменной
+        private string phisVelName(int nomer)
         {
-            return "per" + nomer.ToString();
+            return "newVvod" + nomer.ToString();
         }
 
 
@@ -217,37 +307,41 @@ namespace WindowsFormsApplication1
                 {
                     //File.AppendAllText(filename, Environment.NewLine);
 
-                    //Стало
-                    for (int n1 = 0; n1 <= 5; n1++)
-                    {
-                        
+                    //Главная физ.величина (мы дали ей название)
                     nomer_stroki1++;
-                    stroki1[nomer_stroki1] = reader1.ReadLine();
+                    stroki1[nomer_stroki1] = "        public const double " + phisVelName(nomer) + ";";
                     nomer_stroki1++;
-                    stroki1[nomer_stroki1] = "        public const double " + phisVelName(nomer) + text_vvod_ED.Text + " = " + newcoefED + ";";
-                    nomer_stroki1++;
-                    stroki1[nomer_stroki1] = "        public const double CEF_newMain" + text_vvod_ED.Text + " = 1;"; 
-                    uzhe_dabavil5 = true;
+                    //Даем коэффициент. У нее коэффициент всегда 1
+                    stroki1[nomer_stroki1] = "        public const double CEF_newMain" + phisVelName(nomer) + 
+                        " = 1;"; 
 
-                    nomer++;
-                   }
-                     
+
+                    for (int n1 = 0; n1 < nomer_phis_vel; n1++)
+                    {                        
+                        nomer_stroki1++;
+                        //Второстепенные переменные (зовем их newVvod101 и т.д.).    Генерим название
+                        stroki1[nomer_stroki1] = "        public const double " + phisVelName(nomer + n1 + 1) + ";";
+                        nomer_stroki1++;
+                        //Даем коэффициент. У них коэффициенты разные (не 1, а что чел введет, то и будет)
+                        stroki1[nomer_stroki1] = "        public const double CEF_newMain" + phisVelName(nomer + n1 + 1) + 
+                            " = " + newPhisVel[n1].vvod_value_ED.Text + ";"; 
+                        uzhe_dabavil5 = true;
+                    }                     
                 }
                 else if (stroki1[nomer_stroki1].Contains("//1") && !uzhe_dabavil1)
-
-                  {
-                        for (int n1 = 0; n1 <= 5; n1++)
-                        {
-                        nomer_stroki1++;
-                        stroki1[nomer_stroki1] = reader1.ReadLine();
-                        nomer_stroki1++;
-                        stroki1[nomer_stroki1] = "        public double  newVvod" + text_vvod_ED.Text + ";";
+                {
+                //n1 - номер переменной, nomer - последняя переменная в файле
+                    for (int n1 = 0; n1 <= nomer_phis_vel; n1++)
+                    {
+                        //nomer_stroki1++;
+                        //stroki1[nomer_stroki1] = "        public double  " + phisVelName(nomer + n1) + ";";
                         uzhe_dabavil1 = true;
-                        }
                     }
-                    nomer_stroki1++;
                 }
-                reader1.Close(); //закрываем поток
+
+                nomer_stroki1++;
+            }
+            reader1.Close(); //закрываем поток
 
             while (reader2.Peek() >= 0)
             {
@@ -256,66 +350,14 @@ namespace WindowsFormsApplication1
                 if (stroki[nomer_stroki].Contains("//openFileDialog1.ShowDialog();") && !uzhe_dabavil2)
 
                 {
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = reader2.ReadLine();
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = reader2.ReadLine();
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "        void messege_new()";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "        {";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "            if (PhisParameterComboBox.Text == \"" + newFV + "\")";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "            {";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Clear();";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Add(\"" + newNameMainED + "\");";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Add(\"" + newNameED + "\");";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "                PhisUnitComboBox.Text = (\"" + newNameMainED + "\");";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "            }";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "        }";
-                    uzhe_dabavil2 = true;
-                }
-
-                else if (stroki[nomer_stroki].Contains("//7") && !uzhe_dabavil4)
-                {
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = reader2.ReadLine();
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = reader2.ReadLine();
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "            new_main();";
-
-                    uzhe_dabavil4 = true;
-                }
-                else if (stroki[nomer_stroki].Contains("//6") && !uzhe_dabavil6)
-                {
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = reader2.ReadLine();
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = reader2.ReadLine();
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "            messege_new();";
-
-                    uzhe_dabavil6 = true;
-                }
- 
-
-                    //Проверяем, что строка содержит нужные буквы
-                else  if (stroki[nomer_stroki].Contains("//3") && !uzhe_dabavil3)
+                    for (int n1 = 0; n1 <= nomer_phis_vel; n1++)
                     {
                         nomer_stroki++;
                         stroki[nomer_stroki] = reader2.ReadLine();
                         nomer_stroki++;
                         stroki[nomer_stroki] = reader2.ReadLine();
                         nomer_stroki++;
-                        stroki[nomer_stroki] = "        void new_main()";
+                        stroki[nomer_stroki] = "        void messege_new"+ phisVelName(nomer + n1) +"()";
                         nomer_stroki++;
                         stroki[nomer_stroki] = "        {";
                         nomer_stroki++;
@@ -323,42 +365,108 @@ namespace WindowsFormsApplication1
                         nomer_stroki++;
                         stroki[nomer_stroki] = "            {";
                         nomer_stroki++;
-                        stroki[nomer_stroki] = "                double coef_new = 1;";
+                        stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Clear();";
                         nomer_stroki++;
-                        stroki[nomer_stroki] = "                double newVvod = 0;";
+                        stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Add(\"" + newNameMainED + "\");";
                         nomer_stroki++;
-                        stroki[nomer_stroki] = "                if (!Double.TryParse(valueTextBox.Text, out newVvod))";
+                        stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Add(\"" + newNameED + "\");";
                         nomer_stroki++;
-                        stroki[nomer_stroki] = "                {";
+                        stroki[nomer_stroki] = "                PhisUnitComboBox.Text = (\"" + newNameMainED + "\");";
                         nomer_stroki++;
-                        stroki[nomer_stroki] = "                    newVvod = 0;";
+                        stroki[nomer_stroki] = "            }";
                         nomer_stroki++;
-                        stroki[nomer_stroki] = "                }";
+                        stroki[nomer_stroki] = "        }";
+                        uzhe_dabavil2 = true;
+                    }
+                    
+
+                }
+
+                else if (stroki[nomer_stroki].Contains("//7") && !uzhe_dabavil4)
+                {
+                    for (int n1 = 0; n1 <= nomer_phis_vel; n1++)
+                    {
                         nomer_stroki++;
-                        stroki[nomer_stroki] = "                if (PhisUnitComboBox.Text == \"" + newNameMainED + "\")";
+                        stroki[nomer_stroki] = reader2.ReadLine();
                         nomer_stroki++;
-                        stroki[nomer_stroki] = "                {";
+                        stroki[nomer_stroki] = reader2.ReadLine();
                         nomer_stroki++;
-                        stroki[nomer_stroki] = "                    coef_new = 1 / data_phisics.CEF_newMain;";
+                        stroki[nomer_stroki] = "            new_main" + phisVelName(nomer + n1) + "();";
+
+                        uzhe_dabavil4 = true;
+                    }
+                }
+                else if (stroki[nomer_stroki].Contains("//6") && !uzhe_dabavil6)
+                {
+                    for (int n1 = 0; n1 <= nomer_phis_vel; n1++)
+                    {
                         nomer_stroki++;
-                        stroki[nomer_stroki] = "                }";
+                        stroki[nomer_stroki] = reader2.ReadLine();
                         nomer_stroki++;
-                        stroki[nomer_stroki] = "                else if (PhisUnitComboBox.Text == \"" + newNameED + "\")";
+                        stroki[nomer_stroki] = reader2.ReadLine();
                         nomer_stroki++;
-                        stroki[nomer_stroki] = "                {";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                    coef_new = 1 / data_phisics.CEF_new;";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                }";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                textBox2.Text += Environment.NewLine + \"" + newNameMainED + "\" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                textBox2.Text += Environment.NewLine + \"" + newNameED + "\" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);";
-                         nomer_stroki++;
-                        stroki[nomer_stroki] = "           }";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "      }";
-                        uzhe_dabavil3 = true;
+                        stroki[nomer_stroki] = "            messege_new" + phisVelName(nomer + n1) + "();";
+
+                        uzhe_dabavil6 = true;
+                    }
+                }
+ 
+
+                    //Проверяем, что строка содержит нужные буквы
+                else  if (stroki[nomer_stroki].Contains("//3") && !uzhe_dabavil3)
+                    {
+                        for (int n1 = 0; n1 <= nomer_phis_vel; n1++)
+                        {
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = reader2.ReadLine();
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = reader2.ReadLine();
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "        void new_main" + phisVelName(nomer + n1) + "()";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "        {";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "            if (PhisParameterComboBox.Text == \"" + newFV + "\")";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "            {";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                double coef_new = 1;";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                double newVvod = 0;";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                if (!Double.TryParse(valueTextBox.Text, out newVvod))";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                {";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                    newVvod = 0;";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                }";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                if (PhisUnitComboBox.Text == \"" + newNameMainED + "\")";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                {";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                    coef_new = 1 / data_phisics.CEF_newMain;";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                }";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                else if (PhisUnitComboBox.Text == \"" + newNameED + "\")";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                {";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                    coef_new = 1 / data_phisics.CEF_new;";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                }";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                textBox2.Text += Environment.NewLine + \"" + newNameMainED + "\" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 5);";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                textBox2.Text += Environment.NewLine + \"" + newNameED + "\" + Math.Round((coef_new * data_phisics.CEF_new * newVvod), 5);";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "           }";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "      }";
+                            uzhe_dabavil3 = true;
+                        }
                 }
 
                         //Разделить строку на слова (разделитель - пробел)

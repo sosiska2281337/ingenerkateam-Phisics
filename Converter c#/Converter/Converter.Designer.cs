@@ -1,4 +1,4 @@
-﻿namespace Converter
+namespace Converter
 {
     partial class MainForm
     {
@@ -91,7 +91,7 @@
             "Сила",
             "Масса",
             "Давление",
-            "Время",
+            "Время",  
             "Энергия",
             "Температура"});
             this.PhisParameterComboBox.Location = new System.Drawing.Point(245, 3);
@@ -204,4 +204,3 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
-

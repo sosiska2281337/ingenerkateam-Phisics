@@ -1,10 +1,3 @@
-//+кеф и ввод
-//+кеф и ввод
-//+кеф и ввод
-//+кеф и ввод
-//+кеф и ввод
-//+кеф и ввод
-//+кеф и ввод
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,15 +18,7 @@ public int YER, HOUR, MIN, SEC;
 public double num;
 public double num1;
 
-        
-        //1
-        //2
-        public const double newVvod100;
-        public const double CEF_newMainnewVvod100 = 1;
-        public const double newVvod101;
-        public const double CEF_newMainnewVvod101 = 3;
-        public const double newVvod102;
-        public const double CEF_newMainnewVvod102 = 34;
+
 public double pressureVvod;
 public double massVvod;
 public double timeVvod;
@@ -41,6 +26,8 @@ public double distanceVvod;
 public double strenchVvod;
 public double energyVvod;
 public double temprVvod;
+
+//CEFS
 
 //-------------------------------------
     public const double CEF_MPA = 1000;

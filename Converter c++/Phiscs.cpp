@@ -4,10 +4,9 @@
 #include <windows.h>
 #include <locale>
 #include "data phisics.cpp";
-
 using namespace std;
 
-//double coef;
+double coef;
 
 enum unitypes {MASS, PRESSURE, WEIGHT};
 enum pristavka {NANO, MICRO, MILLI, SANTI, DECI, NONE, KILO, MEGA, GIGA};

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(add_new_ED));
             this.button_add_ED = new System.Windows.Forms.Button();
             this.text_vvod_FV = new System.Windows.Forms.Label();
             this.button_save = new System.Windows.Forms.Button();
@@ -173,6 +174,7 @@
             this.Controls.Add(this.button_save);
             this.Controls.Add(this.text_vvod_FV);
             this.Controls.Add(this.button_add_ED);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "add_new_ED";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.add_new_ED_Load);

@@ -103,8 +103,8 @@
             this.vvod_main_ED_coef_ED.Name = "vvod_main_ED_coef_ED";
             this.vvod_main_ED_coef_ED.Size = new System.Drawing.Size(196, 20);
             this.vvod_main_ED_coef_ED.TabIndex = 6;
-            this.vvod_main_ED_coef_ED.TextChanged += new System.EventHandler(this.vvod_main_ED_coef_ED_TextChanged);
             this.vvod_main_ED_coef_ED.Enter += new System.EventHandler(this.vvod_main_ED_coef_ED_Enter);
+            this.vvod_main_ED_coef_ED.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vvod_main_ED_coef_ED_KeyPress);
             this.vvod_main_ED_coef_ED.Leave += new System.EventHandler(this.vvod_main_ED_coef_ED_Leave);
             // 
             // vvod_name_ED_

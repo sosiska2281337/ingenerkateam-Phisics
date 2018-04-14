@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace WindowsFormsApplication1
 {
@@ -76,6 +78,7 @@ namespace WindowsFormsApplication1
             newPhisVel[nomer_phis_vel].vvod_value_ED.Width = 234;
             newPhisVel[nomer_phis_vel].vvod_value_ED.Enter += new System.EventHandler(this.vvod_name_FV_Enter3);
             newPhisVel[nomer_phis_vel].vvod_value_ED.Leave += new System.EventHandler(this.vvod_name_FV_Leave3);
+            newPhisVel[nomer_phis_vel].vvod_value_ED.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vvod_main_ED_coef_ED_KeyPress);
             this.Controls.Add(newPhisVel[nomer_phis_vel].vvod_value_ED);
 
             nomer_phis_vel++;
@@ -204,6 +207,7 @@ namespace WindowsFormsApplication1
         private void vvod_main_ED_coef_ED_TextChanged(object sender, EventArgs e)
         {
 
+            
         }
 
         private void vvod_main_ED_coef_ED_Leave(object sender, EventArgs e)
@@ -305,14 +309,18 @@ namespace WindowsFormsApplication1
                 if (stroki1[nomer_stroki1].Contains("//CEFS") && !uzhe_dabavil1)
                 {
                 //n1 - номер переменной, nomer - последняя переменная в файле
+
                     for (int n1 = 0; n1 < nomer_phis_vel; n1++)
                     {
-                    //Даем коэффициент. У нее коэффициент всегда 1
+                        //if (n1 >= 1)
+                        {
+                            //Даем коэффициент. У нее коэффициент всегда 1
 
-                    nomer_stroki1++;
-                    stroki1[nomer_stroki1] = "        public const double CEF_new" + phisVelName(nomer + n1) + " = " + newPhisVel[n1].vvod_value_ED.Text + ";";
+                            nomer_stroki1++;
+                            stroki1[nomer_stroki1] = "        public const double CEF_new" + phisVelName(nomer + n1) + " = " + newPhisVel[n1].vvod_value_ED.Text + ";";
 
-                    uzhe_dabavil1 = true;
+                            uzhe_dabavil1 = true;
+                        }
                     }
                 }
 
@@ -325,7 +333,6 @@ namespace WindowsFormsApplication1
                 stroki[nomer_stroki] = reader2.ReadLine();  //Прочитали строку из файла
 
                 if (stroki[nomer_stroki].Contains("//void_messege") && uzhe_dabavil2)
-
                 {
                     for (int n1 = 0; n1 < nomer_phis_vel; n1++)
                     {
@@ -364,20 +371,24 @@ namespace WindowsFormsApplication1
                 }
                 else if (stroki[nomer_stroki].Contains("//2") && !uzhe_dabavil3)
                 {
-                    for (int n1 = 0; n1 <= nomer_phis_vel; n1++)
+
+                    for (int n1 = 0; n1 < nomer_phis_vel; n1++)
                     {
-                        stroki[nomer_stroki] = "                {";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                    PhisUnitComboBox.Items.Add(\"" + newNameED + "\");";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                }";
-                        nomer_stroki++;
+                        if (nomer_phis_vel >= 1)
+                        {
+                            stroki[nomer_stroki] = "                {";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                    PhisUnitComboBox.Items.Add(\"" + newNameED + "\");";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                }";
+                            nomer_stroki++;
+                        }
                     }
                 }
 
                 else if (stroki[nomer_stroki].Contains("//mains") && !uzhe_dabavil4)
                 {
-                    for (int n1 = 0; n1 <= nomer_phis_vel; n1++)
+                    for (int n1 = 0; n1 < nomer_phis_vel; n1++)
                     {
                         nomer_stroki++;
                         stroki[nomer_stroki] = "            new_main" + phisVelName(nomer + n1) + "();";
@@ -387,7 +398,7 @@ namespace WindowsFormsApplication1
                 }
                 else if (stroki[nomer_stroki].Contains("//messeges") && !uzhe_dabavil6)
                 {
-                    for (int n1 = 0; n1 <= nomer_phis_vel; n1++)
+                    for (int n1 = 0; n1 < nomer_phis_vel; n1++)
                     {
                         nomer_stroki++;
                         stroki[nomer_stroki] = "            messege_new" + phisVelName(nomer + n1) + "();";
@@ -399,72 +410,71 @@ namespace WindowsFormsApplication1
 
                     //Проверяем, что строка содержит нужные буквы
                 else  if (stroki[nomer_stroki].Contains("//void_main") && !uzhe_dabavil3)
-                    {
-                  for (int n1 = 0; n1 <= nomer_phis_vel; n1++)
-                       {       
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = reader2.ReadLine();
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = reader2.ReadLine();
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "        void new_main" + phisVelName(nomer + n1) + "()";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "        {";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "            if (PhisParameterComboBox.Text == \"" + newFV + "\")";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "            {";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                double coef_new = 1;";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                double newVvod = 0;";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                double CEF_newMain = 1;";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                if (!Double.TryParse(valueTextBox.Text, out newVvod))";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                {";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                    newVvod = 0;";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                }";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                if (PhisUnitComboBox.Text == \"" + newNameMainED + "\")";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                {";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                    coef_new = 1 / data_phisics.CEF_newMain;";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                }";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                else if (PhisUnitComboBox.Text == \"" + newNameED + "\")";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                {";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                    coef_new = 1 / data_phisics.CEF_new"+ phisVelName(nomer + n1) +";";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                }//1";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                textBox2.Text += Environment.NewLine + \"" + newNameMainED + "\" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 12);";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                textBox2.Text += Environment.NewLine + \"" + newNameED + "\" + Math.Round((coef_new * data_phisics.CEF_new" + phisVelName(nomer + n1) + " * newVvod), 12);";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "           }";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "      }";
-                            uzhe_dabavil3 = true;
+                {
+                    for (int n1 = 0; n1 < nomer_phis_vel; n1++)
+                    {  
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "        void new_main" + phisVelName(nomer + n1) + "()";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "        {";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "            if (PhisParameterComboBox.Text == \"" + newFV + "\")";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "            {";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                double coef_new = 1;";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                double newVvod = 0;";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                double CEF_newMain = 1;";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                if (!Double.TryParse(valueTextBox.Text, out newVvod))";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                {";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                    newVvod = 0;";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                }";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                if (PhisUnitComboBox.Text == \"" + newNameMainED + "\")";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                {";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                    coef_new = 1 / data_phisics.CEF_newMain;";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                }";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                else if (PhisUnitComboBox.Text == \"" + newNameED + "\")";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                {";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                    coef_new = 1 / data_phisics.CEF_new"+ phisVelName(nomer + n1) +";";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                }//1";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                textBox2.Text += Environment.NewLine + \"" + newNameMainED + "\" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 12);";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                textBox2.Text += Environment.NewLine + \"" + newNameED + "\" + Math.Round((coef_new * data_phisics.CEF_new" + phisVelName(nomer + n1) + " * newVvod), 12);";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "           }";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "      }";
+                        uzhe_dabavil3 = true;
                     }  
                 }
                 else if (stroki[nomer_stroki].Contains("}//1") && !uzhe_dabavil3)
-                {
-                    for (int n1 = 0; n1 <= nomer_phis_vel; n1++)
+                {                 
+                    for (int n1 = 0; n1 < nomer_phis_vel; n1++)
                     {
-                        stroki[nomer_stroki] = "                {";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                    coef_new = 1 / data_phisics.CEF_new" + phisVelName(nomer + n1) + ";";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                }/";
-                        nomer_stroki++;
+                        if (nomer_phis_vel >= 1)
+                        {
+                            stroki[nomer_stroki] = "                {";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                    coef_new = 1 / data_phisics.CEF_new" + phisVelName(nomer + n1) + ";";
+                            nomer_stroki++;
+                            stroki[nomer_stroki] = "                }/";
+                            nomer_stroki++;
+                        }
                     }
                 }
 
@@ -543,6 +553,42 @@ namespace WindowsFormsApplication1
             }
 
             Environment.Exit(0);
+        }
+
+        private void vvod_main_ED_coef_ED_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CultureInfo current = CultureInfo.CurrentCulture;
+            NumberFormatInfo nfi = current.NumberFormat;
+            String sep = nfi.NumberDecimalSeparator;
+            char[] arr = sep.ToCharArray();
+
+
+
+            char c = e.KeyChar;
+
+            if (!(char.IsDigit(c) || /*c == ',' ||*/ c == '-' || c == arr[0]/*'.'*/ || c == '\b'))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                string text = (sender as TextBox).Text ?? "";
+
+                if (c == ',' && text.Contains(','))
+                {
+                    e.Handled = true;
+                }
+                else if (c == '-' && text.Contains('-'))
+                {
+                    e.Handled = true;
+                }
+                else if (c == '.' && text.Contains('.'))
+                {
+                    e.Handled = true;
+                }
+
+
+            }
         }
         
 

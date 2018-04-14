@@ -273,8 +273,8 @@ namespace WindowsFormsApplication1
             string filename = "Converter.cs";
 
 
-            bool uzhe_dabavil1 = false;
-            bool uzhe_dabavil2 = false;
+            bool uzhe_dabavil_CEFS = false;
+            bool uzhe_dabavil_Message = false;
             bool uzhe_dabavil3 = false;
             bool uzhe_dabavil4 = false;
             bool uzhe_dabavil6 = false;
@@ -301,90 +301,77 @@ namespace WindowsFormsApplication1
             String newNameMainED = vvod_main_name_ED.Text;
             String newNameED = vvod_name_ED_.Text;
             String newcoefED = vvod_main_ED_coef_ED.Text;
-            
+
+            #region CEFS
             while (reader1.Peek() >= 0)
             {
                 stroki1[nomer_stroki1] = reader1.ReadLine();  //Прочитали строку из файла
 
-                if (stroki1[nomer_stroki1].Contains("//CEFS") && !uzhe_dabavil1)
+                if (stroki1[nomer_stroki1].Contains("//CEFS") && !uzhe_dabavil_CEFS)
                 {
-                //n1 - номер переменной, nomer - последняя переменная в файле
+                    //n1 - номер переменной, nomer - последняя переменная в файле
+                    nomer_stroki1++;
+                    stroki1[nomer_stroki1] = "        public const double CEF_new" + phisVelName(nomer) + " = 1;";
 
                     for (int n1 = 0; n1 < nomer_phis_vel; n1++)
                     {
-                        //if (n1 >= 1)
-                        {
-                            //Даем коэффициент. У нее коэффициент всегда 1
+                        //Даем коэффициент
+                        nomer_stroki1++;
+                        stroki1[nomer_stroki1] = "        public const double CEF_new" + phisVelName(nomer + n1) + " = " + newPhisVel[n1].vvod_value_ED.Text + ";";
 
-                            nomer_stroki1++;
-                            stroki1[nomer_stroki1] = "        public const double CEF_new" + phisVelName(nomer + n1) + " = " + newPhisVel[n1].vvod_value_ED.Text + ";";
-
-                            uzhe_dabavil1 = true;
-                        }
+                        uzhe_dabavil_CEFS = true;
                     }
                 }
 
                 nomer_stroki1++;
             }
             reader1.Close(); //закрываем поток
+            #endregion
 
             while (reader2.Peek() >= 0)
             {
                 stroki[nomer_stroki] = reader2.ReadLine();  //Прочитали строку из файла
 
-                if (stroki[nomer_stroki].Contains("//void_messege") && uzhe_dabavil2)
+                #region void_message
+                if (stroki[nomer_stroki].Contains("//void_messege") && uzhe_dabavil_Message)
                 {
-                    for (int n1 = 0; n1 < nomer_phis_vel; n1++)
-                    {
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "        void messege_new"+ phisVelName(nomer + n1) +"()";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "        //3";
-                        uzhe_dabavil2 = true;
-                    }
-                }
-                if (stroki[nomer_stroki].Contains("//3") && !uzhe_dabavil2)
-                {
-
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "        {";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "            if (PhisParameterComboBox.Text == \"" + newFV + "\")";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "            {";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Clear();";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Add(\"" + newNameMainED + "\");";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Add(\"" + newNameED + "\");";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                //2";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                PhisUnitComboBox.Text = (\"" + newNameMainED + "\");";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "            }";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "        }";
-                        uzhe_dabavil2 = true;
-                    
-                }
-                else if (stroki[nomer_stroki].Contains("//2") && !uzhe_dabavil3)
-                {
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "        void messege_new" + phisVelName(nomer) + "()";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "        {";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "            if (PhisParameterComboBox.Text == \"" + newFV + "\")";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "            {";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Clear();";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Add(\"" + newNameMainED + "\");";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Add(\"" + newNameED + "\");";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "                //2";
+                    nomer_stroki++;
 
                     for (int n1 = 0; n1 < nomer_phis_vel; n1++)
                     {
-                        if (nomer_phis_vel >= 1)
-                        {
-                            stroki[nomer_stroki] = "                {";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                    PhisUnitComboBox.Items.Add(\"" + newNameED + "\");";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                }";
-                            nomer_stroki++;
-                        }
+                        stroki[nomer_stroki] = "                {";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                    PhisUnitComboBox.Items.Add(\"" + 
+                                                                        newPhisVel[n1].vvod_name_ED.Text + "\");";
+                        nomer_stroki++;
+                        stroki[nomer_stroki] = "                }";
+                        nomer_stroki++;                        
                     }
+
+                    stroki[nomer_stroki] = "                PhisUnitComboBox.Text = (\"" + newNameMainED + "\");";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "            }";
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "        }";
+                    uzhe_dabavil_Message = true;
                 }
+                #endregion
 
                 else if (stroki[nomer_stroki].Contains("//mains") && !uzhe_dabavil4)
                 {
@@ -462,7 +449,7 @@ namespace WindowsFormsApplication1
                         uzhe_dabavil3 = true;
                     }  
                 }
-                else if (stroki[nomer_stroki].Contains("}//1") && !uzhe_dabavil3)
+                else if (stroki[nomer_stroki].Contains("}//1")/* && !uzhe_dabavil3*/)
                 {                 
                     for (int n1 = 0; n1 < nomer_phis_vel; n1++)
                     {

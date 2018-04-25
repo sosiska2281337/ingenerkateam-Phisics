@@ -8,7 +8,6 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-
 namespace WindowsFormsApplication1
 {
     public partial class add_new_ED : Form
@@ -16,24 +15,20 @@ namespace WindowsFormsApplication1
         public struct PhisLabel
         {
             public  TextBox vvod_name_ED;
-            public  TextBox vvod_value_ED;
-            //public TextBox plus;            
-        };
-
-       
+            public  TextBox vvod_value_ED;  
+        };       
 
         PhisLabel[] newPhisVel = new PhisLabel[200];
         private int nomer_phis_vel = 0;
         int y = 185;
 
-
-        public int nomer = 100;
-       
+        public int nomer = 100;       
 
         public add_new_ED()
         {
             InitializeComponent();
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (nomer_phis_vel >= 6)
@@ -42,6 +37,7 @@ namespace WindowsFormsApplication1
             }
              FV_newPhisVel();
         }
+
         private void button_delete_ED_Click(object sender, EventArgs e)
         {
             if (nomer_phis_vel == 0)
@@ -55,6 +51,7 @@ namespace WindowsFormsApplication1
             this.Controls.Remove(newPhisVel[nomer_phis_vel].vvod_name_ED);
             this.Controls.Remove(newPhisVel[nomer_phis_vel].vvod_value_ED);
         }
+
         private void FV_newPhisVel()
         {
             newPhisVel[nomer_phis_vel].vvod_name_ED = new TextBox();
@@ -83,24 +80,15 @@ namespace WindowsFormsApplication1
             y = y + 25;
         }
 
-
-
         private void add_new_ED_Load(object sender, EventArgs e)
         {
-
             vvod_name_FV_Leave(sender, e);//Если тут был пробел, пишем слово "граммы"
             vvod_name_ED_Leave(sender, e);
             vvod_main_name_ED_Leave(sender, e);
             vvod_main_ED_coef_ED_Leave(sender, e);
         }
-
-
-
-
+        
         //------------------------------------------------------------------
-        private void vvod_name_FV_TextChanged(object sender, EventArgs e)
-        {
-        }
         private void vvod_name_FV_Leave(object sender, EventArgs e)
         {
             if (vvod_name_FV.Text == "")
@@ -118,7 +106,6 @@ namespace WindowsFormsApplication1
 
                 vvod_name_FV.Text = "";
             }
-
         }
         //------------------------------------------------------------------
         private void vvod_name_FV_Leave2(object sender, EventArgs e)
@@ -172,11 +159,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void vvod_main_name_ED_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         //------------------------------------------------------------------
         private void vvod_name_ED_Leave(object sender, EventArgs e)
         {
@@ -192,20 +174,8 @@ namespace WindowsFormsApplication1
             vvod_name_ED_.ForeColor = Color.Black;
             if (vvod_name_ED_.Text == "Граммы")
             {
-
                 vvod_name_ED_.Text = "";
             }
-        }
-
-        private void vvod_name_ED_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        //------------------------------------------------------------------
-        private void vvod_main_ED_coef_ED_TextChanged(object sender, EventArgs e)
-        {
-
-            
         }
 
         private void vvod_main_ED_coef_ED_Leave(object sender, EventArgs e)
@@ -225,7 +195,6 @@ namespace WindowsFormsApplication1
 
                 vvod_main_ED_coef_ED.Text = "";
             }
-
         }
         //------------------------------------------------------------------
         private void vvod_name_FV_Leave3(object sender, EventArgs e)
@@ -267,17 +236,16 @@ namespace WindowsFormsApplication1
 
 
         private void button_save_Click(object sender, EventArgs e)
-       {
+        {
             string filename = "Converter.cs";
-
 
             bool uzhe_dabavil_CEFS = false;
             bool uzhe_dabavil_Message = false;
             bool uzhe_dabavil3 = false;
             bool uzhe_dabavil_mains = false;
-            bool uzhe_dabavil6 = false;
-            bool uzhe_dabavil7 = false;
-            bool uzhe_dabavil8 = false;
+            bool uzhe_dabavil_messeges = false;
+            bool uzhe_dabavil_autocomplete = false;
+            bool uzhe_dabavil_add_range = false;
 
 
             //Читаем файл построчно
@@ -451,34 +419,25 @@ namespace WindowsFormsApplication1
             {
                 stroki3[nomer_stroki3] = reader3.ReadLine();  //Прочитали строку из файла
 
-                if (stroki3[nomer_stroki3].Contains("this.PhisParameterComboBox.AutoCompleteCustomSource.AddRange(new string[] {") && !uzhe_dabavil7)
+                if (stroki3[nomer_stroki3].Contains("this.PhisParameterComboBox.AutoCompleteCustomSource.AddRange(new string[] {") && !uzhe_dabavil_autocomplete)
                 {
-                    nomer_stroki3++;
-                    stroki3[nomer_stroki3] = reader3.ReadLine();
-                    nomer_stroki3++;
-                    stroki3[nomer_stroki3] = "            \"" + newFV + "\",";
-                    nomer_stroki3++;
-                    stroki3[nomer_stroki3] = reader3.ReadLine();
+                    stroki3[nomer_stroki3++] = reader3.ReadLine();
+                    stroki3[nomer_stroki3++] = "            \"" + newFV + "\",";
+                    stroki3[nomer_stroki3++] = reader3.ReadLine();
 
-                    uzhe_dabavil7 = true;
+                    uzhe_dabavil_autocomplete = true;
                 }
-                else if (stroki3[nomer_stroki3].Contains("this.PhisParameterComboBox.Items.AddRange(new object[] {") && !uzhe_dabavil8)
+                else if (stroki3[nomer_stroki3].Contains("this.PhisParameterComboBox.Items.AddRange(new object[] {") && !uzhe_dabavil_add_range)
                 {
-                    nomer_stroki3++;
-                    stroki3[nomer_stroki3] = reader3.ReadLine();
-                    nomer_stroki3++;
-                    stroki3[nomer_stroki3] = "            \"" + newFV + "\",";
-                    nomer_stroki3++;
-                    stroki3[nomer_stroki3] = reader3.ReadLine();
+                    stroki3[nomer_stroki3++] = reader3.ReadLine();
+                    stroki3[nomer_stroki3++] = "            \"" + newFV + "\",";
+                    stroki3[nomer_stroki3++] = reader3.ReadLine();
 
-                    uzhe_dabavil8 = true;
+                    uzhe_dabavil_add_range = true;
                 }
 
                 nomer_stroki3++;
             }
-
-
-
 
             reader3.Close(); //закрываем поток
 
@@ -531,8 +490,6 @@ namespace WindowsFormsApplication1
                 {
                     e.Handled = true;
                 }
-
-
             }
         }
     }

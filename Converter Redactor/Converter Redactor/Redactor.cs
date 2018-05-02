@@ -5,11 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 
 namespace WindowsFormsApplication1
 {
@@ -18,24 +15,20 @@ namespace WindowsFormsApplication1
         public struct PhisLabel
         {
             public  TextBox vvod_name_ED;
-            public  TextBox vvod_value_ED;
-            //public TextBox plus;            
-        };
-
-       
+            public  TextBox vvod_value_ED;  
+        };       
 
         PhisLabel[] newPhisVel = new PhisLabel[200];
         private int nomer_phis_vel = 0;
         int y = 185;
 
-
-        public int nomer = 100;
-       
+        public int nomer = 100;       
 
         public add_new_ED()
         {
             InitializeComponent();
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (nomer_phis_vel >= 6)
@@ -44,6 +37,7 @@ namespace WindowsFormsApplication1
             }
              FV_newPhisVel();
         }
+
         private void button_delete_ED_Click(object sender, EventArgs e)
         {
             if (nomer_phis_vel == 0)
@@ -57,6 +51,7 @@ namespace WindowsFormsApplication1
             this.Controls.Remove(newPhisVel[nomer_phis_vel].vvod_name_ED);
             this.Controls.Remove(newPhisVel[nomer_phis_vel].vvod_value_ED);
         }
+
         private void FV_newPhisVel()
         {
             newPhisVel[nomer_phis_vel].vvod_name_ED = new TextBox();
@@ -85,24 +80,15 @@ namespace WindowsFormsApplication1
             y = y + 25;
         }
 
-
-
         private void add_new_ED_Load(object sender, EventArgs e)
         {
-
             vvod_name_FV_Leave(sender, e);//Если тут был пробел, пишем слово "граммы"
             vvod_name_ED_Leave(sender, e);
             vvod_main_name_ED_Leave(sender, e);
             vvod_main_ED_coef_ED_Leave(sender, e);
         }
-
-
-
-
+        
         //------------------------------------------------------------------
-        private void vvod_name_FV_TextChanged(object sender, EventArgs e)
-        {
-        }
         private void vvod_name_FV_Leave(object sender, EventArgs e)
         {
             if (vvod_name_FV.Text == "")
@@ -120,7 +106,6 @@ namespace WindowsFormsApplication1
 
                 vvod_name_FV.Text = "";
             }
-
         }
         //------------------------------------------------------------------
         private void vvod_name_FV_Leave2(object sender, EventArgs e)
@@ -174,11 +159,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void vvod_main_name_ED_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         //------------------------------------------------------------------
         private void vvod_name_ED_Leave(object sender, EventArgs e)
         {
@@ -194,20 +174,8 @@ namespace WindowsFormsApplication1
             vvod_name_ED_.ForeColor = Color.Black;
             if (vvod_name_ED_.Text == "Граммы")
             {
-
                 vvod_name_ED_.Text = "";
             }
-        }
-
-        private void vvod_name_ED_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        //------------------------------------------------------------------
-        private void vvod_main_ED_coef_ED_TextChanged(object sender, EventArgs e)
-        {
-
-            
         }
 
         private void vvod_main_ED_coef_ED_Leave(object sender, EventArgs e)
@@ -227,7 +195,6 @@ namespace WindowsFormsApplication1
 
                 vvod_main_ED_coef_ED.Text = "";
             }
-
         }
         //------------------------------------------------------------------
         private void vvod_name_FV_Leave3(object sender, EventArgs e)
@@ -269,17 +236,16 @@ namespace WindowsFormsApplication1
 
 
         private void button_save_Click(object sender, EventArgs e)
-       {
+        {
             string filename = "Converter.cs";
-
 
             bool uzhe_dabavil_CEFS = false;
             bool uzhe_dabavil_Message = false;
             bool uzhe_dabavil3 = false;
-            bool uzhe_dabavil4 = false;
-            bool uzhe_dabavil6 = false;
-            bool uzhe_dabavil7 = false;
-            bool uzhe_dabavil8 = false;
+            bool uzhe_dabavil_mains = false;
+            bool uzhe_dabavil_messeges = false;
+            bool uzhe_dabavil_autocomplete = false;
+            bool uzhe_dabavil_add_range = false;
 
 
             //Читаем файл построчно
@@ -310,15 +276,12 @@ namespace WindowsFormsApplication1
                 if (stroki1[nomer_stroki1].Contains("//CEFS") && !uzhe_dabavil_CEFS)
                 {
                     //n1 - номер переменной, nomer - последняя переменная в файле
-                    nomer_stroki1++;
-                    stroki1[nomer_stroki1] = "        public const double CEF_new" + phisVelName(nomer) + " = 1;";
+                    stroki1[nomer_stroki1++] = "        public const double CEF_newMain = 1;";
 
                     for (int n1 = 0; n1 < nomer_phis_vel; n1++)
                     {
                         //Даем коэффициент
-                        nomer_stroki1++;
-                        stroki1[nomer_stroki1] = "        public const double CEF_new" + phisVelName(nomer + n1) + " = " + newPhisVel[n1].vvod_value_ED.Text + ";";
-
+                        stroki1[nomer_stroki1++] = "        public const double CEF_new" + phisVelName(nomer + n1) + " = " + newPhisVel[n1].vvod_value_ED.Text + ";";
                         uzhe_dabavil_CEFS = true;
                     }
                 }
@@ -335,119 +298,88 @@ namespace WindowsFormsApplication1
                 #region void_message
                 if (stroki[nomer_stroki].Contains("//void_messege") && uzhe_dabavil_Message)
                 {
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "        void messege_new" + phisVelName(nomer) + "()";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "        {";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "            if (PhisParameterComboBox.Text == \"" + newFV + "\")";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "            {";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Clear();";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Add(\"" + newNameMainED + "\");";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "                PhisUnitComboBox.Items.Add(\"" + newNameED + "\");";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "                //2";
-                    nomer_stroki++;
+                    stroki[nomer_stroki++] = "        void messege_new" + phisVelName(nomer) + "()";
+                    stroki[nomer_stroki++] = "        {";
+                    stroki[nomer_stroki++] = "            if (PhisParameterComboBox.Text == \"" + newFV + "\")";
+                    stroki[nomer_stroki++] = "            {";
+                    stroki[nomer_stroki++] = "                PhisUnitComboBox.Items.Clear();";
+                    stroki[nomer_stroki++] = "                PhisUnitComboBox.Items.Add(\"" + newNameMainED + "\");";
+                    stroki[nomer_stroki++] = "                PhisUnitComboBox.Items.Add(\"" + newNameED + "\");";
+                    stroki[nomer_stroki++] = "                //2";
 
                     for (int n1 = 0; n1 < nomer_phis_vel; n1++)
                     {
-                        stroki[nomer_stroki] = "                {";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                    PhisUnitComboBox.Items.Add(\"" + 
+                        stroki[nomer_stroki++] = "                {";
+                        stroki[nomer_stroki++] = "                    PhisUnitComboBox.Items.Add(\"" + 
                                                                         newPhisVel[n1].vvod_name_ED.Text + "\");";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                }";
-                        nomer_stroki++;                        
+                        stroki[nomer_stroki++] = "                }";
                     }
 
-                    stroki[nomer_stroki] = "                PhisUnitComboBox.Text = (\"" + newNameMainED + "\");";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "            }";
-                    nomer_stroki++;
-                    stroki[nomer_stroki] = "        }";
+                    stroki[nomer_stroki++] = "                PhisUnitComboBox.Text = (\"" + newNameMainED + "\");";
+                    stroki[nomer_stroki++] = "            }";
+                    stroki[nomer_stroki++] = "        }";
                     uzhe_dabavil_Message = true;
                 }
                 #endregion
 
-                else if (stroki[nomer_stroki].Contains("//mains") && !uzhe_dabavil4)
+                //На фиг 100 функций создаешь? new_main и messege_new тебе надо ровно по одной
+                else if (stroki[nomer_stroki].Contains("//mains") && !uzhe_dabavil_mains)
                 {
-                    for (int n1 = 0; n1 < nomer_phis_vel; n1++)
-                    {
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "            new_main" + phisVelName(nomer + n1) + "();";
-
-                        uzhe_dabavil4 = true;
-                    }
+                    stroki[nomer_stroki++] = "            new_main" + phisVelName(nomer) + "();";
+                    uzhe_dabavil_mains = true;
                 }
-                else if (stroki[nomer_stroki].Contains("//messeges") && !uzhe_dabavil6)
+                else if (stroki[nomer_stroki].Contains("//messeges") && !uzhe_dabavil_messeges)
                 {
-                    for (int n1 = 0; n1 < nomer_phis_vel; n1++)
-                    {
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "            messege_new" + phisVelName(nomer + n1) + "();";
+                    stroki[nomer_stroki++] = "            messege_new" + phisVelName(nomer) + "();";
+                    uzhe_dabavil_messeges = true;
+                } 
 
-                        uzhe_dabavil6 = true;
-                    }
-                }
- 
-
-                    //Проверяем, что строка содержит нужные буквы
+                //Проверяем, что строка содержит нужные буквы
                 else  if (stroki[nomer_stroki].Contains("//void_main") && !uzhe_dabavil3)
                 {
+                    /*
+                     * Вместо
+                    nomer_stroki++;
+                    stroki[nomer_stroki] = "        void new_main" + phisVelName(nomer + n1) + "()";
+                     * 
+                     * Пиши
+                    stroki[nomer_stroki++] = "        void new_main" + phisVelName(nomer + n1) + "()";
+                     Так компактнее в 1000 раз
+                     */
+
+                    stroki[nomer_stroki++] = "        void new_main" + phisVelName(nomer) + "()";
+                    stroki[nomer_stroki++] = "        {";
+                    stroki[nomer_stroki++] = "            if (PhisParameterComboBox.Text == \"" + newFV + "\")";
+                    stroki[nomer_stroki++] = "            {";
+                    stroki[nomer_stroki++] = "                double coef_new = 1;";
+                    stroki[nomer_stroki++] = "                double newVvod = 0;";
+                    stroki[nomer_stroki++] = "                double CEF_newMain = 1;";
+                    stroki[nomer_stroki++] = "                if (!Double.TryParse(valueTextBox.Text, out newVvod))";
+                    stroki[nomer_stroki++] = "                {";
+                    stroki[nomer_stroki++] = "                    newVvod = 0;";
+                    stroki[nomer_stroki++] = "                }";
+                    stroki[nomer_stroki++] = "                if (PhisUnitComboBox.Text == \"" + newNameMainED + "\")";
+                    stroki[nomer_stroki++] = "                {";
+                    stroki[nomer_stroki++] = "                    coef_new = 1 / data_phisics.CEF_newMain;";
+                    stroki[nomer_stroki++] = "                }";
+
+                    //В форе у тебя только else if должны быть. На фиг 100 функций создаешь?
                     for (int n1 = 0; n1 < nomer_phis_vel; n1++)
-                    {  
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "        void new_main" + phisVelName(nomer + n1) + "()";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "        {";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "            if (PhisParameterComboBox.Text == \"" + newFV + "\")";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "            {";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                double coef_new = 1;";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                double newVvod = 0;";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                double CEF_newMain = 1;";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                if (!Double.TryParse(valueTextBox.Text, out newVvod))";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                {";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                    newVvod = 0;";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                }";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                if (PhisUnitComboBox.Text == \"" + newNameMainED + "\")";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                {";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                    coef_new = 1 / data_phisics.CEF_newMain;";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                }";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                else if (PhisUnitComboBox.Text == \"" + newNameED + "\")";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                {";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                    coef_new = 1 / data_phisics.CEF_new"+ phisVelName(nomer + n1) +";";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                }//1";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                textBox2.Text += Environment.NewLine + \"" + newNameMainED + "\" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 12);";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "                textBox2.Text += Environment.NewLine + \"" + newNameED + "\" + Math.Round((coef_new * data_phisics.CEF_new" + phisVelName(nomer + n1) + " * newVvod), 12);";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "           }";
-                        nomer_stroki++;
-                        stroki[nomer_stroki] = "      }";
-                        uzhe_dabavil3 = true;
-                    }  
+                    {
+                        stroki[nomer_stroki++] = "                else if (PhisUnitComboBox.Text == \"" + newPhisVel[n1].vvod_name_ED.Text + "\")";
+                        stroki[nomer_stroki++] = "                {";
+                        stroki[nomer_stroki++] = "                    coef_new = 1 / data_phisics.CEF_new" + newPhisVel[n1].vvod_value_ED.Text + ";";
+                        stroki[nomer_stroki++] = "                }//1";
+                    }
+                    stroki[nomer_stroki++] = "                textBox2.Text += Environment.NewLine + \"" + newNameMainED + "\" + Math.Round((coef_new * data_phisics.CEF_newMain * newVvod), 12);";
+                    for (int n1 = 0; n1 < nomer_phis_vel; n1++)
+                    {
+                        stroki[nomer_stroki++] = "                textBox2.Text += Environment.NewLine + \"" + newPhisVel[n1].vvod_name_ED.Text + "\" + Math.Round((coef_new * data_phisics.CEF_new" + phisVelName(nomer + n1) + " * newVvod), 12);";
+                    }
+
+                    stroki[nomer_stroki++] = "           }";
+                    stroki[nomer_stroki++] = "      }";
+                    uzhe_dabavil3 = true;
                 }
                 else if (stroki[nomer_stroki].Contains("}//1")/* && !uzhe_dabavil3*/)
                 {                 
@@ -455,70 +387,57 @@ namespace WindowsFormsApplication1
                     {
                         if (nomer_phis_vel >= 1)
                         {
-                            stroki[nomer_stroki] = "                {";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                    coef_new = 1 / data_phisics.CEF_new" + phisVelName(nomer + n1) + ";";
-                            nomer_stroki++;
-                            stroki[nomer_stroki] = "                }/";
-                            nomer_stroki++;
+                            stroki[nomer_stroki++] = "                {";
+                            stroki[nomer_stroki++] = "                    coef_new = 1 / data_phisics.CEF_new" + phisVelName(nomer + n1) + ";";
+                            stroki[nomer_stroki++] = "                }";//На какой хрен тут был слэш?
                         }
                     }
                 }
 
-                        //Разделить строку на слова (разделитель - пробел)
-                        /*string[] podstroki = stroki[nomer_stroki].Split(new String[] { " ", ";" }, StringSplitOptions.None);
-                        //Количество элементов массива строк
-                        //MessageBox.Show(podstroki[podstroki.Length - 2]); //Тут public. Тебе надо другое слово
+                //Разделить строку на слова (разделитель - пробел)
+                /*string[] podstroki = stroki[nomer_stroki].Split(new String[] { " ", ";" }, StringSplitOptions.None);
+                //Количество элементов массива строк
+                //MessageBox.Show(podstroki[podstroki.Length - 2]); //Тут public. Тебе надо другое слово
 
-                        //КОнвертируем строку в число. Только тебе надо не -1012 конвертить
-                        int result;
-                        if (Int32.TryParse(podstroki[podstroki.Length - 2], out result) == true)
-                        {
-                            //В переменной result хранится число
-                            result++;
-                            String stroka_s_novym_chislom = result.ToString();//Конвертируем число в строку
+                //КОнвертируем строку в число. Только тебе надо не -1012 конвертить
+                int result;
+                if (Int32.TryParse(podstroki[podstroki.Length - 2], out result) == true)
+                {
+                    //В переменной result хранится число
+                    result++;
+                    String stroka_s_novym_chislom = result.ToString();//Конвертируем число в строку
 
-                            //Замена строки (у тебя не 0 в подстроках, а другое число)
-                            stroki[nomer_stroki] = stroki[nomer_stroki].Replace(podstroki[podstroki.Length - 2], stroka_s_novym_chislom);
-                        }*/
-                        nomer_stroki++;
-                  }
+                    //Замена строки (у тебя не 0 в подстроках, а другое число)
+                    stroki[nomer_stroki] = stroki[nomer_stroki].Replace(podstroki[podstroki.Length - 2], stroka_s_novym_chislom);
+                }*/
+                nomer_stroki++;
+            }
 
-                reader2.Close(); //закрываем поток
+            reader2.Close(); //закрываем поток
 
             while (reader3.Peek() >= 0)
             {
                 stroki3[nomer_stroki3] = reader3.ReadLine();  //Прочитали строку из файла
 
-
-                if (stroki3[nomer_stroki3].Contains("this.PhisParameterComboBox.AutoCompleteCustomSource.AddRange(new string[] {") && !uzhe_dabavil7)
+                if (stroki3[nomer_stroki3].Contains("this.PhisParameterComboBox.AutoCompleteCustomSource.AddRange(new string[] {") && !uzhe_dabavil_autocomplete)
                 {
-                    nomer_stroki3++;
-                    stroki3[nomer_stroki3] = reader3.ReadLine();
-                    nomer_stroki3++;
-                    stroki3[nomer_stroki3] = "            \"" + newFV + "\",";
-                    nomer_stroki3++;
-                    stroki3[nomer_stroki3] = reader3.ReadLine();
+                    stroki3[nomer_stroki3++] = reader3.ReadLine();
+                    stroki3[nomer_stroki3++] = "            \"" + newFV + "\",";
+                    stroki3[nomer_stroki3++] = reader3.ReadLine();
 
-                    uzhe_dabavil7 = true;
+                    uzhe_dabavil_autocomplete = true;
                 }
-                else if (stroki3[nomer_stroki3].Contains("this.PhisParameterComboBox.Items.AddRange(new object[] {") && !uzhe_dabavil8)
+                else if (stroki3[nomer_stroki3].Contains("this.PhisParameterComboBox.Items.AddRange(new object[] {") && !uzhe_dabavil_add_range)
                 {
-                    nomer_stroki3++;
-                    stroki3[nomer_stroki3] = reader3.ReadLine();
-                    nomer_stroki3++;
-                    stroki3[nomer_stroki3] = "            \"" + newFV + "\",";
-                    nomer_stroki3++;
-                    stroki3[nomer_stroki3] = reader3.ReadLine();
+                    stroki3[nomer_stroki3++] = reader3.ReadLine();
+                    stroki3[nomer_stroki3++] = "            \"" + newFV + "\",";
+                    stroki3[nomer_stroki3++] = reader3.ReadLine();
 
-                    uzhe_dabavil8 = true;
+                    uzhe_dabavil_add_range = true;
                 }
 
                 nomer_stroki3++;
             }
-
-
-
 
             reader3.Close(); //закрываем поток
 
@@ -549,11 +468,9 @@ namespace WindowsFormsApplication1
             String sep = nfi.NumberDecimalSeparator;
             char[] arr = sep.ToCharArray();
 
-
-
             char c = e.KeyChar;
 
-            if (!(char.IsDigit(c) || /*c == ',' ||*/ c == '-' || c == arr[0]/*'.'*/ || c == '\b'))
+            if (!(char.IsDigit(c) ||  c == '-' || c == arr[0] || c == '\b'))
             {
                 e.Handled = true;
             }
@@ -573,12 +490,7 @@ namespace WindowsFormsApplication1
                 {
                     e.Handled = true;
                 }
-
-
             }
         }
-        
-
-
     }
 }

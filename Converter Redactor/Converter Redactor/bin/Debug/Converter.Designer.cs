@@ -1,4 +1,3 @@
-
 namespace Converter
 {
     partial class MainForm
@@ -75,6 +74,7 @@ namespace Converter
             // 
             this.PhisParameterComboBox.AccessibleName = "";
             this.PhisParameterComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+                "a",
             "Длина",
             "Масса",
             "Давление",
@@ -89,12 +89,14 @@ namespace Converter
             this.PhisParameterComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.PhisParameterComboBox.ForeColor = System.Drawing.Color.Black;
             this.PhisParameterComboBox.Items.AddRange(new object[] {
+          "a",
             "Длина",
+
             "Масса",
             "Сила",
             "Масса",
             "Давление",
-            "Время",  
+            "Время",
             "Энергия",
             "Температура"});
             this.PhisParameterComboBox.Location = new System.Drawing.Point(245, 3);
@@ -205,5 +207,6 @@ namespace Converter
         private System.Windows.Forms.Label PhisUnitLabel;
         private System.Windows.Forms.ComboBox PhisUnitComboBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+
     }
 }

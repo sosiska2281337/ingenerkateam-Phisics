@@ -1,4 +1,3 @@
-//+фв и вычисления и сообщения
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,19 +52,17 @@ namespace Converter
           private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
-           //mains
+
+            //mains
 
             pressure_main();
-            new_mainnewVvod100();
             time_main();
-            mass_main();
-            new_mainnewVvod101();
+            mass_main(); 
             energy_main();
             strench_main();
-            new_mainnewVvod102();
             distance_main();
             temp_main();
-            new_mainnewVvod103();
+            
         
          }
             
@@ -90,8 +87,8 @@ namespace Converter
             funny_messages[12] = new FunnyMessage(unitypes.MASS, 20001, 0, "", "МАлЕньк0 пЕрЕбрАл (*отрыжка*), ...оооой");
 
 
-            string text = System.IO.File.ReadAllText(@"C:\Users\Admin\ingenerkateam-Phisics\Converter\Converter\words_page.txt");
-            MessageBox.Show(text);
+            //string text = System.IO.File.ReadAllText(@"C:\Users\Admin\ingenerkateam-Phisics\Converter\Converter\words_page.txt");
+            //MessageBox.Show(text);
 
         }
 
@@ -113,13 +110,8 @@ namespace Converter
         }
             
 
-
         //void_messege
 
-
-
-     
-              
         void messege_distance()  
 
         {
@@ -224,12 +216,7 @@ namespace Converter
             }
         }
 
-
-
         //void_main
-
-       
-
 
         void pressure_main()
 
